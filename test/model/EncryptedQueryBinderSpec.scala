@@ -1,0 +1,59 @@
+/*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ */
+
+package model
+
+import org.mockito.ArgumentMatchers._
+import org.mockito.Mockito._
+import org.scalatestplus.mockito.MockitoSugar
+import org.scalatestplus.play.PlaySpec
+import play.api.mvc.QueryStringBindable
+import uk.gov.hmrc.crypto._
+import uk.gov.hmrc.emailaddress.EmailAddress
+
+class EncryptedQueryBinderSpec extends PlaySpec with MockitoSugar {
+
+  var decryptedEmail: Option[String] = None
+
+  "Binding a Encrypted[Email]" should {
+    "Pass through any failure from the string binder" in new TestCase {
+      when(stringBinder.bind(any[String], any[Map[String, Seq[String]]])).thenReturn(Some(Left("an error")))
+      binder.bind("exampleKey", Map.empty) must be(Some(Left("an error")))
+    }
+    "Pass through a None from the string binder" in new TestCase {
+      when(stringBinder.bind(any[String], any[Map[String, Seq[String]]])).thenReturn(None)
+      binder.bind("exampleKey", Map.empty) must be(None)
+    }
+    "Process a validly encrypted valid email" in new TestCase {
+      when(stringBinder.bind(any[String], any[Map[String, Seq[String]]])).thenReturn(Some(Right(encryptedData)))
+      decryptedEmail = Some("test@test.com")
+      binder.bind("exampleKey", Map.empty) must be(Some(Right(Encrypted(EmailAddress("test@test.com")))))
+    }
+    "Give an error for an invalid email" in new TestCase {
+      when(stringBinder.bind(any[String], any[Map[String, Seq[String]]])).thenReturn(Some(Right(encryptedData)))
+      decryptedEmail = Some("asdfasdf")
+      binder.bind("exampleKey", Map.empty) must be(Some(Left("exampleKey is not valid")))
+    }
+    "Give an error if decryption throws an exception" in new TestCase {
+      when(stringBinder.bind(any[String], any[Map[String, Seq[String]]])).thenReturn(Some(Right(encryptedData)))
+      decryptedEmail = None
+      binder.bind("exampleKey", Map.empty) must be(Some(Left("Could not decrypt value for exampleKey")))
+    }
+  }
+
+  trait TestCase {
+    val stringBinder = mock[QueryStringBindable[String]]
+    val crypto = new Encrypter with Decrypter {
+      override def decrypt(reversiblyEncrypted: Crypted): PlainText =
+        decryptedEmail.map(PlainText.apply).getOrElse(throw new RuntimeException())
+
+      override def encrypt(plain: PlainContent): Crypted = ???
+
+      override def decryptAsBytes(reversiblyEncrypted: Crypted): PlainBytes = ???
+    }
+    val binder = new EncryptedQueryBinder[EmailAddress](crypto, crypto, EmailAddress.apply, _.value)(stringBinder)
+    val encryptedData: String = "encrypted Data"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": {
+    "name": "RE_OPT_IN_MODIFIED",
+    "category": "ACTION_REQUIRED",
+    "text1": "Ar-lein – mae angen i chi gytuno â’n telerau diweddaraf",
+    "text2": "Rydych yn cael y llythyrau treth hyn ar-lein. Ond mae angen i chi gytuno â’n telerau diweddaraf.",
+    "majorVersion": 1
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/choose/55?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&email=e9zVPuZh0zbnXYIdEw1gz%2FYGFxquqdJgiJJN8WJGzOQ%3D&cohort=QZaLWsNqgIgAErZ7wlRraQ%3D%3D",
+    "text": "Adolygu’r telerau diweddaraf"
+  }
+}

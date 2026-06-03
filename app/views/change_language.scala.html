@@ -1,0 +1,51 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+@this(form: FormWithCSRF, govukButton: GovukButton, govukRadios: GovukRadios)
+@(languageForm: Form[?], submitLanguageFormAction: Call)(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+
+    @form(action = submitLanguageFormAction, Symbol("id") -> "form-submit-language") {
+
+    @govukRadios(Radios(
+        fieldset = Some(Fieldset(
+          legend = Some(Legend(
+            content = Text(Messages("account.details.change.language.title")),
+            classes = "govuk-fieldset__legend--xl",
+            isPageHeading = true
+          ))
+        )),
+        hint = Some(Hint(
+    content = HtmlContent(
+
+       s"""<p>${Messages("account.details.change.language.info_1")}</p>
+       <p>${Messages("account.details.change.language.info_2")}</p>"""
+       )
+        )),
+        idPrefix = Some("lang"),
+        name = "language",
+        items = Seq(
+          RadioItem(
+       content = Text(Messages("account.details.change.language.english")),
+            value = Some("false"),
+            checked =  if((languageForm("language").value == Some("false")) || (languageForm("language").value == None))  true  else false
+          ),
+          RadioItem(
+       content = Text(Messages("account.details.change.language.welsh")),
+            value = Some("true"),
+            checked =  if((languageForm("language").value == Some("false")) || (languageForm("language").value == None))  false  else true
+          )
+        ),
+        classes = "govuk-radios--inline"
+      ))
+
+
+    @govukButton(Button(
+        classes = "govuk-button",
+        content = Text(Messages("manage.paperless.check.settings.linkText"))
+      ))
+  }

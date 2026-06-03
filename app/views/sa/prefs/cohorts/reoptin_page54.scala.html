@@ -1,0 +1,103 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import views.ViewHelper
+
+@this(govukErrorSummary : GovukErrorSummary,
+        govukRadios: GovukRadios,
+        govukButton: GovukButton,
+        form: FormWithCSRF)
+
+@(optinForm: Form[?], submitPrefsFormAction: Call)(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+@onlineLettersLink = @{controllers.internal.routes.ManagePaperlessController.displayTypesOfDigitalTaxLetters(hostContext)}
+
+@import uk.gov.hmrc.govukfrontend.views.html.components.implicits._
+ 
+@onlineHtml = {
+
+
+ <p id="online-para-1" class="govuk-body">@Messages("reoptin_page54.fg_page.yes_send_email_info_1")</p>
+
+ <p id="online-para-2" class="govuk-body"><strong>@Messages("reoptin_page54.fg_page.yes_send_email_info_2")</strong></p>
+ <p id="online-para-3" class="govuk-body"><strong>@Messages("reoptin_page54.fg_page.yes_send_email_info_3")</strong>
+  <br>@Messages("reoptin_page54.fg_page.yes_send_email_info_4")
+ </p>
+ <p  id="online-para-4"class="govuk-body"><strong>@Messages("reoptin_page54.fg_page.yes_send_email_info_5")</strong>
+  <br>@Messages("reoptin_page54.fg_page.yes_send_email_info_6") <a class="govuk-link" href="@onlineLettersLink">@Messages("reoptin_page54.link")</a>
+ </p>
+
+}
+
+ @if(optinForm.hasErrors) {
+  @govukErrorSummary(ErrorSummary(
+   errorList = optinForm.errors.map( error =>
+    ErrorLink(
+     href = Some(s"#${error.key}"),
+     content = Text(messages(error.message))
+    )
+   ),
+   title = Text(Messages("sa_printing_preference.sps_opt_in_choice.problem"))
+  ))
+ }
+
+
+
+  <header class="page-header">
+   <h1 class="govuk-heading-xl">@Messages("reoptin_page54.fg_page.title")</h1>
+  </header>
+ <p class="govuk-body">@Messages("reoptin_page54.fg_page.choose_1")</p>
+ <ul class="govuk-list govuk-list--bullet">
+  <li>@Messages("reoptin_page54.fg_page.list_1")</li>
+  <li>@Messages("reoptin_page54.fg_page.list_2")</li>
+  <li>@Messages("reoptin_page54.fg_page.list_3")</li>
+  <li>@Messages("reoptin_page54.fg_page.list_4")</li>
+  <li>@Messages("reoptin_page54.fg_page.list_5")</li>
+ </ul>
+ <br>
+ @form(action = submitPrefsFormAction, Symbol("id") -> "form-submit-email-address", Symbol("novalidate") -> "novalidate") {
+
+
+  @govukRadios(Radios(
+   fieldset = Some(Fieldset(
+    legend = Some(Legend(
+     content = Text(Messages("reoptin_page54.fg_page.paperless")),
+     classes = "govuk-fieldset__legend--m"
+    ))
+   )),
+   errorMessage = optinForm.errors.asTextErrorMessageForField(fieldKey = "sps-re-opt-in"),
+   idPrefix = Some("sps-re-opt-in"),
+   name = "sps-re-opt-in",
+   items = Seq(
+    RadioItem(
+     content = Text(Messages("reoptin_page54.fg_page.yes_send_email")),
+     value = Some("true"),
+     checked = optinForm("sps-re-opt-in").value.contains("true"),
+     hint = Some(Hint(
+      content = Text(Messages("reoptin_page54.fg_page.yes_send_email_hint"))
+     )),
+     conditionalHtml = Some(onlineHtml)
+    ),
+    RadioItem(
+     content = Text(Messages("reoptin_page54.fg_page.keep_receiving")),
+     value = Some("false"),
+     checked = optinForm("sps-re-opt-in").value.contains("false")
+    )
+   )
+  ))
+
+
+  @govukButton(Button(
+   name = Some("submitButton"),
+   inputType = Some("submit"),
+   content = Text(Messages("reoptin_page54.submitButton")),
+   attributes = Map(
+    "id" -> "submitEmailButton",
+    "data-prevent-double-click" -> "true"
+   )
+  ))
+ }

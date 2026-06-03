@@ -1,0 +1,636 @@
+error.email=Enter an email address in the correct format, like name@example.com
+error.email.optIn=Enter an email address in the correct format, like name@example.com
+error.text=Error
+email.confirmation.emails.unequal=Check your email addresses - they don''t match.
+
+sa_printing_preference.tc.heading=Self Assessment terms and conditions
+sa_printing_preference.tc.secure_mailbox=Secure mailbox
+sa_printing_preference.tc.statutory_notices=Statutory notices, reminders and certificates
+sa_printing_preference.tc.extract.1=The following extract of
+sa_printing_preference.tc.extract.2=HMRC''s terms and conditions
+sa_printing_preference.tc.extract.3=covers Self Assessment users.
+sa_printing_preference.tc.7.1=7.1 When you register for the first time, a secure online mailbox will be set up for you on the Government Gateway. Some online services may make use of the secure mailbox to send you communications and replies to email questions. For these services, you can view the contents of your secure mailbox on the HMRC website.
+sa_printing_preference.tc.7.2=7.2 You should regularly check your mailbox and delete old messages. Read messages that have been on the system for up to three months from delivery will be archived and removed from your mailbox. Unread messages that have been on the system for up to 12 months from delivery will be archived and removed from your mailbox.
+sa_printing_preference.tc.7.3=7.3 If you opt to receive Self Assessment statutory notices and reminders electronically these will be delivered to a separate dedicated secure online mailbox. This mailbox is different to the secure mailbox set up for you on the Government Gateway.
+sa_printing_preference.tc.8.1=8.1 Some online services may be used, or may make use of the secure online mailbox, to issue statutory notices and reminders to you. You can view the notices and reminders securely on the HMRC website, or in most cases using third party software applications. You may also print or save them to your own computer. Statutory notices made available in this way by HMRC will have the same legal validity and implications as a paper statutory notice sent to you by post.
+sa_printing_preference.tc.8.2.1=8.2 You will be asked to provide your consent before HMRC issues statutory notices to you using the secure online mailbox referred to in paragraph
+sa_printing_preference.tc.8.2.2=. Where this is the case you will be asked to provide this on screen. If you give your consent you will be required to register an email address with HMRC and HMRC will verify these details with you. When a statutory notice or reminder is issued to you a notification email will also be sent to your registered email address to inform you of this. You should keep the details of your registered email address up-to-date and notify HMRC of any changes.
+sa_printing_preference.tc.8.3.1=8.3 If you give the consent referred to in paragraph
+sa_printing_preference.tc.8.3.2=you may also be asked to register a telephone number with HMRC. When a statutory notice or reminder is issued to you HMRC may also send a text message to this telephone number, or to a daytime telephone number that you have already provided to HMRC, to inform you of this. You should keep the details of your registered telephone number up-to-date and notify HMRC of any changes.
+
+sa_printing_preference.title=Sign up for paperless notifications
+sa_printing_preference.fg_page.title=Choose how to get your legal notices, penalty notices and tax letters
+
+tc_printing_preference.fg_page.title=Would you like to receive other email notifications about your tax credits?
+tc_printing_preference.submitButton=Continue
+tc_printing_preference.tc.preLinkText=I agree to the {0}
+tc_printing_preference.tc.linkText = terms and conditions
+
+sa_printing_preference.tc.preLinkText=I agree to the {0}
+sa_printing_preference.tc.linkText=terms and conditions
+sa_printing_preference.tc.linkUrl=https://www.tax.service.gov.uk/information/terms?lang=eng#secure
+sa_printing_preference.tc.legal.1=Messages will be sent to a secure mailbox in your HMRC online account.
+sa_printing_preference.tc.legal.2=They have the same legal validity as an HMRC reminder sent in the post.
+sa_printing_preference.tc.legal.3=Keep your email address up to date - you can do this in your online account.
+
+sa_printing_preference.submitButton=Continue
+sa_printing_preference.cancelButton=Continue to get letters
+sa_printing_preference.opt_in_choice_required=Confirm if you want paperless notifications
+sa_printing_preference.sps_opt_in_choice.problem=There is a problem
+sa_printing_preference.sps_opt_in_choice_required.error=Select how you want to get your tax letters
+sa_printing_preference.sps_opt_in_choice_required=Select how you want to get your tax letters
+sa_printing_preference.sps_opt_in_email=Enter your email address
+sa_printing_preference.sps_opt_in_email_error=Error: Enter your email address
+
+sa_printing_preference.itsa.sps_opt_in_email=Enter your email address - Sign up for Making Tax Digital for Income Tax - GOV.UK
+sa_printing_preference.itsa.sps_opt_in_email_error=Error: Enter your email address - Sign up for Making Tax Digital for Income Tax - GOV.UK
+
+sa_printing_preference.sps_opt_in_email_hint=We will use this to let you know when you have a new online tax letter.
+sa_printing_preference.sps_opt_in_email_label = email
+sa_printing_preference.sps_opt_in_confirm=Finish signing up to online tax letters
+sa_printing_preference.sps_opt_in_confirm.1=We sent an email to
+sa_printing_preference.sps_opt_in_confirm.2=What happens next
+sa_printing_preference.sps_opt_in_confirm.3=Click on the link in the email to verify your email address with us.
+sa_printing_preference.sps_opt_in_confirm.link=Sign up with a different email address
+
+
+tc_printing_preference.opt_in_choice_required=Select yes if you are happy for us to store your email address
+sa_printing_preference.accept_tc_required=You must agree to the terms and conditions to use this service
+tc_printing_preference.accept_tc_required=You must agree to the terms and conditions if you are happy for us to store your email address
+sa_printing_preferences.confirm_correct_email.title=Check your settings
+sa_printing_preferences.confirm_correct_email.paragraph.1=Are you sure {0} is correct?
+sa_printing_preferences.confirm_correct_email.confirm=This email address is correct
+
+sa_printing_preference_confirm.title=Verify your email address
+sa_printing_preference_confirm.heading=Verify your email address
+sa_printing_preference_confirm.paragraph=An email has been sent to {0}. Click on the link in the email to verify your email address with HMRC.
+sa_printing_preference_confirm.linkText=Continue to your tax account
+
+sa_printing_preference.verification.heading=Email address verified
+sa_printing_preference.verification.heading.already=Email address already verified
+sa_printing_preference.verification.heading.expired=This link has expired
+sa_printing_preference.verification.paragraph.1=To read your online tax letters, sign in to HMRC services and select ''Messages''.
+sa_printing_preference.verification.paragraph.2=What you need to know:
+sa_printing_preference.verification.bullet.1=Whenever you have a new online tax letter or message, we will email to let you know
+sa_printing_preference.verification.bullet.2=If we send you an email notification and it is returned to us, we will write to you instead
+sa_printing_preference.verification.bullet.3=We will never send private or sensitive information by email
+sa_printing_preference.verification.already.paragraph.1=You will start getting emails letting you know about your online tax letters.
+sa_printing_preference.verification.action=Continue to your HMRC online account
+
+sa_printing_preference.verification.heading.wrong_token=You''ve used a link that has now expired
+sa_printing_preference.verification.wrong_token.paragraph.1=It may have been sent to an old or alternative email address. Please use the link in the latest verification email sent to your specified email address.
+
+bt.account.yourdetails=Manage account
+bt.account.stop_email_reminders=Get tax letters by post
+bt.account.keep_email_reminders=Keep online tax letters
+
+header_nav_links.sign_out=Sign out
+
+last.sign.in.pre_date_text=Last sign in:
+last.sign.in.post_date_text=not right?
+last.sign.in.minimise=Minimise
+last.sign.in.contact_HMRC=Contact HMRC
+last.sign.in.not_you=if it wasn''t you.
+
+yta.header.nav.home=Home
+yta.header.nav.help=Help and contact
+
+sa_printing_preference.fg_page.choose_1=You can choose to get some of your tax documents and information sent through your HMRC online account instead of by post.
+sa_printing_preference.fg_page.choose_2=You will need to take action when you receive some of the documents. They include:
+sa_printing_preference.fg_page.list_1=Legal notices to file tax return
+sa_printing_preference.fg_page.list_2=Late filing penalty notices
+sa_printing_preference.fg_page.list_3=Late payment penalty notices
+sa_printing_preference.fg_page.choose_3=We may also send you other messages, including information about your personal tax code, if you have one.
+sa_printing_preference.fg_page.choose_4=Read online, download and print whenever you need.
+sa_printing_preference.fg_page.paperless=How do you want to get your legal notices, penalty notices and tax letters?
+sa_printing_preference.fg_page.yes_send_email=Through my HMRC online account
+sa_printing_preference.fg_page.yes_send_email_info_1=We’ll email to tell you when you have a new item in your online account. This email cannot include personal information, so it is your responsibility to sign into your online account and read the full details.
+sa_printing_preference.fg_page.yes_send_email_info_2=Because we cannot send all letters online yet, you will continue to get some by post.
+sa_printing_preference.fg_page_privacy_notice=For more information about how HMRC uses your data, {0}.
+sa_printing_preference.privacy_policy_linkText=read the privacy notice
+sa_printing_preference.fg_page.you_have_signed_up_1=We’ll email to tell you when you have a new item in your online account. This email cannot include personal information, so it is your responsibility to sign into your online account and read the full details..
+sa_printing_preference.fg_page.you_have_signed_up_2=If you wish to change the email address you can do this later within manage your account
+sa_printing_preference.fg_page.keep_receiving=By post only
+sa_printing_preference.tc.email.label=Enter your email
+sa_printing_preference.tc.email.hint=We’ll use this to tell you when you have a new online tax letter. It is your responsibility to check for emails from HMRC.
+sa_printing_preference.tc.confirm.email.label=Confirm email address
+tc_printing_preference.fg_page.nav_title=Tax credits service
+tc_printing_preference.fg_page.email_address=The email address we will store securely is
+tc_printing_preference.fg_page.confirm_message_1=By letting us store your email address, you confirm that you:
+tc_printing_preference.fg_page.confirm_message_2=want to get notifications and prompts about your tax credits
+tc_printing_preference.fg_page.confirm_message_3=will keep your email address up to date using your HMRC online account to make sure you get your email notifications
+tc_printing_preference.fg_page.store_email=Yes, store my email address
+tc_printing_preference.fg_page.do_not_store_email=No, I do not want my email address stored
+
+sa_printing_preference.verification.action_text=and request a new verification link
+sa_printing_preference.token.expired.title=Your email address is NOT verified
+sa_printing_preference.token.wrong.title=You''ve used a link that has now expired
+sa_printing_preference.email.verified.title=Email address verified
+sa_printing_preference.email.failed.verified.title=Email address already verified
+
+account.details.update.email.title=Change your email address
+account.details.update.email.sent_to=Emails are sent to
+account.details.update.email.submit.text=Change email address
+cancel.text=Cancel
+
+account.details.update.email.thank_you.title=Verify your new email address
+account.details.update.email.thank_you.sent_to=An email has been sent to
+account.details.update.email.thank_you.verify=Click on the link in the email to verify the address.
+account.details.update.email.thank_you.old_address=Until you do this, emails will continue to go to your old address.
+
+account.details.update.email.verify.title=Check your email address
+account.details.update.email.verify.correct=This email address is correct
+account.details.update.email.verify.change=Change this email address
+
+account.details.verification.email.title=Verification email sent
+account.details.verification.email.new_email=A new email has been sent to {0}. Click on the link in the email to verify your email address with HMRC.
+
+account.opt.back.out.confirmation.title=Confirm how you want to get your tax letters
+account.opt.back.out.confirmation.letters=Save all your online tax letters together in one place. We always email to let you know when you have a new online letter.
+
+default.nav.links.text=Your tax account
+
+opted.back.into.paperless.title=Paperless notifications have stopped
+opted.back.into.paperless.para_1=You''ll get letters again, instead of emails.
+opted.back.into.paperless.para_2=You''ve been sent an email confirming this.
+opted.back.into.paperless.para_3=You can go paperless again at any time.
+
+manage.paperless.go.paperless=Go paperless
+manage.paperless.optout=Replace the letters you get about taxes with emails.
+manage.paperless.signup=Sign up for paperless notifications
+
+manage.paperless.bounce_status=You need to verify
+manage.paperless.bounce.reason.full=The email telling you how to do this can''t be sent because your inbox is full.
+manage.paperless.bounce.reason.full.more=Clear your inbox or use a different email address.
+manage.paperless.bounce.reason.not_full=The email telling you how to do this can''t be delivered.
+manage.paperless.bounce.reason.not_full.more=Use a different email address
+
+manage.paperless.change.email=Change your email address
+manage.paperless.stop.email=Stop emails from HMRC
+
+manage.paperless.email.notification.header=Email for paperless notifications
+manage.paperless.email.need.verify=You need to verify your email address.
+manage.paperless.email.sent_to=An email was sent to
+manage.paperless.email.click_on_link=on {0}. Click on the link in the email to verify your email address.
+manage.paperless.email.cannot.find=If you can''t find it, we can
+manage.paperless.email.send.new.verification=Send a new verification email
+
+manage.paperless.email.notification.verify.header=How to confirm your email address
+manage.paperless.email.para.below.header=To sign up and get your tax letters online, you first need to select the link in the email we sent you.
+manage.paperless.email.search.email.for=Search your emails for: ''Verify your email address''.
+message.paperless.email.request.new.email.text=If you can''t find this,
+message.paperless.email.request.new.email.link=request a new email.
+message.paperless.email.request.if.you.want.text=If you want to,
+message.paperless.email.request.if.you.want.link=you can use a different email address.
+manage.paperless.email.use.header=Why do I need to give HMRC my email?
+manage.paperless.email.use.explanation=We always let you know by email when you have an online tax letter waiting.
+manage.paperless.email.button=Continue
+
+manage.paperless.email.delivery.failed.header=We cannot deliver emails to {0}
+manage.paperless.email.delivery.failed.para1=This could be because your email address is not correct, or there is a technical problem, such as your inbox is full.
+manage.paperless.email.delivery.failed.sub-header=What you need to do now
+manage.paperless.email.delivery.failed.options=You can
+manage.paperless.email.delivery.failed.check.account.text=check your account is working and there is space in the inbox, then
+manage.paperless.email.delivery.failed.confirm.email.link.text=confirm your existing email address
+manage.paperless.email.delivery.failed.change.email.link.text=change your email address
+manage.paperless.email.delivery.failed.button=Continue
+
+manage.paperless.verified.header=Email address for HMRC digital communications
+manage.paperless.verified.sent_to=Emails are sent to:
+
+manage.paperless.problem.header=There is a problem
+manage.paperless.cys.button.pta=Continue
+manage.paperless.cys.button.bta=Return to your business tax account details
+manage.paperless.cys.button.itsa=Continue to your Itsa Account
+
+paperless.warnings.bounced.header=There''s a problem with your paperless notification emails
+paperless.warnings.bounced.urgent=Urgent
+paperless.warnings.bounced.inbox.full=Your inbox is full.
+paperless.warnings.bounced.goto=Go to
+paperless.warnings.bounced.more.info=for more information.
+
+pending.email.verification.summary=Verify your email address for paperless notifications
+pending.email.verification.now=Now
+pending.email.verification.para_1=An email was sent to {0} on {1}. Click on the link in the email to verify your email address with HMRC.
+pending.email.verification.para_2=If you can''t find it you can get a new email sent to you from
+
+account.details.update.email.new=New email address
+account.details.update.email.confirm=Confirm new email address
+
+language-switcher.english=English
+language-switcher.english.hover=Use this account in English
+language-switcher.welsh=Cymraeg
+language-switcher.welsh.hover=Defnyddio''r cyfrif hwn yn Cymraeg
+
+language-switcher.english.hidden=Change the language to English
+language-switcher.welsh.hidden=Newid yr iaith i''r Gymraeg
+
+account.details.change.language.title=Get your paperless email notification in Welsh
+account.details.change.language.english=Send paperless email notification in English
+account.details.change.language.welsh=Send paperless email notification in Welsh
+
+account.details.change.language.info_1=You can now receive your paperless notification in Welsh
+account.details.change.language.info_2=Please note that all this time not all notifications are available in Welsh. In these cases you will continue to receive the notification in English
+
+app.common.back=Back
+
+manage.paperless.header=Check your settings
+manage.paperless.contact.header=How we will contact you
+manage.paperless.contact.taxdoc.1=Tax documents
+manage.paperless.contact.taxdoc.2=Online messages, or post when not available
+manage.paperless.contact.taxdoc.3=Post
+manage.paperless.contact.taxdoc.4=By post – we cannot contact you on your email address
+manage.paperless.contact.taxdoc.postonly.2=Post only until you verify your email address
+
+manage.paperless.contact.language.1=Emails sent in
+manage.paperless.contact.language.2_en=English
+manage.paperless.contact.language.2_cy=Welsh, if available
+manage.paperless.contact.language.postonly.2=Not available until you verify your email address
+manage.paperless.contact.language.bounce.2=Not available until you check and fix your email address or account
+
+manage.paperless.contact.details.header=Contact details
+manage.paperless.contact.details.email.1=Email address
+
+manage.paperless.change=Change
+manage.paperless.change.preference=Tax documents
+manage.paperless.change.language=Emails sent in
+manage.paperless.change.emailaddress=Email address
+
+manage.paperless.continue=Continue to your account
+
+manage.paperless.bounce.warning.1=FAILING
+manage.paperless.bounce.warning.2=Fix this
+
+manage.paperless.verify.warning.1=UNVERIFIED
+manage.paperless.verify.warning.2=Fix this
+
+paperless.status.text.paper=You have not yet chosen to get your Self Assessment tax letters online
+paperless.status.text.new_customer=Get your Self Assessment tax letters online
+paperless.status.text.email_not_verified=You need to verify your email address before you can get Self Assessment tax letters online
+paperless.status.text.bounced=We cannot deliver emails to you. You need to take action before you can get Self Assessment tax letters online.
+paperless.status.text.alright=You chose to get your Self Assessment tax letters online
+paperless.status.text.welsh_available=You can chose to receive your online tax letters in welsh
+paperless.status.text.no_email= We cannot deliver emails to you. You need to set up an email before you can get Self Assessment tax letters online.
+paperless.status.text.re_opt_in=You need to agree to our updated terms
+paperless.status.text.re_opt_in_modified=You need to agree to our updated terms
+
+paperless.status.text1.paper=By post
+paperless.status.text2.paper=You get these tax letters by post.
+paperless.status.text1.new_customer=By post
+paperless.status.text2.new_customer=You get these tax letters by post.
+paperless.status.text1.email_not_verified=By post, until you verify your email address
+paperless.status.text2.email_not_verified=You have not verified your email address.
+paperless.status.text1.bounced=By post – we cannot contact you on your email address
+paperless.status.text2.bounced=We cannot contact you on your email address.
+paperless.status.text1.alright=Online – we will let you know by email
+paperless.status.text2.alright=You get these tax letters online.
+
+paperless.status.text1.no_email=By post – we cannot contact you on your email address
+paperless.status.text2.no_email=We cannot contact you on your email address.
+paperless.status.text1.re_opt_in=Online — you need to agree to our updated terms
+paperless.status.text2.re_opt_in=You get these tax letters online. But you need to agree to our updated terms.
+paperless.status.text1.re_opt_in_modified=Online — you need to agree to our updated terms
+paperless.status.text2.re_opt_in_modified=You get these tax letters online. But you need to agree to our updated terms.
+
+
+paperless.status.url.text.paper=Get tax letters online
+
+paperless.status.url.text.new_customer=Get tax letters online
+paperless.status.url.text.email_not_verified=Fix this
+paperless.status.url.text.bounced=Fix this
+paperless.status.url.text.alright=Check your settings
+paperless.status.url.text.welsh_available=Change your language
+paperless.status.url.text.no_email=Set up your email address
+paperless.status.url.text.no_email.new=Fix this
+paperless.status.url.text.re_opt_in=Review updated terms
+paperless.status.url.text.re_opt_in_modified=Review updated terms
+manage.paperless.check.settings.linkText=Continue
+
+service.name =
+service.homePageUrl = /preferences-frontend
+service.text = This is your new service
+back.button.text=Back
+
+types_of_online_tax_letters_h1=Online tax letters
+types_of_online_tax_letters_p1=Online tax letters are the easiest way for us to keep in touch. But we want to make sure you never miss one, so we will also write to you by post if:
+types_of_online_tax_letters_list_1=we send an email, but it does not reach you and is returned to us
+types_of_online_tax_letters_list_2=you have not done something important that needs doing
+types_of_online_tax_letters_p2=This service is still growing, so at the moment we only send some tax letters online. This is changing, so soon all your important tax letters will be in one place.
+types_of_online_tax_letters_h2=Tax letters you can get online
+types_of_online_tax_letters_h3_1=Employees
+types_of_online_tax_letters_h3_2=Making Tax Digital for Income Tax
+types_of_online_tax_letters_p_1=You will get an online letter if you:
+types_of_online_tax_letters_p_2=You will get an online tax letter if you:
+types_of_online_tax_letters_list_3=owe tax or are due a refund (P800, PA302)
+types_of_online_tax_letters_list_4=have a new tax code (P2)
+types_of_online_tax_letters_list_5=have a new tax statement (SA300 / SS300)
+types_of_online_tax_letters_list_6=need to file a tax return (SA316)
+types_of_online_tax_letters_list_7=need a reminder to file a tax return (SA372-30; SA372-60; SA373-30; SA373-60)
+types_of_online_tax_letters_list_8=have a tax return that is late (SA326D; SA328D)
+types_of_online_tax_letters_list_9=owe a payment and it’s late (SA359)
+types_of_online_tax_letters_list_10=must pay a penalty (SA370; SA371)
+types_of_online_tax_letters_list_11=have a tax refund (R002A)
+types_of_online_tax_letters_list_12=have a new tax summary (ATSV2)
+types_of_online_tax_letters_list_13=have Self Assessment stopped (SA251)
+types_of_online_tax_letters_list_14=must submit your final declaration
+types_of_online_tax_letters_list_15=must send your annual update
+types_of_online_tax_letters_list_16=must send your quarterly update
+types_of_online_tax_letters_list_17=must make a ‘payment on account’
+types_of_online_tax_letters_list_18=will need to make ‘payments on account’
+types_of_online_tax_letters_list_19=have end of statement reminders
+types_of_online_tax_letters_list_20=have final declaration reminders
+types_of_online_tax_letters_list_21=have quarterly update reminders
+types_of_online_tax_letters_list_22=have ‘payment on account’ reminders
+types_of_online_tax_letters_list_23=have a ‘payment on account’ charge notice
+types_of_online_tax_letters_list_24=have not viewed your calculation after it’s updated
+
+sa_printing_preference.sps_re_opt_in_email.title=Which email do you want to use for your tax letters?
+sa_printing_preference.sps_re_opt_in_email.info=We will only use this email to let you know you have a tax letter in your online account.
+sa_printing_preference.sps_re_opt_in_email.new_email=A new email address
+sa_printing_preference.sps_re_opt_in_email.label=Enter the new email address
+
+sa_printing_preference.sps_email_confirm.itsa.title=Verify your email address - Sign up for Making Tax Digital for Income Tax - GOV.UK
+sa_printing_preference.sps_email_confirm=Verify your email address
+sa_printing_preference.sps_email_confirm.body1=We have sent an email to {0}.
+sa_printing_preference.sps_email_confirm.body2=You must click on the link in the email to confirm that this is your address.
+sa_printing_preference.sps_email_confirm.body3=If you don't have the email, please check your junk folder.
+sa_printing_preference.sps_email_confirm.another.email=Use a different email address
+sa_printing_preference.sps_email_confirm.button.close=Close
+
+sa_printing_preference.sps_re_opt_in_choice_required.error=Select which email address to use
+
+sa_printing_preference.sps.email_reconfirm=Verify your email address
+sa_printing_preference.sps.email_reconfirm.body1=You chose to get online tax letters and messages from HMRC.
+sa_printing_preference.sps.email_reconfirm.body2=We will send a link to {0}. Click it to verify.
+sa_printing_preference.sps.email_reconfirm.button=Send the link again
+sa_printing_preference.sps.email_reconfirm.link=Use a different email address
+
+sa_printing_preference.sps.email_bounce=We are having trouble sending you emails
+sa_printing_preference.sps.email_bounce.body1=You will not get online tax letters because we cannot reach you at {0}.
+sa_printing_preference.sps.email_bounce.body2=This is not a known email address, so you will need to enter yours again.
+sa_printing_preference.sps.email_bounce.body3=We will only be able to contact you by post until you do.
+sa_printing_preference.sps.email_bounce.button=Enter email address
+sa_printing_preference.sps.email_bounce.link=I do not want to get online tax letters
+
+sa_printing_preference.sps.opt_out_by_post_confimation_title=You now get tax letters by post
+sa_printing_preference.sps.itsa.opt_out_by_post_confimation_title=You now get tax letters by post - Sign up for Making Tax Digital for Income Tax - GOV.UK
+sa_printing_preference.sps.opt_out_by_post_confimation_body1=You can go back to online messages now or at any time in
+sa_printing_preference.sps.opt_out_by_post_confimation_link= your settings
+
+sa_printing_preference_svc_name_itsa=Sign up for Making Tax Digital for Income Tax
+
+timeout.title=You’re about to be signed out
+timeout.dialog.sign.in=Stay signed inXXX
+timeout.message= We will sign you out if you do not respond in
+timeout.keep-alive-button= Stay signed in
+
+session.timeout=Session timed out
+session.timeout.h2=Sorry, your session has timed out due to inactivity.
+session.timeout.paragraph=To use this service you need to
+session.timeout.link=sign in.
+
+error_template.heading=Sorry, there is a problem with the service
+error_template.message=Try again later.
+error_template.description=It may be that the link you used to get here is no longer in use or incorrect.
+error_template.link=Go back to your online tax account
+
+
+
+
+i_page7.fg_page.choose_1=You can choose to get some of your tax documents and information sent through your HMRC online account instead of by post.
+i_page7.fg_page.choose_2=You will need to take action when you receive some of the documents. They include:
+i_page7.fg_page.choose_3=We may also send you other information, including letting you know about a change to your personal tax code, if you have one.
+i_page7.fg_page.keep_receiving=By post only
+i_page7.fg_page.list_1=Legal notice to file tax return
+i_page7.fg_page.list_2=Late filing penalty notice
+i_page7.fg_page.list_3=Late payment penalty notice
+i_page7.fg_page.paperless=How do you want to get your legal notices, penalty notices and tax letters?
+i_page7.fg_page_privacy_notice=For more information about how HMRC uses your data, {0}.
+i_page7.fg_page.title=Choose how to get your legal notices, penalty notices and tax letters
+i_page7.fg_page.yes_send_email=Through my HMRC online account
+i_page7.fg_page.yes_send_email_info_1=We’ll email to tell you when you have a new item in your online account. This email cannot include personal information, so it is your responsibility to sign into your online account and read the full details.
+i_page7.fg_page.yes_send_email_info_2=Because we cannot send all letters online yet, you will continue to get some by post.
+i_page7.fg_page.yes_send_email_info_1=We’ll email to tell you when you have a new item in your online account. This email cannot include personal information, so it is your responsibility to sign into your online account and read the full details.
+i_page7.fg_page.yes_send_email_info_2=Because we cannot send all letters online yet, you will continue to get some by post.
+i_page7.privacy_policy_linkText=read the privacy notice
+i_page7.submitButton=Continue
+i_page7.tc.email.label=Enter your email
+i_page7.tc.linkText=terms and conditions
+i_page7.tc.preLinkText=I agree to the {0}
+
+
+
+i_page8.fg_page.choose_1=You can choose to get some of your tax documents and information sent through your HMRC online account instead of by post.
+i_page8.fg_page.choose_2=You will need to take action when you receive some of the documents. They include:
+i_page8.fg_page.choose_3=We may also send you other messages, including information about your personal tax code, if you have one.
+i_page8.fg_page.keep_receiving=By post only
+i_page8.fg_page.list_1=Legal notices to file tax return
+i_page8.fg_page.list_2=Late filing penalty notices
+i_page8.fg_page.list_3=Late payment penalty notices
+i_page8.fg_page.paperless=How do you want to get your legal notices, penalty notices and tax letters?
+i_page8.fg_page_privacy_notice=For more information about how HMRC uses your data, {0}.
+i_page8.fg_page.title=Choose how to get your legal notices, penalty notices and tax letters
+i_page8.fg_page.yes_send_email=Through my HMRC online account
+i_page8.fg_page.yes_send_email_info_1=We’ll email to tell you when you have a new item in your online account. This email cannot include personal information, so it is your responsibility to sign into your online account and read the full details.
+i_page8.fg_page.yes_send_email_info_2=Because we cannot send all letters online yet, you will continue to get some by post.
+i_page8.fg_page.yes_send_email_info_1=We’ll email to tell you when you have a new item in your online account. This email cannot include personal information, so it is your responsibility to sign into your online account and read the full details.
+i_page8.fg_page.yes_send_email_info_2=Because we cannot send all letters online yet, you will continue to get some by post.
+i_page8.privacy_policy_linkText=read the privacy notice
+i_page8.submitButton=Continue
+i_page8.tc.email.label=Enter your email
+i_page8.tc.linkText=terms and conditions
+i_page8.tc.preLinkText=I agree to the {0}
+
+i_page53.fg_page.title=Choose how to get your tax letters
+i_page53.fg_page.title.error=Error: Choose how to get your tax letters
+i_page53.fg_page.choose_1=You can now get your tax letters and information online instead of by post.
+i_page53.fg_page.choose_2=This means your essential tax letters are:
+i_page53.fg_page.list_1=delivered fast
+i_page53.fg_page.list_2=saved securely
+i_page53.fg_page.list_3=easy to find
+i_page53.fg_page.list_4=simple to share
+i_page53.fg_page.list_5=ready to print, if you need proof
+i_page53.fg_page.yes_send_email=Online
+i_page53.fg_page.keep_receiving=By post only
+i_page53.fg_page.paperless=How do you want to get your tax letters?
+i_page53.fg_page.yes_send_email_hint=Whenever you have a new online letter, we will let you know by email.
+i_page53.fg_page.yes_send_email_info_1=Because we cannot send all letters online yet, you will still get some by post.
+i_page53.fg_page.yes_send_email_info_2=Your responsibilities
+i_page53.fg_page.yes_send_email_info_3=1. Sign in to read
+i_page53.fg_page.yes_send_email_info_4=Because email cannot include personal information, you need to sign in to HMRC online for the details.
+i_page53.fg_page.yes_send_email_info_5=2. Take action
+i_page53.fg_page.yes_send_email_info_6=Some online tax letters need you to act, such as reminders to file a return, or to pay penalties. Others are for information, such as changes to your personal tax code.
+i_page53.submitButton=Continue
+i_page53.fg_page.message.types=View all online tax letters HMRC can send
+
+i_page56.fg_page.title=Choose how to get your tax letters
+i_page56.fg_page.title.error=Error: Choose how to get your tax letters
+i_page56.fg_page.itsa.title=Choose how to get your tax letters - Sign up for Making Tax Digital for Income Tax - GOV.UK
+i_page56.fg_page.itsa.title.error=Error: Choose how to get your tax letters - Sign up for Making Tax Digital for Income Tax - GOV.UK
+i_page56.fg_page.choose_1=You can now get your tax letters and information online instead of by post.
+i_page56.fg_page.choose_2=This means your essential tax letters are:
+i_page56.fg_page.list_1=delivered fast
+i_page56.fg_page.list_2=saved securely
+i_page56.fg_page.list_3=easy to find
+i_page56.fg_page.list_4=simple to share
+i_page56.fg_page.list_5=ready to print, if you need proof
+i_page56.fg_page.yes_send_email=Online
+i_page56.fg_page.keep_receiving=By post only
+i_page56.fg_page.paperless=How do you want to get your tax letters?
+i_page56.fg_page.yes_send_email_hint=Give your preferred email address next. You can change it any time. We will email you when you have a new online letter.
+i_page56.fg_page.yes_send_email_info_1=Because we cannot send all letters online yet, you will still get some by post.
+i_page56.fg_page.yes_send_email_info_2=Your responsibilities if you choose online
+i_page56.fg_page.yes_send_email_info_3=1. Sign in to read
+i_page56.fg_page.yes_send_email_info_4=Because email cannot include personal information, you need to sign in to HMRC online for the details.
+i_page56.fg_page.yes_send_email_info_5=2. Take action
+i_page56.fg_page.yes_send_email_info_6=Some online tax letters need you to act, such as reminders to file a return, or to pay penalties. Others are for information, such as changes to your personal tax code.
+i_page56.submitButton=Continue
+i_page56.fg_page.message.types=View all online tax letters HMRC can send
+
+reoptin_page10.fg_page.keep_receiving=By post only
+reoptin_page10.fg_page.list_1=Legal notices to file tax return
+reoptin_page10.fg_page.list_2=Late filing penalty notices
+reoptin_page10.fg_page.list_3=Late payment penalty notices
+reoptin_page10.fg_page.paperless=How do you want to get your legal notices, penalty notices and tax letters?
+reoptin_page10.fg_page_privacy_notice=For more information about how HMRC uses your data, {0}.
+reoptin_page10.fg_page.yes_send_email=Through my HMRC online account
+reoptin_page10.fg_page.yes_send_email_info_2=Because we cannot send all letters online yet, you will continue to get some by post.
+reoptin_page10.privacy_policy_linkText=read the privacy notice
+reoptin_page10.submitButton=Continue
+reoptin_page10.tc.linkText=terms and conditions
+reoptin_page10.tc.preLinkText=I agree to the {0}
+
+
+reoptin_page10.fg_page.title=Don''t lose access to your online tax documents
+reoptin_page10.fg_page.choose_1=You can choose to continue to get some of your tax documents and information sent through your HMRC online account instead of by post.
+reoptin_page10.fg_page.choose_2= Choose how to get your legal notices, penalty notices and tax letters
+reoptin_page10.fg_page.choose_3=We may also send you other messages, including information about your personal tax code, if you have one
+
+reoptin_page10.fg_page.yes_send_email_info_1=We’ll email to tell you when you have a new item in your online account.
+
+reoptin_page10.tc.email.label=Email address
+
+
+reoptin_page52.fg_page.keep_receiving=By post only
+reoptin_page52.fg_page.list_1=Legal notices to file tax return
+reoptin_page52.fg_page.list_2=Late filing penalty notices
+reoptin_page52.fg_page.list_3=Late payment penalty notices
+reoptin_page52.fg_page.paperless=How do you want to get your legal notices, penalty notices and tax letters?
+reoptin_page52.fg_page_privacy_notice=For more information about how HMRC uses your data, {0}.
+reoptin_page52.fg_page.yes_send_email=Through my HMRC online account
+reoptin_page52.privacy_policy_linkText=read the privacy notice
+reoptin_page52.submitButton=Continue
+reoptin_page52.tc.linkText=terms and conditions
+reoptin_page52.tc.preLinkText=I agree to the {0}
+
+
+reoptin_page52.fg_page.title=Don''t lose access to your online tax documents
+reoptin_page52.fg_page.choose_1=You can choose to continue to get some of your tax documents and information sent through your HMRC online account instead of by post.
+reoptin_page52.fg_page.choose_2=Choose how to get your legal notices, penalty notices and tax letters
+reoptin_page52.fg_page.choose_3=We may also send you other messages, including information about your personal tax code, if you have one
+
+reoptin_page52.fg_page.yes_send_email_info_1=We’ll email to tell you when you have a new item in your online account.
+reoptin_page52.fg_page.yes_send_email_info_2=This email cannot include personal information, so it is your responsibility to sign into your online account and read the full details.
+reoptin_page52.fg_page.yes_send_email_info_3=Because we cannot send all letters online yet, you will continue to get some by post.
+
+
+reoptin_page52.tc.email.label=Email address
+
+
+reoptin_page54.fg_page.title=Keep getting your tax letters online
+reoptin_page54.fg_page.title.error=Error: Keep getting your tax letters online
+reoptin_page54.fg_page.choose_1=You need to confirm if you would still like to get your tax letters online instead of by post. Getting them online means your essential tax letters are:
+
+reoptin_page54.fg_page.list_1=delivered fast
+reoptin_page54.fg_page.list_2=saved securely
+reoptin_page54.fg_page.list_3=easy to find
+reoptin_page54.fg_page.list_4=simple to share
+reoptin_page54.fg_page.list_5=ready to print, if you need proof
+
+reoptin_page54.fg_page.yes_send_email=Online
+reoptin_page54.fg_page.keep_receiving=By post only
+reoptin_page54.fg_page.paperless=How do you want to get your tax letters?
+
+reoptin_page54.fg_page.yes_send_email_hint=Whenever you have a new online letter, we will let you know by email.
+
+reoptin_page54.fg_page.yes_send_email_info_1=Because we cannot send all letters online yet, you will still get some by post.
+reoptin_page54.fg_page.yes_send_email_info_2=Your responsibilities
+reoptin_page54.fg_page.yes_send_email_info_3=1. Sign in to read
+reoptin_page54.fg_page.yes_send_email_info_4=Because email cannot include personal information, you need to sign in to HMRC online for the details.
+reoptin_page54.fg_page.yes_send_email_info_5=2. Take action
+reoptin_page54.fg_page.yes_send_email_info_6=Some online tax letters need you to act, such as reminders to file a return, or to pay penalties. Others are for information, such as changes to your personal tax code.
+
+reoptin_page54.submitButton=Continue
+reoptin_page54.link=View all online tax letters HMRC can send
+
+
+
+reoptin_page55.fg_page.title=Keep getting your tax letters online
+reoptin_page55.fg_page.title.error=Error: Keep getting your tax letters online
+reoptin_page55.fg_page.choose_1=Confirm if you would still like to get your tax letters online instead of by post. This means your essential tax letters are:
+reoptin_page55.fg_page.choose_2=Because we cannot send all letters online yet, you will still get some by post.
+
+
+reoptin_page55.fg_page.list_1=delivered fast
+reoptin_page55.fg_page.list_2=saved securely
+reoptin_page55.fg_page.list_3=easy to find
+reoptin_page55.fg_page.list_4=simple to share
+reoptin_page55.fg_page.list_5=ready to print, if you need proof
+
+reoptin_page55.fg_page.yes_send_email=Online
+reoptin_page55.fg_page.keep_receiving=By post only
+reoptin_page55.fg_page.paperless=How do you want to get your tax letters?
+
+reoptin_page55.fg_page.yes_send_email_hint=Give your preferred email address next. You can change it any time. We will email you when you have a new online letter.
+
+reoptin_page55.fg_page.yes_send_email_info_1=Because we cannot send all letters online yet, you will still get some by post.
+reoptin_page55.fg_page.yes_send_email_info_2=Your responsibilities if you choose online
+
+reoptin_page55.fg_page.yes_send_email_info_3=1. Sign in to read
+reoptin_page55.fg_page.yes_send_email_info_4=Because email cannot include personal information, you need to sign in to HMRC online for the details.
+reoptin_page55.fg_page.yes_send_email_info_5=2. Take action
+reoptin_page55.fg_page.yes_send_email_info_6=Some online tax letters need you to act, such as reminders to file a return, or to pay penalties. Others are for information, such as changes to your personal tax code.
+
+reoptin_page55.submitButton=Continue
+reoptin_page55.link=View all online tax letters HMRC can send
+
+
+paperless.survey.reoptin_declined.title=Why did you choose to go back to paper letters?
+paperless.survey.reoptin_declined.paragraph.1=We only use this information to improve the service. We will not reply to you.
+paperless.survey.reoptin_declined.hint=You can select more than one choice.
+paperless.survey.reoptin_declined.choice.0305d33f-2e8d-4cb2-82d2-52132fc325fe=HMRC never sent me any online tax letters
+paperless.survey.reoptin_declined.choice.ce34aa17-df2a-44fb-9d5c-4d930396483a=I was going to switch back to paper tax letters anyway
+paperless.survey.reoptin_declined.choice.d0edb491-6dcb-48a8-aeca-b16f01c541a5=I didn’t like to be asked to make a choice
+paperless.survey.reoptin_declined.choice.1e825e7d-6fc8-453f-8c20-1a7ed4d84ea5=I didn’t want a mix of paper letters and online letters
+paperless.survey.reoptin_declined.choice.15d28c3f-9f33-4c44-aefa-165fc84b5e23=The wording of the question put me off
+paperless.survey.reoptin_declined.reason.label=Another reason
+paperless.survey.reoptin_declined.reason.label.error.maxlength=Reason must be 3000 characters or fewer
+paperless.survey.reoptin_declined.submitButton=Continue
+paperless.survey.reoptin_declined.check.settings.linkText=Skip
+
+paperless.survey.optin_declined.title=Why did you choose paper tax letters?
+paperless.survey.optin_declined.paragraph.1=We only use this information to improve the service. We will not reply to you.
+paperless.survey.optin_declined.hint=You can select more than one choice.
+paperless.survey.optin_declined.reason.label.error.maxlength=Reason must be 3000 characters or fewer
+paperless.survey.optin_declined.submitButton=Continue
+paperless.survey.optin_declined.check.settings.linkText=Skip
+paperless.survey.optin_declined.choice.d210eccd-9ea1-48fd-a28e-25abbb7508fe=I want a paper reminder, not an email
+paperless.survey.optin_declined.choice.717c2da0-4411-41ad-9a78-b335786e7107=I’m worried I may eventually lose access to online tax letters
+paperless.survey.optin_declined.choice.a6f84da8-9fd7-440d-915e-2a2f8a543c9b=I’m worried people will not accept online tax letters as proof
+paperless.survey.optin_declined.choice.bf74f47f-e9ce-4c15-a9aa-1af80a594861=Signing in to HMRC online is too difficult
+paperless.survey.optin_declined.choice.ca31965c-dd40-4a2c-a606-fe961da485c0=I do not want a mix of paper letters and online letters
+paperless.survey.optin_declined.reason.label=Another reason
+
+paperless.survey.optout.title=Why did you choose to go back to paper letters?
+paperless.survey.optout.paragraph.1=We only use this information to improve the service. We will not reply to you.
+paperless.survey.optout.hint=You can select more than one choice.
+paperless.survey.optout.reason.label.error.maxlength=Reason must be 3000 characters or fewer
+paperless.survey.optout.submitButton=Continue
+paperless.survey.optout.check.settings.linkText=Skip
+paperless.survey.optout.choice.18bd7fc2-bfef-44fc-991d-d6cb071beb5e=I don't remember asking for online tax letters
+paperless.survey.optout.choice.fe275656-c778-408d-b417-84ea6af997d7=I cannot find my online tax letters
+paperless.survey.optout.choice.cc32e5f1-b343-4a13-81c6-e4a73bf155f2=I worry people will not accept online tax letters as proof
+paperless.survey.optout.choice.758822c9-9b15-469f-b3f2-dabc42f8997c=I did not receive the email notifications about a new online tax letter
+paperless.survey.optout.choice.7b4f137c-f6fd-4607-87ac-101269994698=I do not want a mix of paper letters and online letters
+paperless.survey.optout.reason.label=Another reason
+

@@ -1,0 +1,102 @@
+/*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ */
+
+package util
+
+import play.api.i18n.Messages
+import play.twirl.api.{ Html, HtmlFormat }
+
+trait Target {
+  protected val targetName: String
+  def toAttr: String = Link.attr("target", targetName)
+  def hiddenInfo: Option[String] = None
+}
+case object SameWindow extends Target {
+  override val targetName = "_self"
+}
+case object NewWindow extends Target {
+  override val targetName = "_blank"
+  override val hiddenInfo = Some("link opens in a new window")
+}
+
+trait PossibleSso {
+  protected val value: String
+  def toAttr: String = Link.attr("data-sso", value)
+}
+case object NoSso extends PossibleSso {
+  override val value = "false"
+}
+
+trait PossibleLang {
+  protected val value: String
+  def toAttr: String = Link.attr("lang", value)
+}
+case object En extends PossibleLang {
+  override val value = "en"
+}
+
+case class Link(
+  url: String,
+  value: Option[String],
+  id: Option[String] = None,
+  target: Target = SameWindow,
+  sso: PossibleSso = NoSso,
+  cssClasses: Option[String] = None,
+  dataAttributes: Option[Map[String, String]] = None,
+  hiddenInfo: Option[String] = None,
+  lang: PossibleLang = En
+)(implicit messages: Messages) {
+
+  import util.Link._
+
+  private def hrefAttr = attr("href", url)
+  private def idAttr = id.map(attr("id", _)).getOrElse("")
+
+  private def text = value.map(v => Messages(v)).getOrElse("")
+  private def cssAttr = cssClasses.map(attr("class", _)).getOrElse("")
+  private def dataAttr = buildAttributeString(dataAttributes)
+  private def hiddenSpanFor(txt: Option[String]) =
+    txt.map(t => s"""<span class="visuallyhidden">${Messages(t)}</span>""").getOrElse("")
+  private def relAttr = if (target == NewWindow) attr("rel", "external noopener noreferrer") else ""
+
+  def buildAttributeString(attributes: Option[Map[String, String]]): String =
+    attributes match {
+      case Some(attributeMap) =>
+        attributeMap.foldLeft("") { (result, attr) =>
+          result + " data-" + attr._1 + "=" + s""""${attr._2}""""
+        }
+      case None => ""
+    }
+
+  val hiddenLink: String = hiddenSpanFor(hiddenInfo.orElse(target.hiddenInfo))
+
+  def toHtml: Html =
+    Html(s"<a$idAttr$hrefAttr${target.toAttr}${sso.toAttr}$cssAttr$dataAttr$relAttr${lang.toAttr}>$text$hiddenLink</a>")
+}
+
+object Link {
+
+  private def escape(str: String): String = HtmlFormat.escape(str).toString()
+
+  def attr(name: String, value: String): String = s""" $name="${escape(value)}""""
+
+  case class PreconfiguredLink(sso: PossibleSso, target: Target) {
+    def apply(
+      url: String,
+      value: Option[String],
+      id: Option[String] = None,
+      cssClasses: Option[String] = None,
+      dataAttributes: Option[Map[String, String]] = None,
+      hiddenInfo: Option[String] = None,
+      lang: PossibleLang = En
+    )(implicit messages: Messages): Link =
+      Link(url, value, id, target, sso, cssClasses, dataAttributes, hiddenInfo, lang)
+  }
+
+  def toInternalPage: PreconfiguredLink = PreconfiguredLink(NoSso, SameWindow)
+
+  def toExternalPage: PreconfiguredLink = PreconfiguredLink(NoSso, NewWindow)
+
+}

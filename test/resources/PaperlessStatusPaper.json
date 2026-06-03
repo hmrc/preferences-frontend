@@ -1,0 +1,13 @@
+{
+  "status": {
+    "name": "PAPER",
+    "category": "ACTION_REQUIRED",
+    "text1": "By post",
+    "text2": "You get these tax letters by post.",
+    "majorVersion": 1
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/check-settings?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D",
+    "text": "Get tax letters online"
+  }
+}

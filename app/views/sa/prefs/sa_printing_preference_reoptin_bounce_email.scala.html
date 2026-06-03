@@ -1,0 +1,75 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import views.ViewHelper
+@this(govukErrorSummary : GovukErrorSummary,
+        govukButton: GovukButton,
+        govukInput: GovukInput,
+        govukFieldset : GovukFieldset,
+        form: FormWithCSRF)
+
+@(reOptinForm: Form[?], submitPrefsFormAction: Call)(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+
+@email = {
+@govukInput(Input(
+    id = "sps-re-opt-in-email",
+    name = "sps-re-opt-in-email",
+    inputType = "email",
+    autocomplete = Some("email"),
+    hint = Some(Hint(
+        content = Text(Messages("sa_printing_preference.sps_opt_in_email_hint"))
+    )),
+    label = Label(
+        content = HtmlContent("""<span class="govuk-visually-hidden" >""" + Messages("sa_printing_preference.sps_opt_in_email_label") +"</span>")
+    ),
+    errorMessage = reOptinForm("sps-re-opt-in-email").error.map(err => ErrorMessage(content = Text(messages(err.message, (err.args)*)))),
+    classes = "govuk-!-width-two-thirds"
+))
+}
+
+
+
+@emailBlock = {
+@govukFieldset(Fieldset(
+    legend = Some(Legend(
+        content = Text(Messages("sa_printing_preference.sps_opt_in_email")),
+        classes = "govuk-fieldset__legend--l",
+        isPageHeading = true
+    )),
+    html = email
+))
+
+}
+
+    @if(reOptinForm.hasErrors) {
+        @govukErrorSummary(ErrorSummary(
+            errorList = reOptinForm.errors.map( error =>
+                ErrorLink(
+                    href = Some(s"#${error.key}"),
+                    content = Text(messages(error.message))
+                )
+            ),
+            title = Text(Messages("sa_printing_preference.sps_opt_in_choice.problem"))
+        ))
+    }
+
+    @form(action = submitPrefsFormAction, Symbol("id") -> "form-submit-email-address", Symbol("novalidate") -> "novalidate") {
+        <input type="hidden" id="sps-re-opt-in" name="sps-re-opt-in" value="true">
+
+        @emailBlock
+
+        @govukButton(Button(
+            name = Some("submitButton"),
+            inputType = Some("submit"),
+            content = Text(Messages("reoptin_page54.submitButton")),
+            attributes = Map(
+                "id" -> "submitEmailButton",
+                "data-prevent-double-click" -> "true"
+            )
+        ))
+    }

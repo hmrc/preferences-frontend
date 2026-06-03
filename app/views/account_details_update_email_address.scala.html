@@ -1,0 +1,62 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+@import util.Link
+
+@this(govukInput: GovukInput, govukButton: GovukButton, form: FormWithCSRF)
+@(currentEmail : String, emailForm: Form[?])(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+
+    <header class="page-header">
+        <h1 class="govuk-heading-xl">@Messages("account.details.update.email.title")</h1>
+    </header>
+   <p class="govuk-body">@Messages("account.details.update.email.sent_to") <span id="current-email-address">@{currentEmail}.</span></p>
+
+    @form(action = controllers.internal.routes.ManagePaperlessController.submitChangeEmailAddress(hostContext),
+            Symbol("id") -> "form-submit-email-address",
+            Symbol("novalidate") -> "novalidate") {
+
+        @govukInput(Input(
+            id = "email.main",
+            name = "email.main",
+            inputType = "email",
+            errorMessage = emailForm("email.main").error.map(err => ErrorMessage(content = Text(messages(err.message, (err.args)*)))),
+            label = Label(
+                content = Text(Messages("account.details.update.email.new"))
+            ),
+            classes = "govuk-!-width-three-quarters",
+            value = emailForm("email.main").value,
+            attributes = Map(
+                "spellcheck" -> "false",
+                "autocomplete" -> "off"
+            )
+        ))
+
+        @govukInput(Input(
+            id = "email.confirm",
+            name = "email.confirm",
+            inputType = "email",
+            errorMessage = emailForm("email").error.map(err => ErrorMessage(content = Text(messages(err.message, (err.args)*)))),
+            label = Label(
+                content = Text(Messages("account.details.update.email.confirm"))
+            ),
+            classes = "govuk-!-width-three-quarters",
+            value = emailForm("email.confirm").value,
+            attributes = Map(
+                "spellcheck" -> "false",
+                "autocomplete" -> "off"
+            )
+        ))
+
+        @govukButton(Button(
+            name = Some("submitButton"),
+            inputType = Some("submit"),
+            content = Text(Messages("account.details.update.email.submit.text")),
+            attributes = Map(
+                "id" -> "submit-email-button"
+            )
+        ))
+        <p class="govuk-body">@Link.toInternalPage(id = Some("cancel-link"), url = controllers.internal.routes.ManagePaperlessController.checkSettings(hostContext).url, value = Some(Messages("cancel.text"))).toHtml</p>
+    }

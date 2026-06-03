@@ -1,0 +1,22 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import uk.gov.hmrc.hmrcfrontend.views.html.components.HmrcTimeoutDialog
+@import uk.gov.hmrc.hmrcfrontend.views.Aliases.TimeoutDialog
+@import config.AppConfig
+
+@this(hmrcTimeoutDialog: HmrcTimeoutDialog,  appConfig: AppConfig)
+
+@()(implicit messages: Messages)
+
+@hmrcTimeoutDialog(TimeoutDialog(
+    title = Some(messages("timeout.title")),
+    timeout = Some(appConfig.sessionTimeoutInSeconds),
+    countdown = Some(appConfig.sessionCountdownInSeconds),
+    keepAliveUrl = Some("/session/keep-alive"),
+    signOutUrl = Some("/paperless/timeout"),
+    message = Some(messages("timeout.message")),
+    keepAliveButtonText = Some(messages("timeout.keep-alive-button"))
+))

@@ -1,0 +1,12 @@
+{
+  "status": {
+    "name": "EMAIL_NOT_VERIFIED",
+    "category": "ACTION_REQUIRED",
+    "text1": "By post, until you verify your email address",
+    "text2": "You have not verified your email address."
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/email-re-verify?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&email=e9zVPuZh0zbnXYIdEw1gz%2FYGFxquqdJgiJJN8WJGzOQ%3D",
+    "text": "Fix this"
+  }
+}

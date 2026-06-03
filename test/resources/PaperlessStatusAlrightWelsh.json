@@ -1,0 +1,12 @@
+{
+  "status": {
+    "name": "ALRIGHT",
+    "category": "INFO",
+    "text1": "Ar-lein – byddwn yn rhoi gwybod i chi drwy e-bost",
+    "text2": "Rydych yn cael y llythyrau treth hyn ar-lein."
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/check-settings?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D",
+    "text": "Gwirio’ch gosodiadau"
+  }
+}

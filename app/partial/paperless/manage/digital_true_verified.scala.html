@@ -1,0 +1,16 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@this(digitalTrueLinks: digital_true_links)
+@(email: connectors.EmailPreference)(implicit messages: Messages, hostContext: model.HostContext)
+@import uk.gov.hmrc.emailaddress.EmailAddress
+
+<section>
+    <h2 id="saEmailRemindersHeader">@Messages("manage.paperless.verified.header")</h2>
+    <p>@Messages("manage.paperless.verified.sent_to") <span id="email-address">@{EmailAddress(email.email).obfuscated}</span></p>
+
+    @digitalTrueLinks("change-email-address-link")
+</section>
+

@@ -1,0 +1,1071 @@
+{
+  "paths" : {
+    "/paperless/assets/{file}" : {
+      "get" : {
+        "operationId" : "versioned",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "file",
+          "schema" : {
+            "type" : "asset"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/activate/{formType}/{taxIdentifier}" : {
+      "put" : {
+        "operationId" : "activateLegacyFromTaxIdentifier",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "formType",
+          "schema" : {
+            "type" : "model.formtype"
+          },
+          "required" : true
+        }, {
+          "in" : "path",
+          "name" : "taxIdentifier",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/activate" : {
+      "put" : {
+        "operationId" : "activate",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/preferences" : {
+      "get" : {
+        "operationId" : "preferences",
+        "tags" : [ "legacy" ]
+      }
+    },
+    "/paperless/email-address/change" : {
+      "get" : {
+        "operationId" : "displayChangeEmailAddress",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "email",
+          "schema" : {
+            "type" : "model.encryptedemail",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitChangeEmailAddress",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/email-address/change/confirmed" : {
+      "get" : {
+        "operationId" : "displayChangeEmailAddressConfirmed",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/stop" : {
+      "get" : {
+        "operationId" : "displayStopPaperless",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitStopPaperless",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/stop/confirmed" : {
+      "get" : {
+        "operationId" : "displayStopPaperlessConfirmed",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/resend-verification-email" : {
+      "post" : {
+        "operationId" : "resendVerificationEmail",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/choose/capture" : {
+      "get" : {
+        "operationId" : "capture",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/choose/precheck" : {
+      "get" : {
+        "operationId" : "preCheck",
+        "tags" : [ "legacy" ]
+      }
+    },
+    "/paperless/choose/nearly-done" : {
+      "get" : {
+        "operationId" : "displayNearlyDone",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "email",
+          "schema" : {
+            "type" : "model.encryptedemail",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/choose" : {
+      "get" : {
+        "operationId" : "redirectToDisplayFormWithCohort",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "email",
+          "schema" : {
+            "type" : "model.encryptedemail",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitForm",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/choose/cohort/{svc}/{token}" : {
+      "get" : {
+        "operationId" : "redirectToDisplayFormWithCohortBySvc",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "svc",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "path",
+          "name" : "token",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "email",
+          "schema" : {
+            "type" : "model.encryptedemail",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/choose/{svc}/{token}" : {
+      "get" : {
+        "operationId" : "displayFormBySvc",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "svc",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "path",
+          "name" : "token",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "email",
+          "schema" : {
+            "type" : "model.encryptedemail",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitFormBySvc",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "svc",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "path",
+          "name" : "token",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/choose/{cohort}" : {
+      "get" : {
+        "operationId" : "displayForm",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "cohort",
+          "schema" : {
+            "type" : "controllers.internal.optincohort",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "email",
+          "schema" : {
+            "type" : "model.encryptedemail",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/optin" : {
+      "get" : {
+        "operationId" : "displayOptIn",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "svc",
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "token",
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitOptIn",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/optin/{svc}/{token}" : {
+      "post" : {
+        "operationId" : "submitOptInBySvc",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "svc",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "path",
+          "name" : "token",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/optin-email" : {
+      "post" : {
+        "operationId" : "submitOptInEmail",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "svc",
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "token",
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "changeEmail",
+          "schema" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "get" : {
+        "operationId" : "displayOptInEmail",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "svc",
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "token",
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "changeEmail",
+          "schema" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/optin-confirmation" : {
+      "get" : {
+        "operationId" : "displayOptInConfirmation",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "svc",
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "token",
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "required" : false
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/reoptin" : {
+      "get" : {
+        "operationId" : "displayMultiPageReOptIn",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitMultiPageReOptIn",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/reoptin-bounce-email" : {
+      "get" : {
+        "operationId" : "displayMultiPageReOptInBounceEmail",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/reoptin-email" : {
+      "get" : {
+        "operationId" : "displayMultiPageReOptInEmail",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitMultiPageReOptInEmail",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hasEmailBounce",
+          "schema" : {
+            "type" : "boolean"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/optout-confirmation" : {
+      "get" : {
+        "operationId" : "displayOptOutConfirmation",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "digital",
+          "schema" : {
+            "type" : "boolean"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitOptOutConfirmation",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "digital",
+          "schema" : {
+            "type" : "boolean"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "ostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/email-re-verify" : {
+      "get" : {
+        "operationId" : "processEmailReVerificationJourney",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/email-bounce" : {
+      "get" : {
+        "operationId" : "processEmailBounceJourney",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/email-resend" : {
+      "get" : {
+        "operationId" : "resendVerificationEmail",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/email-confirmation" : {
+      "get" : {
+        "operationId" : "displayEmailConfirmation",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/email-status" : {
+      "get" : {
+        "operationId" : "updateEmailVerificationStatus",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "journey",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/survey/reoptin-declined" : {
+      "get" : {
+        "operationId" : "displayReOptInDeclinedSurveyForm",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitReOptInDeclinedSurveyForm",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/opt-out-survey" : {
+      "get" : {
+        "operationId" : "displayOptoutSurvey",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitOptoutSurvey",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/survey/optin-declined" : {
+      "get" : {
+        "operationId" : "displayOptinDeclinedSurveyForm",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitOptinDeclinedSurveyForm",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/language-choose" : {
+      "get" : {
+        "operationId" : "displayLanguageForm",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      },
+      "post" : {
+        "operationId" : "submitLanguageForm",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/sa/print-preferences/{token}" : {
+      "get" : {
+        "operationId" : "redirectWithEmailAddress",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "token",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "return_url",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "emailAddress",
+          "schema" : {
+            "type" : "model.encryptedemail",
+            "nullable" : true
+          },
+          "required" : false
+        } ]
+      }
+    },
+    "/sa/print-preferences/verification/{token}" : {
+      "get" : {
+        "operationId" : "verify",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "token",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/status" : {
+      "get" : {
+        "operationId" : "getPaperlessStatus",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/sa/print-preferences/assets/{file}" : {
+      "get" : {
+        "operationId" : "getAsset",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "file",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/manage" : {
+      "get" : {
+        "operationId" : "displayManagePaperlessPartial",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/warnings" : {
+      "get" : {
+        "operationId" : "displayPaperlessWarningsPartial",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/check-settings" : {
+      "get" : {
+        "operationId" : "checkSettings",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/opt-in-cohort/display/{cohort}" : {
+      "get" : {
+        "operationId" : "displayCohort",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "cohort",
+          "schema" : {
+            "type" : "controllers.internal.optincohort",
+            "nullable" : true
+          },
+          "required" : false
+        } ]
+      }
+    },
+    "/paperless/opt-in-cohort/nop" : {
+      "post" : {
+        "operationId" : "cohortNop",
+        "tags" : [ "legacy" ]
+      }
+    },
+    "/paperless/opt-in-cohort/list" : {
+      "get" : {
+        "operationId" : "cohortList",
+        "tags" : [ "legacy" ]
+      }
+    },
+    "/paperless/types-of-digital-message" : {
+      "get" : {
+        "operationId" : "displayTypesOfDigitalTaxLetters",
+        "tags" : [ "legacy" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "hostContext",
+          "schema" : {
+            "type" : "model.hostcontext"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/session/keep-alive" : {
+      "get" : {
+        "operationId" : "keepAliveSession",
+        "tags" : [ "legacy" ]
+      }
+    },
+    "/paperless/timeout" : {
+      "get" : {
+        "operationId" : "timeout",
+        "tags" : [ "legacy" ]
+      }
+    },
+    "/paperless/hmrc-frontend/assets/{file}" : {
+      "get" : {
+        "operationId" : "at",
+        "tags" : [ "hmrcfrontend" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "file",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/hmrc-frontend/keep-alive" : {
+      "get" : {
+        "operationId" : "keepAlive",
+        "tags" : [ "hmrcfrontend" ]
+      }
+    },
+    "/paperless/hmrc-frontend/language/{lang}" : {
+      "get" : {
+        "operationId" : "switchToLanguage",
+        "tags" : [ "hmrcfrontend" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "lang",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        } ]
+      }
+    },
+    "/paperless/sca/refresh-session" : {
+      "get" : {
+        "operationId" : "keepAlive",
+        "tags" : [ "sca" ]
+      }
+    },
+    "/paperless/sca/assets/{file}" : {
+      "get" : {
+        "operationId" : "at",
+        "tags" : [ "sca" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "file",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : { }
+  },
+  "info" : {
+    "version" : "8.255.0-SNAPSHOT",
+    "title" : "Channel Preferences Frontend API"
+  },
+  "openapi" : "3.0.3",
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "tags" : [ ]
+}

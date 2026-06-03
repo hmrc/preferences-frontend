@@ -1,0 +1,75 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import views.ViewHelper
+
+@this(govukButton: GovukButton,
+    govukSummaryList: GovukSummaryList,
+    govukTag: GovukTag,
+    externalUrlPrefixes: ExternalUrlPrefixes
+)
+
+@(email: connectors.EmailPreference, continueButtonText: String)(implicit request : AuthenticatedRequest[?],messages: Messages, hostContext: model.HostContext)
+
+    <h1 id="saCheckSettings" class="govuk-heading-xl">@Messages("manage.paperless.header")</h1>
+
+    <h2 class="govuk-heading-m">@Messages("manage.paperless.contact.header")</h2>
+
+    @govukSummaryList(SummaryList(
+        rows = Seq(
+            SummaryListRow(
+                key = Key(
+                    content = Text(Messages("manage.paperless.contact.taxdoc.1"))
+                ),
+                value = Value(
+                    content = Text(Messages("manage.paperless.contact.taxdoc.postonly.2"))
+                ),
+                actions = Some(Actions(
+                    items = Seq(
+                        ActionItem(
+                            href = externalUrlPrefixes.pfUrlPrefix + controllers.internal.routes.ManagePaperlessController.displayChangeEmailAddress(None, hostContext),
+                            content = Text(Messages("manage.paperless.change"))
+                        )
+                    )
+                ))
+            ),
+            SummaryListRow(
+                key = Key(
+                    content = Text(Messages("manage.paperless.contact.details.email.1"))
+                ),
+                value = Value(
+                    content =
+                        HtmlContent(
+                            s"""<p>${email.email}<br>
+                            ${govukTag(Tag(Text(Messages("manage.paperless.verify.warning.1")), "govuk-tag--red"))}<br>
+                            <a class="govuk-link" href=${controllers.internal.paperless.routes.EmailController.processEmailReVerificationJourney(hostContext)}>${Messages("manage.paperless.verify.warning.2")}</a></p>"""
+                        )
+                ),
+                actions = Some(Actions(
+                    items = Seq(
+                        ActionItem(
+                            href = externalUrlPrefixes.pfUrlPrefix + controllers.internal.routes.ManagePaperlessController.displayChangeEmailAddress(None, hostContext),
+                            content = Text(Messages("manage.paperless.change"))
+                        )
+                    )
+                ))
+            ),
+            SummaryListRow(
+                key = Key(
+                    content = Text(Messages("manage.paperless.contact.language.1"))
+                ),
+                value = Value(
+                    content = Text(Messages("manage.paperless.contact.language.postonly.2"))
+                )
+            )
+        )))
+
+    @govukButton(Button(
+        href = Some(hostContext.returnUrl),
+        classes = "govuk-button",
+        content = Text(Messages(s"manage.paperless.cys.button.$continueButtonText"))
+    ))

@@ -1,0 +1,12 @@
+{
+  "status": {
+    "name": "NO_EMAIL",
+    "category": "ACTION_REQUIRED",
+    "text1": "Drwy’r post – ni allwn gysylltu â chi drwy’ch cyfeiriad e-bost",
+    "text2": "Ni allwn gysylltu â chi drwy’ch cyfeiriad e-bost."
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/check-settings?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D",
+    "text": "Trwsio hyn"
+  }
+}

@@ -1,0 +1,55 @@
+/*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ */
+
+package views.sa.prefs
+
+import _root_.helpers.{ ConfigHelper, LanguageHelper }
+import model.HostContext
+import org.jsoup.Jsoup
+import org.scalatestplus.play.PlaySpec
+import org.scalatestplus.play.guice.GuiceOneAppPerSuite
+import play.api.Application
+import views.html.sa.prefs.sa_printing_preference_expired_email
+
+class SaPrintingPreferenceExpiredEmailSpec
+    extends PlaySpec with GuiceOneAppPerSuite with LanguageHelper with ConfigHelper {
+
+  override implicit lazy val app: Application = fakeApp
+  implicit val hostContext: HostContext = new HostContext(returnUrl = "", returnLinkText = "")
+  val saPrintingPreferenceExpiredEmail =
+    app.injector.instanceOf[sa_printing_preference_expired_email]
+
+  "printing preferences expired emai; template" should {
+    "render the correct content in english" in {
+      val document =
+        Jsoup.parse(saPrintingPreferenceExpiredEmail()(engRequest, messagesInEnglish(), hostContext).toString())
+
+      document
+        .getElementById("link-to-home")
+        .childNodes()
+        .get(2)
+        .toString
+        .trim() mustBe "and request a new verification link"
+    }
+
+    "render the correct content in welsh" in {
+      val document =
+        Jsoup.parse(saPrintingPreferenceExpiredEmail()(welshRequest, messagesInWelsh(), hostContext).toString())
+
+      document
+        .getElementById("link-to-home")
+        .childNodes()
+        .get(1)
+        .childNode(0)
+        .toString mustBe "Yn eich blaen i'ch cyfrif ar-lein gyda CThEM"
+      document
+        .getElementById("link-to-home")
+        .childNodes()
+        .get(2)
+        .toString
+        .trim() mustBe "a gwnewch gais am gysylltiad dilysu newydd"
+    }
+  }
+}
