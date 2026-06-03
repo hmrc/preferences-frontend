@@ -1,0 +1,36 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import views.ViewHelper
+
+@this(govukButton: GovukButton,form: FormWithCSRF)
+
+@(isItsa: Boolean, submitPrefsFormAction: Call)(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+
+    @form(action = submitPrefsFormAction, Symbol("id") -> "form-submit-email-address", Symbol("novalidate") -> "novalidate") {
+        @if(isItsa) {
+            <h1 class="govuk-heading-l">@Messages("sa_printing_preference.sps.opt_out_by_post_confimation_title")</h1>
+        } else {
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">@Messages("sa_printing_preference.sps.opt_out_by_post_confimation_title")</h1>
+            </div>
+        }
+        <p class="govuk-body">@Messages("sa_printing_preference.sps.opt_out_by_post_confimation_body1")
+            <a href="@controllers.internal.routes.ManagePaperlessController.checkSettings(hostContext).url" class="govuk-link">@Messages("sa_printing_preference.sps.opt_out_by_post_confimation_link")</a>.
+        </p>
+
+        @govukButton(Button(
+            name = Some("submitButton"),
+            inputType = Some("submit"),
+            content = Text(Messages("reoptin_page54.submitButton")),
+            attributes = Map(
+                "id" -> "submitEmailButton",
+                "data-prevent-double-click" -> "true"
+            )
+        ))
+    }

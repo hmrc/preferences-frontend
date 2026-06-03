@@ -1,0 +1,12 @@
+{
+  "status": {
+    "name": "ALRIGHT",
+    "category": "INFO",
+    "text1": "Online – we will let you know by email",
+    "text2": "You get these tax letters online."
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/check-settings?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D",
+    "text": "Check your settings"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "status": {
+    "name": "NO_EMAIL",
+    "category": "ACTION_REQUIRED",
+    "text1": "By post – we cannot contact you on your email address",
+    "text2": "We cannot contact you on your email address."
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/check-settings?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D",
+    "text": "Fix this"
+  }
+}

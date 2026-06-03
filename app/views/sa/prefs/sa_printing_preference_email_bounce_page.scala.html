@@ -1,0 +1,38 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import views.ViewHelper
+@import views.ViewHelper.EMAIL_BOUNCE
+
+@this(externalUrlPrefixes: ExternalUrlPrefixes, govukButton: GovukButton)
+
+@(email: String)(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+
+@optinLink = @{externalUrlPrefixes.pfUrlPrefix + controllers.internal.paperless.routes.OptInController.displayOptIn(hostContext.copy(journey = Some(EMAIL_BOUNCE))).url}
+@emailInBold = {
+    <span class="govuk-!-font-weight-bold">@email</span>
+}
+
+<h1 class="govuk-heading-xl">@Messages("sa_printing_preference.sps.email_bounce")</h1>
+
+<p class="govuk-body">@Html(Messages("sa_printing_preference.sps.email_bounce.body1", emailInBold))</p>
+<p class="govuk-body">@Messages("sa_printing_preference.sps.email_bounce.body2")</p>
+<p class="govuk-body">@Messages("sa_printing_preference.sps.email_bounce.body3")</p>
+
+<div class="govuk-button-group">
+
+    @govukButton(Button(
+    href = Some(controllers.internal.paperless.routes.OptInController.displayOptInEmail(Some(true), hostContext.copy(journey = Some(EMAIL_BOUNCE))).url),
+    classes = "govuk-button",
+    content = Text(Messages("sa_printing_preference.sps.email_bounce.button"))
+    ))
+
+</div>
+
+<p class="govuk-body">
+    <a class="govuk-link" href="@optinLink">@Messages("sa_printing_preference.sps.email_bounce.link")</a>
+</p>

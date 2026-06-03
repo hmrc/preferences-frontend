@@ -1,0 +1,27 @@
+/*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ */
+
+import play.api.libs.json.{ JsString, _ }
+
+import java.net.{ URI, URL }
+
+package object connectors {
+
+  implicit def urlWrites: Writes[URL] =
+    new Writes[URL] {
+      override def writes(url: URL): JsValue = JsString(url.toExternalForm)
+    }
+
+  implicit def uriWrites: Writes[URI] =
+    new Writes[URI] {
+      override def writes(uri: URI): JsValue = JsString(uri.toASCIIString)
+    }
+
+  implicit def uriReads: Reads[URI] =
+    new Reads[URI] {
+      override def reads(json: JsValue): JsResult[URI] = json.validate[String].map(URI.create)
+    }
+
+}

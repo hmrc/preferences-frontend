@@ -1,0 +1,39 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+@import util.Link
+
+@this(externalUrls: ExternalUrls)
+@(returnUrl: Option[String], returnLinkText: Option[String])(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+    
+    <div class="govuk-panel govuk-panel--confirmation">
+        <h1 id="success-heading" class="govuk-panel__title">@Messages("sa_printing_preference.verification.heading")</h1>
+      </div>
+    
+    <p id="success-message1" class="govuk-body">@Messages("sa_printing_preference.verification.paragraph.1")</p>
+    <p id="success-message2" class="govuk-body">@Messages("sa_printing_preference.verification.paragraph.2")</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>
+            @Messages("sa_printing_preference.verification.bullet.1")
+        </li>
+
+        <li>
+            @Messages("sa_printing_preference.verification.bullet.2")
+        </li>
+
+        <li>
+            @Messages("sa_printing_preference.verification.bullet.3")
+        </li>
+    </ul>
+
+    <p id="link-to-home" class="govuk-body">
+        @Link.toInternalPage(
+            cssClasses = Some("govuk-button"),
+            url = returnUrl.getOrElse(externalUrls.taxAccountRedirect),
+            value = Some(returnLinkText.getOrElse(Messages("sa_printing_preference.verification.action")))
+        ).toHtml
+    </p>

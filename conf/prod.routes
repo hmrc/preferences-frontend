@@ -1,3 +1,5 @@
 # Add all the application routes to the app.routes file
-->         /preferences-frontend              app.Routes
-->         /                          health.Routes
+
+### NoDocs ###
+->         /                              health.Routes
+->         /                              legacy.Routes

@@ -1,0 +1,15 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@this()
+@()(implicit request: Request[?], messages: Messages, hostContext: model.HostContext)
+
+    <header class="page-header">
+        <h1 class="govuk-heading-l">@Messages("session.timeout")</h1>
+    </header>
+    
+
+   <h2 class="govuk-heading-m" id="session-timed-out-heading2">@Messages("session.timeout.h2")</h2>
+   <p class="govuk-body" id="session-timed-out-paragraph">@Messages("session.timeout.paragraph")  @messages("session.timeout.link")</a></p>

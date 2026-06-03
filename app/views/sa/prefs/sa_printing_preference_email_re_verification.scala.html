@@ -1,0 +1,37 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import views.ViewHelper
+@import views.ViewHelper.EMAIL_RE_VERIFY
+
+@this(externalUrlPrefixes: ExternalUrlPrefixes,govukButton: GovukButton)
+
+@(email: String)(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+
+@changeEmailAddressLink = @{externalUrlPrefixes.pfUrlPrefix + controllers.internal.paperless.routes.OptInController.displayOptInEmail(Some(true), hostContext.copy(journey = Some(EMAIL_RE_VERIFY))).url}
+@emailInBold = {
+    <span class="govuk-!-font-weight-bold">@email</span>
+}
+
+<h1 class="govuk-heading-xl">@Messages("sa_printing_preference.sps.email_reconfirm")</h1>
+
+<p class="govuk-body">@Messages("sa_printing_preference.sps.email_reconfirm.body1")</p>
+<p class="govuk-body">@Html(Messages("sa_printing_preference.sps.email_reconfirm.body2", emailInBold))</p>
+
+<div >
+
+    @govukButton(Button(
+    href = Some(controllers.internal.paperless.routes.EmailController.resendVerificationEmail(hostContext.copy(journey = Some(EMAIL_RE_VERIFY))).url),
+    classes = "govuk-button",
+    content = Text(Messages("sa_printing_preference.sps.email_reconfirm.button"))
+    ))
+    &nbsp;
+    <p class="govuk-body">
+        <a href="@changeEmailAddressLink">@Messages("sa_printing_preference.sps.email_reconfirm.link")</a>
+    </p>
+
+</div>

@@ -1,0 +1,13 @@
+{
+  "status": {
+    "name": "RE_OPT_IN",
+    "category": "ACTION_REQUIRED",
+    "text1": "Online — you need to agree to our updated terms",
+    "text2": "You get these tax letters online. But you need to agree to our updated terms.",
+    "majorVersion": 1
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/choose/55?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&email=e9zVPuZh0zbnXYIdEw1gz%2FYGFxquqdJgiJJN8WJGzOQ%3D&cohort=QZaLWsNqgIgAErZ7wlRraQ%3D%3D",
+    "text": "Review updated terms"
+  }
+}

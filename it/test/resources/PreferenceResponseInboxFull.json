@@ -1,0 +1,15 @@
+{
+    "termsAndConditions": {
+        "generic": {
+            "accepted": true,
+            "majorVersion": 3,
+            "paperless": true
+        }
+    },
+    "email": {
+        "email": "{{email}}",
+        "isVerified": false,
+        "hasBounces": true,
+        "mailboxFull": true
+    }
+}

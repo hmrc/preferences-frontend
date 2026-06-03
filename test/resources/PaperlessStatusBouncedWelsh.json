@@ -1,0 +1,12 @@
+{
+  "status": {
+    "name": "BOUNCED_EMAIL",
+    "category": "ACTION_REQUIRED",
+    "text1": "Drwy’r post – ni allwn gysylltu â chi drwy’ch cyfeiriad e-bost",
+    "text2": "Ni allwn gysylltu â chi drwy’ch cyfeiriad e-bost."
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/email-bounce?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&email=e9zVPuZh0zbnXYIdEw1gz%2FYGFxquqdJgiJJN8WJGzOQ%3D",
+    "text": "Trwsio hyn"
+  }
+}

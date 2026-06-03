@@ -1,0 +1,15 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import config.AppConfig
+@import controllers.auth.AuthenticatedRequest
+@this(appConfig: AppConfig)
+@(heading: String, message: String)(implicit request: Request[?], messages: Messages, hostContext: model.HostContext)
+  <h1 class="govuk-heading-xl">@messages("error_template.heading")</h1>
+  <p class="govuk-body">@messages("error_template.message")</p>
+  <br/>
+  <p class="govuk-body">@messages("error_template.description")</p>
+  <br/>
+  <a class="govuk-link" href="@{appConfig.homeUrl}">@messages("error_template.link")</a>

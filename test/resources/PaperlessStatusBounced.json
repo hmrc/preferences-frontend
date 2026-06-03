@@ -1,0 +1,12 @@
+{
+  "status": {
+    "name": "BOUNCED_EMAIL",
+    "category": "ACTION_REQUIRED",
+    "text1": "By post – we cannot contact you on your email address",
+    "text2": "We cannot contact you on your email address."
+  },
+  "url": {
+    "link": "http://localhost:9024/paperless/email-bounce?returnUrl=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&returnLinkText=VYBxyuFWQBQZAGpe5tSgmw%3D%3D&email=e9zVPuZh0zbnXYIdEw1gz%2FYGFxquqdJgiJJN8WJGzOQ%3D",
+    "text": "Fix this"
+  }
+}

@@ -1,0 +1,43 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import views.ViewHelper
+
+@this(govukSummaryList : GovukSummaryList,
+    govukButton: GovukButton,
+    externalUrlPrefixes: ExternalUrlPrefixes)
+
+@(continueButtonText: String)(implicit request : AuthenticatedRequest[?],messages: Messages, hostContext: model.HostContext)
+
+    <h1 id="saCheckSettings" class="govuk-heading-xl">@Messages("manage.paperless.header")</h1>
+    <h2 class="govuk-heading-m">@Messages("manage.paperless.contact.header")</h2>
+
+    @govukSummaryList(SummaryList(
+        rows = Seq(
+            SummaryListRow(
+                key = Key(
+                    content = Text(Messages("manage.paperless.contact.taxdoc.1"))
+                ),
+                value = Value(
+                    content = Text(Messages("manage.paperless.contact.taxdoc.3"))
+                ),
+                actions = Some(Actions(
+                    items = Seq(
+                        ActionItem(
+                            href = externalUrlPrefixes.pfUrlPrefix + controllers.internal.paperless.routes.ChoosePaperlessController.redirectToDisplayFormWithCohort(None, hostContext),
+                            content = Text(Messages("manage.paperless.change"))
+                        )
+                    )
+                ))
+            )
+        )))
+
+    @govukButton(Button(
+        href = Some(hostContext.returnUrl),
+        classes = "govuk-button",
+        content = Text(Messages(s"manage.paperless.cys.button.$continueButtonText"))
+    ))

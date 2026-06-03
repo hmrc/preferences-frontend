@@ -1,0 +1,21 @@
+@*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ *@
+
+@import controllers.auth.AuthenticatedRequest
+@import controllers.ExternalUrls
+@import util.Link
+
+@this(externalUrls: ExternalUrls)
+@()(implicit request: AuthenticatedRequest[?], messages: Messages, hostContext: model.HostContext)
+
+    <header class="page-header">
+        <h1 id="failure-heading" class="govuk-heading-xl">@Messages("sa_printing_preference.verification.heading.expired")</h1>
+    </header>
+    <p id="link-to-home" class="govuk-body">
+        @Link.toInternalPage(
+            url = externalUrls.taxAccountRedirect,
+            value = Some(Messages("sa_printing_preference.verification.action"))).toHtml
+            @Messages("sa_printing_preference.verification.action_text")
+    </p>
