@@ -22,7 +22,7 @@ object AppDependencies {
     "io.lemonlabs"  %% "scala-uri"                % "4.0.3",
     "org.typelevel" %% "cats-core"                % "2.13.0",
     "uk.gov.hmrc"   %% "reactive-circuit-breaker" % "6.1.0",
-    "uk.gov.hmrc"   %% "sca-wrapper-play-30"      % "5.2.0"
+    "uk.gov.hmrc"   %% "sca-wrapper-play-30"      % "5.3.0"
   )
 
   val test: Seq[ModuleID] = Seq(
