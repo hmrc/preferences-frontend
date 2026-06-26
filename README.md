@@ -1,4 +1,5 @@
 # Preferences Frontend Service
+
 # Overview
 Preferences frontend is a microservice to allow end users to manage their personal online communication preferences.
 It provides a user journey that other services can integrate into their solutions so that they can also use this journey. In addition, it hosts a number of endpoints that can be consumed to provide user contact preference information.
