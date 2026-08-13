@@ -38,9 +38,8 @@ class CheckSettingsISpec
         "auditing.enabled"                                                -> false,
         "metrics.graphite.enabled"                                        -> false,
         "play.filters.disabled" -> List("uk.gov.hmrc.play.bootstrap.frontend.filters.crypto.SessionCookieCryptoFilter"),
-        "microservice.services.auth-login-api.port" -> wireMockServer.port(),
-        "microservice.services.auth.port"           -> wireMockServer.port(),
-        "microservice.services.preferences.port"    -> wireMockServer.port()
+        "microservice.services.auth.port"        -> wireMockServer.port(),
+        "microservice.services.preferences.port" -> wireMockServer.port()
       )
       .build()
 
