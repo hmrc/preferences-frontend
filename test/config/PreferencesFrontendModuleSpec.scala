@@ -44,7 +44,10 @@ class PreferencesFrontendModuleSpec extends AnyWordSpec with Matchers {
       val module = new PreferencesFrontendModule(
         environment,
         Configuration.empty
-      )
+      ) {
+        override def configure(): Unit =
+          bindString(s"missingConfigKey", "value")
+      }
 
       val ex = the[com.google.inject.CreationException] thrownBy {
         Guice.createInjector(module)
