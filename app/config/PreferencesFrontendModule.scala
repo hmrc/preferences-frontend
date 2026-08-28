@@ -31,9 +31,6 @@ class PreferencesFrontendModule(@unused env: Environment, configuration: Configu
       .annotatedWith(named(resolveAnnotationName(path, name)))
       .to(configuration.getOptional[String](path).getOrElse(configException(path)))
 
-  override def configure(): Unit =
-    bindString(s"CPFUrl", "CPFUrl")
-
   private def resolveAnnotationName(path: String, name: String): String =
     name match {
       case "" => path
