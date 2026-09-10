@@ -46,7 +46,7 @@ class FilingInterceptController @Inject() (
     extends FrontendController(mcc) {
 
   lazy val redirectDomainAllowlist = configuration
-    .getOptional[Seq[String]](s"portal.redirectDomainAllowlist")
+    .getOptional[Seq[String]](s"portal.redirectDomainAllowList")
     .getOrElse(List())
     .toSet
   implicit val wl: Set[String] = redirectDomainAllowlist
