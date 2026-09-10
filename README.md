@@ -212,7 +212,7 @@ Prior to running integration tests, ensure the profile `DC_PREFERENCES_FRONTEND_
 
 ## Run the project locally
 
-`sbt run "9053 -Dplay.http.router=testOnlyDoNotUseInAppConf.Routes"`
+`sbt run "9024 -Dplay.http.router=testOnlyDoNotUseInAppConf.Routes"`
 
 ## SBT tasks
 ```bash
