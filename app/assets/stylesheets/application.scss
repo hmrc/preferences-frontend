@@ -1,9 +1,7 @@
 $govuk-assets-path: "/paperless/assets/lib/govuk-frontend/dist/govuk/assets/";
 $hmrc-assets-path: "/paperless/assets/lib/hmrc-frontend/hmrc/";
 
-$govuk-suppressed-warnings: (libsass, import-using-all, legacy-organisation-colours);
-
-@import "lib/govuk-frontend/dist/govuk/all";
+@import "lib/govuk-frontend/dist/govuk/index.import";
 @import "lib/hmrc-frontend/hmrc/all";
 
 .app-reference-number {

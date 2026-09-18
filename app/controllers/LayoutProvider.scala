@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import controllers.auth.AuthenticatedRequest
 import play.api.i18n.Messages
 import play.twirl.api.{ Html, HtmlFormat }
 import uk.gov.hmrc.hmrcfrontend.views.viewmodels.hmrcstandardpage.ServiceURLs
+import uk.gov.hmrc.sca.config.BackLinkConfig
 import uk.gov.hmrc.sca.services.WrapperService
 import views.ViewHelper
 
@@ -40,7 +41,7 @@ trait LayoutProvider {
         signOutUrl = Some(appConfig.signOutUrl(Option(hostContext.returnUrl)))
       ),
       hideMenuBar = true,
-      showBackLinkJS = showBackLinkJS,
+      backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
       fullWidth = false,
       serviceNameKey = ViewHelper.serviceName(Some("service.name"), hostContext.regime)
     )

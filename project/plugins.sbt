@@ -12,4 +12,4 @@ addSbtPlugin("org.scalameta"           % "sbt-scalafmt"       % "2.4.2")
 addSbtPlugin("org.scoverage"           % "sbt-scoverage"      % "2.2.2")
 addSbtPlugin("org.playframework.twirl" % "sbt-twirl"          % "2.0.1")
 // 2.4.13 produces error with "sbt 'cpf/doc'"
-addSbtPlugin("io.github.irundaia" % "sbt-sassify" % "1.5.2")
+addSbtPlugin("uk.gov.hmrc" % "sbt-sass-compiler" % "0.13.0")
