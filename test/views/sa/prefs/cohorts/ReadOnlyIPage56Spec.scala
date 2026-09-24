@@ -48,9 +48,6 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
         ).toString()
       )
 
-//      document
-//        .getElementsByTag("title")
-//        .text() mustBe "Choose how to get your tax letters"
       document
         .getElementsByTag("h1")
         .first()
@@ -110,7 +107,7 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
       document.getElementsByAttributeValue("name", "submitButton").text() mustBe "Continue"
 
       val h1Tag: Elements = document.getElementsByTag("h1")
-      val h1HeadingValue = h1Tag.get(0).getElementsByClass("govuk-heading-l")
+      val h1HeadingValue = h1Tag.get(0).getElementsByClass("govuk-heading-xl")
 
       h1HeadingValue.text() mustBe "Choose how to get your tax letters"
 
@@ -141,9 +138,7 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
           hostContext
         ).toString()
       )
-//      document
-//        .getElementsByTag("title")
-//        .text() mustBe "Dewis sut i gael eich llythyrau treth"
+
       document
         .getElementsByTag("h1")
         .first()
@@ -207,7 +202,7 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
       document.getElementsByAttributeValue("name", "submitButton").text() mustBe "Yn eich blaen"
 
       val h1Tag: Elements = document.getElementsByTag("h1")
-      val h1HeadingValue = h1Tag.get(0).getElementsByClass("govuk-heading-l")
+      val h1HeadingValue = h1Tag.get(0).getElementsByClass("govuk-heading-xl")
 
       h1HeadingValue.text() mustBe "Dewis sut i gael eich llythyrau treth"
 
