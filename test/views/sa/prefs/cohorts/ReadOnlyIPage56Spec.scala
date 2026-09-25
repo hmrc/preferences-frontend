@@ -121,7 +121,7 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
 
       h3HeadingValue.text() mustBe "1. Sign in to read"
 
-      val radioButtonHeading = h3Tag.get(2).getElementsByClass("govuk-heading-m")
+      val radioButtonHeading = h2Tag.get(1).getElementsByClass("govuk-heading-l")
 
       radioButtonHeading.text() mustBe "How do you want to get your tax letters?"
     }
@@ -216,7 +216,7 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
 
       h3HeadingValue.text() mustBe "1. Mewngofnodi i’w darllen"
 
-      val radioButtonHeading = h3Tag.get(2).getElementsByClass("govuk-heading-m")
+      val radioButtonHeading = h2Tag.get(1).getElementsByClass("govuk-heading-l")
 
       radioButtonHeading.text() mustBe "Sut hoffech gael eich llythyrau treth?"
     }
