@@ -388,6 +388,8 @@ session.timeout=Session timed out
 session.timeout.h2=Sorry, your session has timed out due to inactivity.
 session.timeout.paragraph=To use this service you need to
 session.timeout.link=sign in.
+session.timeout.heading = For your security, we signed you out
+session.timeout.sign-in.button.text=Sign in
 
 error_template.heading=Sorry, there is a problem with the service
 error_template.message=Try again later.

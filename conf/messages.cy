@@ -383,7 +383,8 @@ session.timeout=Sesiwn wedi rhedeg allan o amser
 session.timeout.h2=Mae''n flin gennym, mae''ch sesiwn wedi rhedeg allan o amser o ganlyniad i anweithgarwch.
 session.timeout.paragraph=I ddefnyddio''r gwasanaeth hwn, rhaid i chi fewngofnodi.
 session.timeout.link=Mewngofnodi
-
+session.timeout.heading = Er eich diogelwch, gwnaethom eich allgofnodi
+session.timeout.sign-in.button.text=Mewngofnodi
 
 
 i_page7.fg_page.choose_1=Gallwch ddewis cael rhai o’ch dogfennau treth a gwybodaeth drwy’ch cyfrif CThEM ar-lein, yn hytrach na thrwy’r post.
