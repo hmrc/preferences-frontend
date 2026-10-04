@@ -18,16 +18,10 @@
 
 @()(implicit request: Request[?], messages: Messages, hostContext: model.HostContext)
 
-<div class="govuk-grid">
- <div class="govuk-grid-column-two-thirds">
+<h1 class="govuk-heading-l">@messages("session.timeout.heading")</h1>
 
-  <h1 class="govuk-heading-l">@messages("session.timeout.heading")</h1>
-
-  <div class="govuk-form-group">
+<div class="govuk-form-group">
    <a id="sign-in-button" class="govuk-button" role="button" href="@{hostContext.returnUrl}">
     @messages("session.timeout.sign-in.button.text")
    </a>
-  </div>
-
- </div>
 </div>
