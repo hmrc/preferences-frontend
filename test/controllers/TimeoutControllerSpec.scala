@@ -29,7 +29,8 @@ class TimeoutControllerSpec extends SpecBase {
 
   "timeout" should {
     "return OK" in {
-      val request: FakeRequest[AnyContentAsEmpty.type] = fakeRequest(GET, routes.TimeoutController.timeout().url)
+      val request: FakeRequest[AnyContentAsEmpty.type] =
+        fakeRequest(GET, routes.TimeoutController.timeout().url)
 
       val result: Future[Result] = route(app, request).get
       status(result) mustBe OK

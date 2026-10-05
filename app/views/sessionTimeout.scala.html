@@ -16,12 +16,12 @@
 
 @this()
 
-@()(implicit request: Request[?], messages: Messages, hostContext: model.HostContext)
+@(signInUrl:String)(implicit request: Request[?], messages: Messages, hostContext: model.HostContext)
 
 <h1 class="govuk-heading-l">@messages("session.timeout.heading")</h1>
 
 <div class="govuk-form-group">
-   <a id="sign-in-button" class="govuk-button" role="button" href="@{hostContext.returnUrl}">
+   <a id="sign-in-button" class="govuk-button" role="button" href="@{signInUrl}">
     @messages("session.timeout.sign-in.button.text")
    </a>
 </div>

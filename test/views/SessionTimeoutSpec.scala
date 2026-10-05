@@ -47,12 +47,14 @@ class SessionTimeoutSpec extends SpecBase {
 
     signInButton.text() mustBe messagesInEnglish("session.timeout.sign-in.button.text")
 
-    signInButton.attributes().get("href") mustBe "/test"
+    signInButton.attributes().get("href") mustBe "/personal-account"
     signInButton.attributes().get("class") mustBe "govuk-button"
   }
 
   trait TestCase {
+    val signInUrl = "/personal-account"
     implicit val hostContextOb: HostContext = hostContext()
-    val viewAsDoc: Document = Jsoup.parse(app.injector.instanceOf[sessionTimeout].apply().body)
+
+    val viewAsDoc: Document = Jsoup.parse(app.injector.instanceOf[sessionTimeout].apply(signInUrl).body)
   }
 }
