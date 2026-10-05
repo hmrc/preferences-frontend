@@ -384,10 +384,6 @@ timeout.dialog.sign.in=Stay signed inXXX
 timeout.message= We will sign you out if you do not respond in
 timeout.keep-alive-button= Stay signed in
 
-session.timeout=Session timed out
-session.timeout.h2=Sorry, your session has timed out due to inactivity.
-session.timeout.paragraph=To use this service you need to
-session.timeout.link=sign in.
 session.timeout.heading = For your security, we signed you out
 session.timeout.sign-in.button.text=Sign in
 
