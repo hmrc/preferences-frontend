@@ -46,8 +46,12 @@ class AppConfigSpec extends SpecBase {
         appConfig.signOutUrl(None) mustBe "http://localhost:9553/bas-gateway/sign-out-without-state"
       }
 
-      "returnUrl has some value" in {
+      "returnUrl is of business-account" in {
         appConfig.signOutUrl(Some("business-account")) mustBe "http://localhost:9020/business-account/sso-sign-out"
+      }
+
+      "returnUrl is of other than business-account" in {
+        appConfig.signOutUrl(Some("pta")) mustBe "http://localhost:9553/bas-gateway/sign-out-without-state"
       }
     }
   }
