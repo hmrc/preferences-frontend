@@ -34,6 +34,10 @@ class TimeoutControllerSpec extends SpecBase {
 
       val result: Future[Result] = route(app, request).get
       status(result) mustBe OK
+      val viewContent = contentAsString(result)
+
+      viewContent must include(messagesInEnglish("session.timeout.heading"))
+      viewContent must not include "Back"
     }
   }
 

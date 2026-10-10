@@ -27,8 +27,4 @@ class AppConfig @Inject() (val configuration: Configuration, externalUrls: Exter
   lazy val homeUrl: String = externalUrls.taxAccountRedirect
 
   def signOutUrl(returnUrl: Option[String]): String = externalUrls.survey(returnUrl)
-
-  // def sessionTimeoutInSeconds: Int = configuration.getOptional[Int]("session.timeoutSeconds").getOrElse(900)
-
-  // def sessionCountdownInSeconds: Int = configuration.getOptional[Int]("session.countdownSeconds").getOrElse(60)
 }
