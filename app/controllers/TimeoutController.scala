@@ -47,7 +47,7 @@ class TimeoutController @Inject() (
       Ok(
         layoutProvider(
           content = sessionTimeOutView(appConfig.signOutUrl(None)),
-          title = "account.details.update.email.title"
+          title = "session.timeout.title"
         )
       )
     }
