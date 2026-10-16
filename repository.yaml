@@ -4,5 +4,4 @@ type: service
 service-type: frontend
 test-repositories:
   - platform-performance-tests
-  - digital-contact-2wsm-test
 tags: []
