@@ -301,7 +301,7 @@ paperless.status.url.text.re_opt_in=Adolygu’r telerau diweddaraf
 paperless.status.url.text.re_opt_in_modified=Adolygu’r telerau diweddaraf
 manage.paperless.check.settings.linkText=Yn eich blaen
 
-service.name =
+service.name = Cofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
 service.homePageUrl = /preferences-frontend
 service.text = Dyma'ch gwasanaeth newydd
 back.button.text==Yn ôl

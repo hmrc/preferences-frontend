@@ -306,7 +306,7 @@ paperless.status.url.text.re_opt_in=Review updated terms
 paperless.status.url.text.re_opt_in_modified=Review updated terms
 manage.paperless.check.settings.linkText=Continue
 
-service.name =
+service.name = Sign up for Making Tax Digital for Income Tax
 service.homePageUrl = /preferences-frontend
 service.text = This is your new service
 back.button.text=Back
