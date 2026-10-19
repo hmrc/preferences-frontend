@@ -1,0 +1,76 @@
+/*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package controllers
+
+import config.AppConfig
+import controllers.auth.AuthenticatedRequest
+import model.HostContext
+import play.api.libs.typedmap.TypedMap
+import play.api.mvc.{ AnyContentAsEmpty, RequestHeader }
+import play.api.test.FakeRequest
+import play.twirl.api.{ Html, HtmlFormat }
+import uk.gov.hmrc.sca.services.WrapperService
+import utils.SpecBase
+import org.mockito.Mockito.*
+
+class LayoutProviderSpec extends SpecBase {
+
+  "layoutProvider" should {
+
+    "display correct content" when {
+      "displaySignOutLink has a default(true) value" in new TestCase {
+        val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(content, title)
+
+        result.toString must include("Sign out")
+        result.toString must include("Back")
+        result.toString must include("<h1>")
+      }
+
+      "displaySignOutLink is false" in new TestCase {
+        val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(
+          content = content,
+          title = title,
+          displaySignOutLink = false
+        )
+
+        result.toString must not include "Sign out"
+        result.toString must include("Back")
+        result.toString must include("<h1>")
+      }
+    }
+  }
+
+  trait TestCase {
+    val appConfigOb: AppConfig = app.injector.instanceOf[AppConfig]
+    val wrapperServiceOb: WrapperService = app.injector.instanceOf[WrapperService]
+    val content = Html("<h1></h1>")
+    val title = "test_title"
+
+    implicit val requestHeaders: RequestHeader = fakeRequest().withAttrs(TypedMap.empty)
+    implicit val requestMock: AuthenticatedRequest[?] = mock[AuthenticatedRequest[?]]
+    implicit val hostContextProvider: HostContext = hostContext()
+
+    when(requestMock.attrs).thenReturn(TypedMap.empty)
+    when(requestMock.rawQueryString).thenReturn("")
+
+    val layoutProvider: LayoutProvider = new LayoutProvider {
+      override def wrapperService: WrapperService = wrapperServiceOb
+
+      override def appConfig: AppConfig = appConfigOb
+    }
+  }
+}
