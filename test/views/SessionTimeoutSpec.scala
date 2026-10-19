@@ -33,6 +33,7 @@ class SessionTimeoutSpec extends SpecBase {
       shouldContainCorrectTitle()
       shouldContainCorrectWarningText()
       shouldContainSignInLinkWithCorrectAddress()
+      shouldContainCorrectReason()
     }
   }
 
@@ -50,6 +51,9 @@ class SessionTimeoutSpec extends SpecBase {
     signInButton.attributes().get("href") mustBe "/personal-account"
     signInButton.attributes().get("class") mustBe "govuk-button"
   }
+
+  private def shouldContainCorrectReason(implicit view: Document) =
+    view.getElementById("session-timed-out-reason").text() mustBe messagesInEnglish("session.timeout.reason.text")
 
   trait TestCase {
     val signInUrl = "/personal-account"
