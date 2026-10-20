@@ -18,10 +18,10 @@
 
 @(signInUrl:String)(implicit request: Request[?], messages: Messages, hostContext: model.HostContext)
 
-<h1 class="govuk-heading-l">@messages("session.timeout.heading")</h1>
+<h1 class="govuk-heading-xl">@messages("session.timeout.heading")</h1>
 
 <div class="govuk-form-group">
-   <p class="govuk-body govuk-!-margin-top-9" id="session-timed-out-reason">@messages("session.timeout.reason.text")</p>
+   <p class="govuk-body govuk-!-margin-bottom-4" id="session-timed-out-reason">@messages("session.timeout.reason.text")</p>
 
    <a id="sign-in-button" class="govuk-button" role="button" href="@{signInUrl}">
     @messages("session.timeout.sign-in.button.text")

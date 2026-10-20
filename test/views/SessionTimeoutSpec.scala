@@ -31,7 +31,7 @@ class SessionTimeoutSpec extends SpecBase {
       implicit val view: Document = viewAsDoc
 
       shouldContainCorrectTitle()
-      shouldContainCorrectWarningText()
+      shouldContainCorrectStyleClassAndTextForHeading()
       shouldContainSignInLinkWithCorrectAddress()
       shouldContainCorrectReason()
     }
@@ -40,8 +40,10 @@ class SessionTimeoutSpec extends SpecBase {
   private def shouldContainCorrectTitle(implicit view: Document) =
     view.title() mustBe ""
 
-  private def shouldContainCorrectWarningText(implicit view: Document) =
-    view.getElementsByTag("h1").get(0).text() mustBe messagesInEnglish("session.timeout.heading")
+  private def shouldContainCorrectStyleClassAndTextForHeading(implicit view: Document) = {
+    val h1Tag = view.getElementsByTag("h1").get(0)
+    h1Tag.getElementsByClass("govuk-heading-xl").text() mustBe messagesInEnglish("session.timeout.heading")
+  }
 
   private def shouldContainSignInLinkWithCorrectAddress(implicit view: Document) = {
     val signInButton: Element = view.getElementById("sign-in-button")
