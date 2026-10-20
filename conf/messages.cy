@@ -381,7 +381,7 @@ timeout.message.signout=Allgofnodi
 
 session.timeout.heading = Er eich diogelwch, gwnaethom eich allgofnodi
 session.timeout.sign-in.button.text=Mewngofnodi
-
+session.timeout.reason.text = Nid ydych wedi gwneud dim ers 15 munud.
 
 i_page7.fg_page.choose_1=Gallwch ddewis cael rhai o’ch dogfennau treth a gwybodaeth drwy’ch cyfrif CThEM ar-lein, yn hytrach na thrwy’r post.
 i_page7.fg_page.choose_2=Bydd yn rhaid i chi gymryd camau pan fyddwch yn cael rhai o’r dogfennau. Maent yn cynnwys:

@@ -386,6 +386,7 @@ timeout.keep-alive-button= Stay signed in
 
 session.timeout.heading = For your security, we signed you out
 session.timeout.sign-in.button.text=Sign in
+session.timeout.reason.text = You have not done anything for 15 minutes.
 
 error_template.heading=Sorry, there is a problem with the service
 error_template.message=Try again later.
