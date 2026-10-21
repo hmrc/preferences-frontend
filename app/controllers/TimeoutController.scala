@@ -41,15 +41,17 @@ class TimeoutController @Inject() (
 
   def timeout: Action[AnyContent] =
     Action.async { implicit request =>
-      implicit val hostContext: HostContext = new HostContext(returnUrl = "", returnLinkText = "")
+      implicit val hostContext: HostContext =
+        new HostContext(returnUrl = "", returnLinkText = "", regime = Some("itsa"))
       implicit val authRequest: AuthenticatedRequest[AnyContent] = AuthenticatedRequest(request, None, None, None, None)
 
       Ok(
         layoutProvider(
           content = sessionTimeOutView(appConfig.signOutUrl(None)),
-          title = "account.details.update.email.title",
+          title = "session.timeout.heading",
           showBackLinkJS = false,
-          displaySignOutLink = false
+          displaySignOutLink = false,
+          appendServiceName = true
         )
       )
     }
