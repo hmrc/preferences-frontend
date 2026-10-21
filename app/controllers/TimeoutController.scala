@@ -51,7 +51,8 @@ class TimeoutController @Inject() (
           title = "session.timeout.heading",
           showBackLinkJS = false,
           displaySignOutLink = false,
-          appendServiceName = true
+          appendServiceName = true,
+          disableSessionExpired = true
         )
       )
     }

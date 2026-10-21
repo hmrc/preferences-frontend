@@ -19,6 +19,8 @@ package controllers
 import config.AppConfig
 import controllers.auth.AuthenticatedRequest
 import model.HostContext
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import play.api.libs.typedmap.TypedMap
 import play.api.mvc.{ AnyContentAsEmpty, RequestHeader }
 import play.api.test.FakeRequest
@@ -51,46 +53,85 @@ class LayoutProviderSpec extends SpecBase {
         result.toString must include("Back")
         result.toString must include("<h1>")
       }
-    }
-  }
 
-  "build the page title" when {
-    "appendServiceName is not set" in new TestCase {
-      val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(content, title)
-
-      result.toString must include(s"<title>$title</title>")
-    }
-
-    "appendServiceName is false and the regime is itsa" in new TestCase {
-      val result: HtmlFormat.Appendable =
-        layoutProvider.layoutProvider(content, title, appendServiceName = false)(
-          messages,
-          requestMock,
-          hostContext().copy(regime = Some("itsa"))
+      "disableSessionExpired is true" in new TestCase {
+        val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(
+          content = content,
+          title = title,
+          displaySignOutLink = false,
+          disableSessionExpired = true
         )
 
-      result.toString must include(s"<title>$title</title>")
-    }
+        val viewDoc: Document = Jsoup.parse(result.toString)
 
-    "appendServiceName is true and there is no regime" in new TestCase {
-      val result: HtmlFormat.Appendable =
-        layoutProvider.layoutProvider(content, title, appendServiceName = true)
+        result.toString must not include "Sign out"
+        result.toString must include("Back")
+        result.toString must include("<h1>")
 
-      result.toString must include(s"<title>$title – GOV.UK</title>")
-    }
+        shouldNotContainTimeOutDialogDetails(viewDoc)
+      }
 
-    "appendServiceName is true and the regime is itsa" in new TestCase {
-      val result: HtmlFormat.Appendable =
-        layoutProvider.layoutProvider(content, title, appendServiceName = true)(
-          messages,
-          requestMock,
-          hostContext().copy(regime = Some("itsa"))
+      "disableSessionExpired has default(false) value" in new TestCase {
+        val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(
+          content = content,
+          title = title,
+          displaySignOutLink = false
         )
 
-      result.toString must include(
-        s"<title>$title – Sign up for Making Tax Digital for Income Tax – GOV.UK</title>"
-      )
+        val viewDoc: Document = Jsoup.parse(result.toString)
+
+        result.toString must not include "Sign out"
+        result.toString must include("Back")
+        result.toString must include("<h1>")
+
+        shouldContainTimeOutDialogDetails(viewDoc)
+      }
     }
+
+    "build the page title" when {
+      "appendServiceName is not set" in new TestCase {
+        val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(content, title)
+
+        result.toString must include(s"<title>$title</title>")
+      }
+
+      "appendServiceName is false and the regime is itsa" in new TestCase {
+        val result: HtmlFormat.Appendable =
+          layoutProvider.layoutProvider(content, title, appendServiceName = false)(
+            messages,
+            requestMock,
+            hostContext().copy(regime = Some("itsa"))
+          )
+
+        result.toString must include(s"<title>$title</title>")
+      }
+
+      "appendServiceName is true and there is no regime" in new TestCase {
+        val result: HtmlFormat.Appendable =
+          layoutProvider.layoutProvider(content, title, appendServiceName = true)
+
+        result.toString must include(s"<title>$title – GOV.UK</title>")
+      }
+
+      "appendServiceName is true and the regime is itsa" in new TestCase {
+        val result: HtmlFormat.Appendable =
+          layoutProvider.layoutProvider(content, title, appendServiceName = true)(
+            messages,
+            requestMock,
+            hostContext().copy(regime = Some("itsa"))
+          )
+
+        result.toString must include(
+          s"<title>$title – Sign up for Making Tax Digital for Income Tax – GOV.UK</title>"
+        )
+      }
+    }
+
+    def shouldNotContainTimeOutDialogDetails(viewDoc: Document) =
+      viewDoc.getElementsByAttributeValueContaining("name", "hmrc-timeout-dialog").size() mustBe 0
+
+    def shouldContainTimeOutDialogDetails(viewDoc: Document) =
+      viewDoc.getElementsByAttributeValueContaining("name", "hmrc-timeout-dialog").size() mustBe 1
   }
 
   trait TestCase {

@@ -34,7 +34,8 @@ trait LayoutProvider {
     title: String,
     showBackLinkJS: Boolean = true,
     displaySignOutLink: Boolean = true,
-    appendServiceName: Boolean = false
+    appendServiceName: Boolean = false,
+    disableSessionExpired: Boolean = false
   )(implicit
     messages: Messages,
     request: AuthenticatedRequest[?],
@@ -53,7 +54,8 @@ trait LayoutProvider {
       hideMenuBar = true,
       backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
       fullWidth = false,
-      serviceNameKey = serviceNameKey
+      serviceNameKey = serviceNameKey,
+      disableSessionExpired = disableSessionExpired
     )
   }
 }
