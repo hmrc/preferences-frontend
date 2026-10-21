@@ -38,6 +38,7 @@ class TimeoutControllerSpec extends SpecBase {
 
       viewContent must include(messagesInEnglish("session.timeout.heading"))
       viewContent must not include "Back"
+      viewContent must not include "Sign out"
     }
   }
 

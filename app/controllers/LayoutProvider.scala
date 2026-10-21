@@ -29,7 +29,7 @@ import views.ViewHelper
 trait LayoutProvider {
   def wrapperService: WrapperService
   def appConfig: AppConfig
-  def layoutProvider(content: Html, title: String, showBackLinkJS: Boolean = true, appendServiceName: Boolean = false)(
+  def layoutProvider(content: Html, title: String, showBackLinkJS: Boolean = true, displaySignOutLink: Boolean = true, appendServiceName: Boolean = false)(
     implicit
     messages: Messages,
     request: AuthenticatedRequest[?],
@@ -43,7 +43,7 @@ trait LayoutProvider {
       pageTitle = Some(pageTitle),
       serviceURLs = ServiceURLs(
         serviceUrl = hostContext.serviceUrl,
-        signOutUrl = Some(appConfig.signOutUrl(Option(hostContext.returnUrl)))
+        signOutUrl = if (displaySignOutLink) Some(appConfig.signOutUrl(Option(hostContext.returnUrl))) else None
       ),
       hideMenuBar = true,
       backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
