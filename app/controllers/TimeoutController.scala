@@ -41,7 +41,8 @@ class TimeoutController @Inject() (
 
   def timeout: Action[AnyContent] =
     Action.async { implicit request =>
-      implicit val hostContext: HostContext = new HostContext(returnUrl = "", returnLinkText = "", regime = Some("itsa"))
+      implicit val hostContext: HostContext =
+        new HostContext(returnUrl = "", returnLinkText = "", regime = Some("itsa"))
       implicit val authRequest: AuthenticatedRequest[AnyContent] = AuthenticatedRequest(request, None, None, None, None)
 
       Ok(

@@ -29,8 +29,13 @@ import views.ViewHelper
 trait LayoutProvider {
   def wrapperService: WrapperService
   def appConfig: AppConfig
-  def layoutProvider(content: Html, title: String, showBackLinkJS: Boolean = true, displaySignOutLink: Boolean = true, appendServiceName: Boolean = false)(
-    implicit
+  def layoutProvider(
+    content: Html,
+    title: String,
+    showBackLinkJS: Boolean = true,
+    displaySignOutLink: Boolean = true,
+    appendServiceName: Boolean = false
+  )(implicit
     messages: Messages,
     request: AuthenticatedRequest[?],
     hostContext: model.HostContext
