@@ -19,6 +19,8 @@ package controllers
 import config.AppConfig
 import controllers.auth.AuthenticatedRequest
 import model.HostContext
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import play.api.libs.typedmap.TypedMap
 import play.api.mvc.{ AnyContentAsEmpty, RequestHeader }
 import play.api.test.FakeRequest
@@ -51,7 +53,46 @@ class LayoutProviderSpec extends SpecBase {
         result.toString must include("Back")
         result.toString must include("<h1>")
       }
+
+      "disableSessionExpired is true" in new TestCase {
+        val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(
+          content = content,
+          title = title,
+          displaySignOutLink = false,
+          disableSessionExpired = true
+        )
+
+        val viewDoc: Document = Jsoup.parse(result.toString)
+
+        result.toString must not include "Sign out"
+        result.toString must include("Back")
+        result.toString must include("<h1>")
+
+        shouldNotContainTimeOutDialogDetails(viewDoc)
+      }
+
+      "disableSessionExpired has default(false) value" in new TestCase {
+        val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(
+          content = content,
+          title = title,
+          displaySignOutLink = false
+        )
+
+        val viewDoc: Document = Jsoup.parse(result.toString)
+
+        result.toString must not include "Sign out"
+        result.toString must include("Back")
+        result.toString must include("<h1>")
+
+        shouldContainTimeOutDialogDetails(viewDoc)
+      }
     }
+
+    def shouldNotContainTimeOutDialogDetails(viewDoc: Document) =
+      viewDoc.getElementsByAttributeValueContaining("name", "hmrc-timeout-dialog").size() mustBe 0
+
+    def shouldContainTimeOutDialogDetails(viewDoc: Document) =
+      viewDoc.getElementsByAttributeValueContaining("name", "hmrc-timeout-dialog").size() mustBe 1
   }
 
   trait TestCase {

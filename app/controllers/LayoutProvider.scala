@@ -28,8 +28,13 @@ import views.ViewHelper
 trait LayoutProvider {
   def wrapperService: WrapperService
   def appConfig: AppConfig
-  def layoutProvider(content: Html, title: String, showBackLinkJS: Boolean = true, displaySignOutLink: Boolean = true)(
-    implicit
+  def layoutProvider(
+    content: Html,
+    title: String,
+    showBackLinkJS: Boolean = true,
+    displaySignOutLink: Boolean = true,
+    disableSessionExpired: Boolean = false
+  )(implicit
     messages: Messages,
     request: AuthenticatedRequest[?],
     hostContext: model.HostContext
@@ -44,6 +49,7 @@ trait LayoutProvider {
       hideMenuBar = true,
       backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
       fullWidth = false,
-      serviceNameKey = ViewHelper.serviceName(Some("service.name"), hostContext.regime)
+      serviceNameKey = ViewHelper.serviceName(Some("service.name"), hostContext.regime),
+      disableSessionExpired = disableSessionExpired
     )
 }
