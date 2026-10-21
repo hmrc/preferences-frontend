@@ -98,10 +98,10 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
         .text() mustBe "Your responsibilities if you choose online"
       document
         .getElementById("online-para-3")
-        .text() mustBe "1. Sign in to read Because email cannot include personal information, you need to sign in to HMRC online for the details."
+        .text() mustBe "Sign in to read Because email cannot include personal information, you need to sign in to HMRC online for the details."
       document
         .getElementById("online-para-4")
-        .text() mustBe "2. Take action Some online tax letters need you to act, such as reminders to file a return, or to pay penalties. Others are for information, such as changes to your personal tax code. View all online tax letters HMRC can send"
+        .text() mustBe "Take action Some online tax letters need you to act, such as reminders to file a return, or to pay penalties. Others are for information, such as changes to your personal tax code. View all online tax letters HMRC can send"
       document.getElementsByTag("a").get(0).text() mustBe "View all online tax letters HMRC can send"
       document.getElementsByClass("govuk-radios__label").get(1).text() mustBe "By post only"
       document.getElementsByAttributeValue("name", "submitButton").text() mustBe "Continue"
@@ -119,7 +119,7 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
       val h3Tag: Elements = document.getElementsByTag("h3")
       val h3HeadingValue = h3Tag.get(0).getElementsByClass("govuk-heading-m")
 
-      h3HeadingValue.text() mustBe "1. Sign in to read"
+      h3HeadingValue.text() mustBe "Sign in to read"
 
       val radioButtonHeading = h2Tag.get(1).getElementsByClass("govuk-heading-l")
 
@@ -190,10 +190,10 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
         .text() mustBe "Eich cyfrifioldebau os dewiswch gael llythyrau ar-lein"
       document
         .getElementById("online-para-3")
-        .text() mustBe "1. Mewngofnodi i’w darllen Oherwydd na all e-bost gynnwys gwybodaeth bersonol, bydd angen i chi fewngofnodi i CThEM ar-lein i gael y manylion."
+        .text() mustBe "Mewngofnodi i’w darllen Oherwydd na all e-bost gynnwys gwybodaeth bersonol, bydd angen i chi fewngofnodi i CThEM ar-lein i gael y manylion."
       document
         .getElementById("online-para-4")
-        .text() mustBe "2. Cymryd camau Mae rhai llythyrau treth ar-lein yn gofyn i chi weithredu, megis llythyrau yn eich atgoffa i gyflwyno Ffurflen Dreth neu dalu cosbau. Mae eraill er gwybodaeth, megis newidiadau i’ch cod treth personol. Ewch ati i fwrw golwg dros yr holl lythyrau treth ar-lein y gall CThEM eu hanfon"
+        .text() mustBe "Cymryd camau Mae rhai llythyrau treth ar-lein yn gofyn i chi weithredu, megis llythyrau yn eich atgoffa i gyflwyno Ffurflen Dreth neu dalu cosbau. Mae eraill er gwybodaeth, megis newidiadau i’ch cod treth personol. Ewch ati i fwrw golwg dros yr holl lythyrau treth ar-lein y gall CThEM eu hanfon"
       document
         .getElementsByTag("a")
         .get(0)
@@ -214,7 +214,7 @@ class ReadOnlyIPage56Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
       val h3Tag: Elements = document.getElementsByTag("h3")
       val h3HeadingValue = h3Tag.get(0).getElementsByClass("govuk-heading-m")
 
-      h3HeadingValue.text() mustBe "1. Mewngofnodi i’w darllen"
+      h3HeadingValue.text() mustBe "Mewngofnodi i’w darllen"
 
       val radioButtonHeading = h2Tag.get(1).getElementsByClass("govuk-heading-l")
 

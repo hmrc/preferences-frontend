@@ -32,14 +32,15 @@
  <p id="online-para-1" class="govuk-body">@Messages("i_page56.fg_page.yes_send_email_info_1")</p>
 
  <h2 id="online-para-2" class="govuk-heading-l">@Messages("i_page56.fg_page.yes_send_email_info_2")</h2>
- <ol class="govuk-list">
-    <li id="online-para-3" class="govuk-!-margin-bottom-4"><h3 class="govuk-heading-m">@Messages("i_page56.fg_page.yes_send_email_info_3")</h3>
-      @Messages("i_page56.fg_page.yes_send_email_info_4")</li>
-    <li id="online-para-4"><h3 class="govuk-heading-m">@Messages("i_page56.fg_page.yes_send_email_info_5")</h3>
-      @Messages("i_page56.fg_page.yes_send_email_info_6")
-      <a class="govuk-link" href="@controllers.internal.routes.ManagePaperlessController.displayTypesOfDigitalTaxLetters(hostContext)">@Messages("i_page56.fg_page.message.types")</a>
-    </li>
- </ol>
+    <div id="online-para-3" class="govuk-!-margin-bottom-4">
+        <h3 class="govuk-heading-m">@Messages("i_page56.fg_page.yes_send_email_info_3")</h3>
+        <p class="govuk-body govuk-!-margin-bottom-0">@Messages("i_page56.fg_page.yes_send_email_info_4")</p>
+    </div>
+    <div id="online-para-4" class="govuk-!-margin-bottom-4">
+        <h3 class="govuk-heading-m">@Messages("i_page56.fg_page.yes_send_email_info_5")</h3>
+        <p class="govuk-body govuk-!-margin-bottom-0">@Messages("i_page56.fg_page.yes_send_email_info_6")
+            <a class="govuk-link" href="@controllers.internal.routes.ManagePaperlessController.displayTypesOfDigitalTaxLetters(hostContext)">@Messages("i_page56.fg_page.message.types")</a></p>
+    </div>
 }
 
   @if(optinForm.hasErrors) {
