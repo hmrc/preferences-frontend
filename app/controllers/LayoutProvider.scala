@@ -23,6 +23,7 @@ import play.twirl.api.{ Html, HtmlFormat }
 import uk.gov.hmrc.hmrcfrontend.views.viewmodels.hmrcstandardpage.ServiceURLs
 import uk.gov.hmrc.sca.config.BackLinkConfig
 import uk.gov.hmrc.sca.services.WrapperService
+import util.PageTitle
 import views.ViewHelper
 
 trait LayoutProvider {
@@ -33,15 +34,19 @@ trait LayoutProvider {
     title: String,
     showBackLinkJS: Boolean = true,
     displaySignOutLink: Boolean = true,
+    appendServiceName: Boolean = false,
     disableSessionExpired: Boolean = false
   )(implicit
     messages: Messages,
     request: AuthenticatedRequest[?],
     hostContext: model.HostContext
-  ): HtmlFormat.Appendable =
+  ): HtmlFormat.Appendable = {
+    val serviceNameKey = ViewHelper.serviceName(Some("service.name"), hostContext.regime)
+    val pageTitle =
+      if (appendServiceName) PageTitle(Messages(title), serviceNameKey.map(Messages(_))) else Messages(title)
     wrapperService.standardScaLayout(
       content = content,
-      pageTitle = Some(Messages(title)),
+      pageTitle = Some(pageTitle),
       serviceURLs = ServiceURLs(
         serviceUrl = hostContext.serviceUrl,
         signOutUrl = if (displaySignOutLink) Some(appConfig.signOutUrl(Option(hostContext.returnUrl))) else None
@@ -49,7 +54,8 @@ trait LayoutProvider {
       hideMenuBar = true,
       backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
       fullWidth = false,
-      serviceNameKey = ViewHelper.serviceName(Some("service.name"), hostContext.regime),
+      serviceNameKey = serviceNameKey,
       disableSessionExpired = disableSessionExpired
     )
+  }
 }

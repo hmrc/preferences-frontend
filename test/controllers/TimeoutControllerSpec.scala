@@ -52,4 +52,17 @@ class TimeoutControllerSpec extends SpecBase {
       status(result) mustBe NO_CONTENT
     }
   }
+
+  "page title matching the H1 with the service name and GOV.UK" in {
+    val request: FakeRequest[AnyContentAsEmpty.type] =
+      fakeRequest(GET, routes.TimeoutController.timeout().url)
+
+    val result: Future[Result] = route(app, request).get
+
+    status(result) mustBe OK
+    contentAsString(result) must include(
+      s"${messagesInEnglish("session.timeout.heading")} – " +
+        s"${messagesInEnglish("sa_printing_preference_svc_name_itsa")} – GOV.UK</title>"
+    )
+  }
 }

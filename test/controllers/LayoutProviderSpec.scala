@@ -88,6 +88,45 @@ class LayoutProviderSpec extends SpecBase {
       }
     }
 
+    "build the page title" when {
+      "appendServiceName is not set" in new TestCase {
+        val result: HtmlFormat.Appendable = layoutProvider.layoutProvider(content, title)
+
+        result.toString must include(s"<title>$title</title>")
+      }
+
+      "appendServiceName is false and the regime is itsa" in new TestCase {
+        val result: HtmlFormat.Appendable =
+          layoutProvider.layoutProvider(content, title, appendServiceName = false)(
+            messages,
+            requestMock,
+            hostContext().copy(regime = Some("itsa"))
+          )
+
+        result.toString must include(s"<title>$title</title>")
+      }
+
+      "appendServiceName is true and there is no regime" in new TestCase {
+        val result: HtmlFormat.Appendable =
+          layoutProvider.layoutProvider(content, title, appendServiceName = true)
+
+        result.toString must include(s"<title>$title – GOV.UK</title>")
+      }
+
+      "appendServiceName is true and the regime is itsa" in new TestCase {
+        val result: HtmlFormat.Appendable =
+          layoutProvider.layoutProvider(content, title, appendServiceName = true)(
+            messages,
+            requestMock,
+            hostContext().copy(regime = Some("itsa"))
+          )
+
+        result.toString must include(
+          s"<title>$title – Sign up for Making Tax Digital for Income Tax – GOV.UK</title>"
+        )
+      }
+    }
+
     def shouldNotContainTimeOutDialogDetails(viewDoc: Document) =
       viewDoc.getElementsByAttributeValueContaining("name", "hmrc-timeout-dialog").size() mustBe 0
 
