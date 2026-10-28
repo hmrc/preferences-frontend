@@ -68,28 +68,6 @@ object OptInCohort {
   }
 }
 
-object IPage7 extends OptInCohort {
-  override val id: Int = 7
-  override val name: String = "IPage7"
-  override val terms: TermsType = GenericTerms
-  override val pageType: PageType = PageType.IPage
-  override val majorVersion: Int = 0
-  override val minorVersion: Int = 0
-  override val description: String = ""
-  override val date: LocalDate = LocalDate.parse("2020-05-12")
-}
-
-object IPage8 extends OptInCohort {
-  override val id: Int = 8
-  override val name: String = "IPage8"
-  override val terms: TermsType = GenericTerms
-  override val pageType: PageType = PageType.IPage
-  override val majorVersion: Int = 1
-  override val minorVersion: Int = 0
-  override val description: String = "SOL changes to wording to improve litigation cases"
-  override val date: LocalDate = LocalDate.parse("2020-05-12")
-}
-
 object ReOptInPage10 extends OptInCohort {
   override val id: Int = 10
   override val name: String = "ReOptInPage10"
@@ -562,17 +540,6 @@ object IosReOptOutPage51 extends OptInCohort {
   override val date: LocalDate = LocalDate.parse("2020-08-01")
 }
 // end of Ios 1.3 ///////////////////////////////////////////////////////
-object IPage53 extends OptInCohort {
-  override val id: Int = 53
-  override val name: String = "IPage53"
-  override val terms: TermsType = GenericTerms
-  override val pageType: PageType = PageType.IPage
-  override val majorVersion: Int = 1
-  override val minorVersion: Int = 1
-  override val description: String = "SOL changes to wording to improve litigation cases"
-  override val date: LocalDate = LocalDate.parse("2021-03-31")
-  override val journeyType: Option[JourneyType] = Some(MultiPage1)
-}
 
 object IPage56 extends OptInCohort {
   override val id: Int = 56

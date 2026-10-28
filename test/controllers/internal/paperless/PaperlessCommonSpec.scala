@@ -21,7 +21,7 @@ import connectors.{ EntityResolverConnector, PreferencesConnector }
 import controllers.PageIdentifier.*
 import controllers.{ PageIdentifier, REGIME_ITSA }
 import controllers.auth.AuthenticatedRequest
-import controllers.internal.{ IPage53, IPage56, IPage7, IPage8, IosReOptOutPage51, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55 }
+import controllers.internal.{ IPage56, IosReOptOutPage51, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55 }
 import model.HostContext
 import play.api.Configuration
 import play.api.i18n.MessagesApi
@@ -41,21 +41,6 @@ class PaperlessCommonSpec extends SpecBase {
   "cohortToTitle" should {
 
     "return correct title" when {
-      "cohort is IPage7" in new Setup {
-        paperlessCommon.cohortToTitle(IPage7) must be("i_page7.fg_page.title")
-      }
-
-      "cohort is IPage8" in new Setup {
-        paperlessCommon.cohortToTitle(IPage8) must be("i_page8.fg_page.title")
-      }
-
-      "cohort is IPage53 and page has no error" in new Setup {
-        paperlessCommon.cohortToTitle(IPage53) must be("i_page53.fg_page.title")
-      }
-
-      "cohort is IPage53 and page has error" in new Setup {
-        paperlessCommon.cohortToTitle(IPage53, true) must be("i_page53.fg_page.title.error")
-      }
 
       "cohort is IPage56, regime is itsa and page has no error" in new Setup {
         paperlessCommon.cohortToTitle(IPage56, false, REGIME_ITSA) must be("i_page56.fg_page.itsa.title")

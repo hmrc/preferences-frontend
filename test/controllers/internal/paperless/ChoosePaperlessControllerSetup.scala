@@ -17,7 +17,7 @@
 package controllers.internal.paperless
 
 import controllers.AuthRetrievalsSetup
-import controllers.internal.{ CohortCurrent, IPage53, OptInCohort }
+import controllers.internal.{ CohortCurrent, IPage56, OptInCohort }
 import play.api.mvc.AnyContentAsEmpty
 import play.api.test.FakeRequest
 import uk.gov.hmrc.auth.core.{ AffinityGroup, ConfidenceLevel }
@@ -32,5 +32,5 @@ trait ChoosePaperlessControllerSetup extends AuthRetrievalsSetup {
   val request: FakeRequest[AnyContentAsEmpty.type] = FakeRequest()
 
   def assignedCohort: OptInCohort = CohortCurrent.ipage
-  def cohort53: OptInCohort = IPage53
+  def cohort56: OptInCohort = IPage56
 }

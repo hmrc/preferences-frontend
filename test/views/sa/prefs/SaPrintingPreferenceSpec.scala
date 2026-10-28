@@ -17,7 +17,7 @@
 package views.sa.prefs
 
 import connectors.{ GenericTerms, TermsType }
-import controllers.internal.{ CYSConfirmPage47, EmailForm, IPage53, IPage56, IPage7, IPage8, OptInCohort, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55, routes }
+import controllers.internal.{ CYSConfirmPage47, EmailForm, IPage56, OptInCohort, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55, routes }
 import model.JourneyType.MultiPage2
 import model.{ HostContext, JourneyType, PageType }
 import org.jsoup.Jsoup
@@ -35,44 +35,6 @@ class SaPrintingPreferenceSpec extends SpecBase {
 
   "view" should {
     "render correct contents" when {
-
-      "cohort is IPage7" in new Setup {
-        val viewDocIPage7: Document = viewDocument(IPage7)
-
-        viewDocIPage7.getElementById("message-after-email-input-para-1").html() mustBe messages(
-          "i_page7.fg_page.yes_send_email_info_1"
-        )
-
-        viewDocIPage7.getElementById("message-after-email-input").html() mustBe messages(
-          "i_page7.fg_page.yes_send_email_info_2"
-        )
-      }
-
-      "cohort is IPage8" in new Setup {
-        val viewDocIPage8: Document = viewDocument(IPage8)
-
-        viewDocIPage8.getElementById("message-after-email-input-para-1").html() mustBe messages(
-          "i_page8.fg_page.yes_send_email_info_1"
-        )
-
-        viewDocIPage8.getElementById("message-after-email-input").html() mustBe messages(
-          "i_page8.fg_page.yes_send_email_info_2"
-        )
-      }
-
-      "cohort is IPage53" in new Setup {
-        val viewDocIPage53: Document = viewDocument(IPage53)
-
-        viewDocIPage53.getElementById("online-para-1").html() mustBe messages(
-          "i_page53.fg_page.yes_send_email_info_1"
-        )
-
-        viewDocIPage53.getElementById("online-para-2").html() mustBe messages(
-          "i_page53.fg_page.yes_send_email_info_2"
-        )
-
-        val uiElements: Elements = viewDocIPage53.getElementsByClass("govuk-list govuk-list--bullet")
-      }
 
       "cohort is IPage56" in new Setup {
         val viewDocIPage56: Document = viewDocument(IPage56)

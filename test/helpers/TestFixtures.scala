@@ -16,8 +16,7 @@
 
 package helpers
 
-import controllers.internal.ReOptInPage10
-import controllers.internal.IPage8
+import controllers.internal.{ IPage56, ReOptInPage10 }
 import model.HostContext
 
 object TestFixtures {
@@ -68,14 +67,14 @@ object TestFixtures {
       returnUrl = "someReturnUrl",
       returnLinkText = "someReturnLinkText",
       email = Some(email),
-      cohort = Some(IPage8)
+      cohort = Some(IPage56)
     )
 
   def optinHostContext() =
     HostContext(
       returnUrl = "someReturnUrl",
       returnLinkText = "someReturnLinkText",
-      cohort = Some(IPage8)
+      cohort = Some(IPage56)
     )
 
 }
