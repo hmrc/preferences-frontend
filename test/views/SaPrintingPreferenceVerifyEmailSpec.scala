@@ -36,7 +36,7 @@ class SaPrintingPreferenceVerifyEmailSpec
       val email = "a@a.com"
 
       val document = Jsoup.parse(
-        template(email, OptInCohort.fromId(8).get, Call("GET", "/"), "redirectUrl")(
+        template(email, OptInCohort.fromId(56).get, Call("GET", "/"), "redirectUrl")(
           engRequest,
           messagesInEnglish(),
           TestFixtures.sampleHostContext
@@ -50,7 +50,7 @@ class SaPrintingPreferenceVerifyEmailSpec
       val email = "a@a.com"
 
       val document = Jsoup.parse(
-        template(email, OptInCohort.fromId(8).get, Call("GET", "/"), "redirectUrl")(
+        template(email, OptInCohort.fromId(56).get, Call("GET", "/"), "redirectUrl")(
           welshRequest,
           messagesInWelsh(),
           TestFixtures.sampleHostContext
