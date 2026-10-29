@@ -16,7 +16,7 @@
 
 package views
 
-import controllers.internal.IPage7
+import controllers.internal.IPage56
 import helpers.TestFixtures
 import model.HostContext
 import org.jsoup.Jsoup
@@ -40,7 +40,7 @@ class AccountDetailsPrintingPreferenceConfirmSpec extends SpecBase {
 
       implicit val hostContext: HostContext = TestFixtures.sampleHostContext
 
-      val viewHtml: Document = Jsoup.parse(view.apply(IPage7, Some(EmailAddress("test@gmail.com"))).body)
+      val viewHtml: Document = Jsoup.parse(view.apply(IPage56, Some(EmailAddress("test@gmail.com"))).body)
 
       viewHtml.getElementsByTag("h1").html() mustBe messages("sa_printing_preference_confirm.heading")
 

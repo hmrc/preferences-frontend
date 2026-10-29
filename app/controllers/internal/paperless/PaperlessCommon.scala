@@ -63,10 +63,6 @@ trait PaperlessCommon extends LayoutProvider with I18nSupport {
   // scalastyle:off cyclomatic.complexity
   def cohortToTitle(cohort: OptInCohort, hasError: Boolean = false, regime: String = EMPTY_STRING): String =
     cohort match {
-      case IPage7                                       => "i_page7.fg_page.title"
-      case IPage8                                       => "i_page8.fg_page.title"
-      case IPage53 if hasError                          => "i_page53.fg_page.title.error"
-      case IPage53                                      => "i_page53.fg_page.title"
       case IPage56 if hasError && regime == REGIME_ITSA => "i_page56.fg_page.itsa.title.error"
       case IPage56 if hasError                          => "i_page56.fg_page.title.error"
       case IPage56 if regime == REGIME_ITSA             => "i_page56.fg_page.itsa.title"

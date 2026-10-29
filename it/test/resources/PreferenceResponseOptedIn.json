@@ -2,7 +2,7 @@
     "termsAndConditions": {
         "generic": {
             "accepted": true,
-            "majorVersion": 0,
+            "majorVersion": 1,
             "paperless": false
         }
     },
