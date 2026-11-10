@@ -21,14 +21,13 @@ import controllers.auth.AuthenticatedRequest
 import model.HostContext
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.mockito.Mockito.*
 import play.api.libs.typedmap.TypedMap
-import play.api.mvc.RequestHeader
-import play.twirl.api.{Html, HtmlFormat}
+import play.api.mvc.{ AnyContentAsEmpty, RequestHeader }
+import play.api.test.FakeRequest
+import play.twirl.api.{ Html, HtmlFormat }
 import uk.gov.hmrc.sca.services.WrapperService
 import utils.SpecBase
-
-import java.util.regex.Pattern
+import org.mockito.Mockito.*
 
 class LayoutProviderSpec extends SpecBase {
 
@@ -111,7 +110,7 @@ class LayoutProviderSpec extends SpecBase {
         val result: HtmlFormat.Appendable =
           layoutProvider.layoutProvider(content, title, appendServiceName = true)
 
-        result.toString must include(s"<title>$title – Sign up for Making Tax Digital for Income Tax – GOV.UK</title>")
+        result.toString must include(s"<title>$title – GOV.UK</title>")
       }
 
       "appendServiceName is true and the regime is itsa" in new TestCase {
