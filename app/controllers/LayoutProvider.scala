@@ -16,20 +16,22 @@
 
 package controllers
 
+import com.google.inject.Inject
 import config.AppConfig
 import controllers.auth.AuthenticatedRequest
 import play.api.i18n.Messages
 import play.twirl.api.{ Html, HtmlFormat }
 import uk.gov.hmrc.hmrcfrontend.views.viewmodels.hmrcstandardpage.ServiceURLs
 import uk.gov.hmrc.sca.config.BackLinkConfig
-import uk.gov.hmrc.sca.services.WrapperService
 import util.PageTitle
 import views.ViewHelper
 
-trait LayoutProvider {
-  def wrapperService: WrapperService
-  def appConfig: AppConfig
-  def layoutProvider(
+class LayoutProvider @Inject() (
+  dynamicSigninWrapperServiceFactory: DynamicSigninWrapperServiceFactory,
+  appConfig: AppConfig
+) {
+
+  def provideLayout(
     content: Html,
     title: String,
     showBackLinkJS: Boolean = true,
@@ -42,20 +44,30 @@ trait LayoutProvider {
     hostContext: model.HostContext
   ): HtmlFormat.Appendable = {
     val serviceNameKey = ViewHelper.serviceName(Some("service.name"), hostContext.regime)
+
     val pageTitle =
-      if (appendServiceName) PageTitle(Messages(title), serviceNameKey.map(Messages(_))) else Messages(title)
-    wrapperService.standardScaLayout(
-      content = content,
-      pageTitle = Some(pageTitle),
-      serviceURLs = ServiceURLs(
-        serviceUrl = hostContext.serviceUrl,
-        signOutUrl = if (displaySignOutLink) Some(appConfig.signOutUrl(Option(hostContext.returnUrl))) else None
-      ),
-      hideMenuBar = true,
-      backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
-      fullWidth = false,
-      serviceNameKey = serviceNameKey,
-      disableSessionExpired = disableSessionExpired
-    )
+      if (appendServiceName)
+        PageTitle(Messages(title), serviceNameKey.map(Messages(_)))
+      else
+        Messages(title)
+
+    val wrapperService = dynamicSigninWrapperServiceFactory
+      .createDynamicSignInWrapperService(hostContext)
+
+    wrapperService
+      .standardScaLayout(
+        content = content,
+        pageTitle = Some(pageTitle),
+        serviceURLs = ServiceURLs(
+          serviceUrl = hostContext.serviceUrl,
+          signOutUrl = if (displaySignOutLink) Some(appConfig.signOutUrl(Option(hostContext.returnUrl))) else None
+        ),
+        hideMenuBar = true,
+        backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
+        fullWidth = false,
+        serviceNameKey = serviceNameKey,
+        disableSessionExpired = disableSessionExpired
+      )
   }
+
 }

@@ -85,4 +85,4 @@ GET         /paperless/opt-in-cohort/list                       controllers.inte
 GET         /paperless/types-of-digital-message                 controllers.internal.ManagePaperlessController.displayTypesOfDigitalTaxLetters(hostContext: model.HostContext)
 
 GET         /session/keep-alive                                 controllers.TimeoutController.keepAliveSession()
-GET         /paperless/timeout                                  controllers.TimeoutController.timeout()
+GET         /paperless/timeout                                  controllers.TimeoutController.timeout(timeoutHostContext: model.TimeoutHostContext)

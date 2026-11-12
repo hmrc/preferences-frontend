@@ -18,13 +18,14 @@ package controllers.internal.paperless
 
 import config.AppConfig
 import connectors.*
+import controllers.PageIdentifier.OptOutConfirmation
 import controllers.auth.{ AuthenticatedRequest, WithAuthRetrievals }
+import controllers.internal.*
 import controllers.internal.EmailOptInJourney.*
 import controllers.internal.PaperlessChoice.OptedIn
-import controllers.internal.*
-import controllers.{ EMPTY_STRING, LayoutProvider, PageIdentifier, internal }
-import model.JourneyType.{ MultiPage1, MultiPage2 }
+import controllers.{ EMPTY_STRING, LayoutProvider, internal }
 import model.*
+import model.JourneyType.{ MultiPage1, MultiPage2 }
 import play.api.data.{ Form, FormBinding }
 import play.api.i18n.I18nSupport
 import play.api.libs.json.*
@@ -39,8 +40,6 @@ import uk.gov.hmrc.play.audit.http.connector.{ AuditConnector, AuditResult }
 import uk.gov.hmrc.play.audit.model.{ DataCall, EventTypes, MergedDataEvent }
 import uk.gov.hmrc.play.bootstrap.config.AppName
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import uk.gov.hmrc.sca.services.WrapperService
-import PageIdentifier.OptOutConfirmation
 
 import java.time.Instant
 import javax.inject.Inject
@@ -50,7 +49,6 @@ class ChoosePaperlessController @Inject() (
   val entityResolverConnector: EntityResolverConnector,
   val preferencesConnector: PreferencesConnector,
   val precheckService: PreCheckService,
-  val wrapperService: WrapperService,
   val appConfig: AppConfig,
   emailValidation: EmailAddressValidation,
   val auditConnector: AuditConnector,
@@ -61,10 +59,11 @@ class ChoosePaperlessController @Inject() (
   accountDetailsPrintingPreferenceConfirm: views.html.account_details_printing_preference_confirm,
   saOptOutConfirmation: views.html.sa.prefs.sa_printing_preference_sa_opt_out_confirmation,
   changeLanguage: views.html.change_language,
-  mcc: MessagesControllerComponents
+  mcc: MessagesControllerComponents,
+  val layoutProvider: LayoutProvider
 )(implicit val ec: ExecutionContext)
-    extends FrontendController(mcc) with OptInCohortCalculator with LayoutProvider with I18nSupport
-    with WithAuthRetrievals with LanguageHelper with PaperlessCommon {
+    extends FrontendController(mcc) with OptInCohortCalculator with I18nSupport with WithAuthRetrievals
+    with LanguageHelper with PaperlessCommon {
 
   val logger: Logger = Logger(this.getClass)
   def redirectToDisplayFormWithCohort(
@@ -115,7 +114,7 @@ class ChoosePaperlessController @Inject() (
                 implicit val hostContextImpl: HostContext = hostContext
                 hasStoredEmail(hostContext).map { emailAlreadyStored =>
                   Ok(
-                    layoutProvider(
+                    layoutProvider.provideLayout(
                       content = saPrintingPreference(
                         emailForm = form(emailAlreadyStored, cohort, email),
                         submitPrefsFormAction =
@@ -168,7 +167,7 @@ class ChoosePaperlessController @Inject() (
         implicit val hostContext: HostContext = new HostContext(returnUrl = "", returnLinkText = "")
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = saPrintingPreference(
                 emailForm = form,
                 submitPrefsFormAction = internal.paperless.routes.ChoosePaperlessController.cohortNop(),
@@ -303,7 +302,7 @@ class ChoosePaperlessController @Inject() (
 
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = saOptOutConfirmation(
                 hostContext.isItsa,
                 internal.paperless.routes.ChoosePaperlessController.submitOptOutConfirmation(digital, hostContext)
@@ -372,7 +371,7 @@ class ChoosePaperlessController @Inject() (
     request: AuthenticatedRequest[?],
     hostContext: HostContext
   ) =
-    layoutProvider(
+    layoutProvider.provideLayout(
       content = saPrintingPreferenceVerifyEmail(
         emailAddress,
         cohort,
@@ -421,7 +420,7 @@ class ChoosePaperlessController @Inject() (
         implicit val hostContextImplicit: HostContext = hostContext
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = accountDetailsPrintingPreferenceConfirm(
                 calculateCohort(hostContext),
                 emailAddress.map(_.decryptedValue)
@@ -438,7 +437,7 @@ class ChoosePaperlessController @Inject() (
       withAuthenticatedRequest { implicit authRequest: AuthenticatedRequest[AnyContent] => implicit hc =>
         preferencesConnector.getPreferences() map { pref =>
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = changeLanguage(
                 languageForm =
                   LanguageForm().fill(LanguageForm.Data(language = pref.map(_.lang().exists(_ == Language.Welsh)))),
