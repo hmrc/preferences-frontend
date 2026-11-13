@@ -15,45 +15,56 @@
  */
 
 package controllers
-
 import config.AppConfig
 import controllers.auth.AuthenticatedRequest
-import play.api.mvc._
+import model.HostContext
+import play.api.i18n.I18nSupport
+import play.api.mvc.*
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
+import views.html.sessionTimeout
 
 import javax.inject.Inject
 import scala.concurrent.Future
-import views.html.sessionTimeout
-import play.api.i18n.I18nSupport
-import model.HostContext
-import uk.gov.hmrc.sca.services.WrapperService
 
 class TimeoutController @Inject() (
   mcc: MessagesControllerComponents,
   sessionTimeOutView: sessionTimeout,
-  val wrapperService: WrapperService,
-  val appConfig: AppConfig
-) extends FrontendController(mcc) with LayoutProvider with I18nSupport {
+  appConfig: AppConfig,
+  layoutProvider: LayoutProvider
+) extends FrontendController(mcc) with I18nSupport {
 
   implicit def toFuture(r: Result): Future[Result] = Future.successful(r)
 
   def keepAliveSession(): Action[AnyContent] = Action(NoContent)
 
-  def timeout: Action[AnyContent] =
+  def timeout(implicit timeoutHostContext: model.TimeoutHostContext): Action[AnyContent] =
     Action.async { implicit request =>
-      implicit val hostContext: HostContext =
-        new HostContext(returnUrl = "", returnLinkText = "", regime = Some("itsa"))
-      implicit val authRequest: AuthenticatedRequest[AnyContent] = AuthenticatedRequest(request, None, None, None, None)
 
-      Ok(
-        layoutProvider(
-          content = sessionTimeOutView(appConfig.signOutUrl(None)),
-          title = "session.timeout.heading",
-          showBackLinkJS = false,
-          displaySignOutLink = false,
-          appendServiceName = true,
-          disableSessionExpired = true
+      implicit val hostContext: HostContext =
+        new HostContext(
+          returnUrl = "",
+          returnLinkText = "",
+          regime = timeoutHostContext.regime,
+          serviceUrl = timeoutHostContext.serviceUrl
         )
+
+    implicit val authRequest: AuthenticatedRequest[AnyContent] = AuthenticatedRequest(
+      request = request,
+      previousLoginTime = None,
+      nino = None,
+      saUtr = None,
+      affinityGroup = None
+    )
+
+    Ok(
+      layoutProvider.provideLayout(
+        content = sessionTimeOutView(appConfig.signOutUrl(None)),
+        title = "session.timeout.heading",
+        showBackLinkJS = false,
+        displaySignOutLink = false,
+        appendServiceName = true,
+        disableSessionExpired = true
       )
+    )
     }
 }

@@ -18,11 +18,12 @@ package controllers.internal.paperless
 
 import config.AppConfig
 import connectors.{ EntityResolverConnector, OptInPage, PreferencesConnector, TermsAccepted, TermsAndConditionsUpdate }
+import controllers.PageIdentifier.{ OptInConfirmation, OptInMail }
 import controllers.auth.{ AuthenticatedRequest, WithAuthRetrievals }
+import controllers.internal.*
 import controllers.internal.EmailOptInJourney.AccountDetails
 import controllers.internal.PaperlessChoice.OptedOut
-import controllers.internal.*
-import controllers.{ EMPTY_STRING, LayoutProvider, PageIdentifier, REGIME_ITSA, internal }
+import controllers.{ EMPTY_STRING, LayoutProvider, internal }
 import model.{ HostContext, Language, SurveyType }
 import play.api.Configuration
 import play.api.data.FormBinding
@@ -33,8 +34,6 @@ import uk.gov.hmrc.auth.core.AuthConnector
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.audit.http.connector.AuditConnector
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import uk.gov.hmrc.sca.services.WrapperService
-import PageIdentifier.{ OptInConfirmation, OptInMail }
 
 import javax.inject.Inject
 import scala.concurrent.{ ExecutionContext, Future }
@@ -45,16 +44,15 @@ class OptInController @Inject() (
   val authConnector: AuthConnector,
   val auditConnector: AuditConnector,
   val configuration: Configuration,
-  val wrapperService: WrapperService,
   val appConfig: AppConfig,
   val saPrintingPreference: views.html.sa.prefs.sa_printing_preference,
   val precheckService: PreCheckService,
   saPrintingPreferenceOptinEmail: views.html.sa.prefs.sa_printing_preference_optin_email,
   saPrintingPreferenceOptinConfirmation: views.html.sa.prefs.sa_printing_preference_optin_confirmation,
-  mcc: MessagesControllerComponents
+  mcc: MessagesControllerComponents,
+  val layoutProvider: LayoutProvider
 )(implicit val ec: ExecutionContext)
-    extends FrontendController(mcc) with WithAuthRetrievals with LayoutProvider with LanguageHelper with I18nSupport
-    with PaperlessCommon {
+    extends FrontendController(mcc) with WithAuthRetrievals with LanguageHelper with I18nSupport with PaperlessCommon {
 
   def displayOptIn(hostContext: HostContext): Action[AnyContent] =
     Action.async { implicit request: MessagesRequest[AnyContent] =>
@@ -63,7 +61,7 @@ class OptInController @Inject() (
         implicit val hostContextImpl: HostContext = hostContext
         hasStoredEmail(hostContext).map { emailAlreadyStored =>
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = saPrintingPreference(
                 emailForm = OptInStartForm().fill(
                   OptInStartForm.Data(
@@ -101,7 +99,7 @@ class OptInController @Inject() (
             formwithErrors =>
               Future.successful(
                 BadRequest(
-                  layoutProvider(
+                  layoutProvider.provideLayout(
                     content = saPrintingPreferenceOptinEmail(
                       formwithErrors,
                       internal.paperless.routes.OptInController.submitOptInEmail(changeEmail, hostContext)
@@ -134,7 +132,7 @@ class OptInController @Inject() (
         implicit val hostContextImpl: HostContext = hostContext
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = saPrintingPreferenceOptinEmail(
                 OptInEmailForm().fill(hostContext.email.getOrElse(EMPTY_STRING)),
                 internal.paperless.routes.OptInController.submitOptInEmail(changeEmail, hostContext)
@@ -157,7 +155,7 @@ class OptInController @Inject() (
         implicit val hostContextImpl: HostContext = hostContext
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = saPrintingPreferenceOptinConfirmation(hostContext.email.getOrElse(EMPTY_STRING)),
               title = titleKeyForPageAndRegime(
                 pageIdentifier = OptInConfirmation,

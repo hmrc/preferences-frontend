@@ -17,11 +17,9 @@
 package controllers.internal
 
 import config.AppConfig
-import connectors._
+import connectors.*
 import controllers.LayoutProvider
 import controllers.auth.{ AuthenticatedRequest, WithAuthRetrievals }
-
-import javax.inject.Inject
 import model.{ Encrypted, HostContext, Language }
 import play.api.data.FormBinding
 import play.api.i18n.{ I18nSupport, Messages }
@@ -30,16 +28,15 @@ import uk.gov.hmrc.auth.core.AuthConnector
 import uk.gov.hmrc.emailaddress.{ EmailAddress, EmailAddressValidation }
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import uk.gov.hmrc.sca.services.WrapperService
-import views.html.manage._
+import views.html.manage.*
 
+import javax.inject.Inject
 import scala.concurrent.{ ExecutionContext, Future }
 
 class ManagePaperlessController @Inject() (
   preferencesConnector: PreferencesConnector,
   emailValidation: EmailAddressValidation,
   val authConnector: AuthConnector,
-  val wrapperService: WrapperService,
   val appConfig: AppConfig,
   optedBackIntoPaperThankYou: views.html.opted_back_into_paper_thank_you,
   accountDetailsVerificationEmailResentConfirmation: views.html.account_details_verification_email_resent_confirmation,
@@ -52,17 +49,18 @@ class ManagePaperlessController @Inject() (
   digitalTrueVerifiedFull: digital_true_verified_full,
   digitalTruePendingFull: digital_true_pending_full,
   typesOfTaxLetters: views.html.sa.prefs.cohorts.types_of_online_tax_letters,
-  mcc: MessagesControllerComponents
+  mcc: MessagesControllerComponents,
+  layoutProvider: LayoutProvider
 )(implicit ec: ExecutionContext)
-    extends FrontendController(mcc) with OptInCohortCalculator with LayoutProvider with I18nSupport
-    with WithAuthRetrievals with LanguageHelper {
+    extends FrontendController(mcc) with OptInCohortCalculator with I18nSupport with WithAuthRetrievals
+    with LanguageHelper {
 
   private[controllers] def displayStopPaperlessConfirmed(implicit
     request: AuthenticatedRequest[?],
     hostContext: HostContext
   ): Result =
     Ok(
-      layoutProvider(
+      layoutProvider.provideLayout(
         content = optedBackIntoPaperThankYou(),
         title = "opted.back.into.paperless.title"
       )
@@ -91,7 +89,7 @@ class ManagePaperlessController @Inject() (
         .changeEmailAddress(email)
         .map(_ =>
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = accountDetailsVerificationEmailResentConfirmation(email),
               title = "account.details.verification.email.title"
             )
@@ -108,7 +106,7 @@ class ManagePaperlessController @Inject() (
       val updatedHostContext = hostContext.copy(email = Some(email))
       Future.successful(
         Ok(
-          layoutProvider(
+          layoutProvider.provideLayout(
             content = confirmOptBackIntoPaper(email.obfuscated)(request, request2Messages(request), updatedHostContext),
             title = "account.opt.back.out.confirmation.title"
           )
@@ -123,7 +121,7 @@ class ManagePaperlessController @Inject() (
       val updatedHostContext = hostContext.copy(email = Some(email))
       Future.successful(
         Ok(
-          layoutProvider(
+          layoutProvider.provideLayout(
             content = accountDetailsUpdateEmailAddress(
               email,
               EmailForm().fill(EmailForm.Data(emailAddress.map(_.decryptedValue)))
@@ -156,7 +154,7 @@ class ManagePaperlessController @Inject() (
           errors =>
             Future.successful(
               BadRequest(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content = accountDetailsUpdateEmailAddress(email, errors),
                   title = "account.details.update.email.title"
                 )
@@ -177,7 +175,7 @@ class ManagePaperlessController @Inject() (
             } else
               Future.successful(
                 Ok(
-                  layoutProvider(
+                  layoutProvider.provideLayout(
                     content = accountDetailsUpdateEmailAddressVerifyEmail(emailForm.mainEmail),
                     title = "account.details.update.email.verify.title"
                   )
@@ -195,7 +193,7 @@ class ManagePaperlessController @Inject() (
     lookupCurrentEmail(email =>
       Future.successful(
         Ok(
-          layoutProvider(
+          layoutProvider.provideLayout(
             content = accountDetailsUpdateEmailAddressThankYou(email),
             title = "account.details.update.email.thank_you.title"
           )
@@ -265,7 +263,7 @@ class ManagePaperlessController @Inject() (
               implicit val updatedHostContext: HostContext = hostContext.copy(email = Some(email.email))
               (email.hasBounces, email.isVerified) match {
                 case (true, _) =>
-                  layoutProvider(
+                  layoutProvider.provideLayout(
                     content = digitalTrueBouncedFull(email, returnLinkTextToMessagesKey())(
                       withAuthenticatedRequest,
                       Messages.implicitMessagesProviderToMessages(request),
@@ -274,7 +272,7 @@ class ManagePaperlessController @Inject() (
                     title = "sa_printing_preferences.confirm_correct_email.title"
                   )
                 case (_, true) =>
-                  layoutProvider(
+                  layoutProvider.provideLayout(
                     content = digitalTrueVerifiedFull(email, returnLinkTextToMessagesKey())(
                       withAuthenticatedRequest,
                       Messages.implicitMessagesProviderToMessages(request),
@@ -284,7 +282,7 @@ class ManagePaperlessController @Inject() (
                   )
 
                 case _ =>
-                  layoutProvider(
+                  layoutProvider.provideLayout(
                     content = digitalTruePendingFull(email, returnLinkTextToMessagesKey())(
                       withAuthenticatedRequest,
                       Messages.implicitMessagesProviderToMessages(request),
@@ -295,7 +293,7 @@ class ManagePaperlessController @Inject() (
               }
             case _ =>
               implicit val updatedHostContext: HostContext = hostContext.copy(email = None)
-              layoutProvider(
+              layoutProvider.provideLayout(
                 content = digitalFalseFull(returnLinkTextToMessagesKey()),
                 title = "sa_printing_preferences.confirm_correct_email.title"
               )
@@ -309,7 +307,7 @@ class ManagePaperlessController @Inject() (
       withAuthenticatedRequest { implicit withAuthenticatedRequest: AuthenticatedRequest[?] => _ =>
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = typesOfTaxLetters(),
               title = "types_of_online_tax_letters_h1"
             )

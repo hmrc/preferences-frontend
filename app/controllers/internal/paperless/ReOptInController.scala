@@ -18,26 +18,25 @@ package controllers.internal.paperless
 
 import cats.data.Validated
 import cats.data.Validated.{ Invalid, Valid }
-import cats.instances.list._
-import cats.syntax.apply._
+import cats.instances.list.*
+import cats.syntax.apply.*
 import config.AppConfig
 import connectors.{ EntityResolverConnector, OptInPage, PreferencesConnector, TermsAccepted, TermsAndConditionsUpdate }
 import controllers.auth.{ AuthenticatedRequest, WithAuthRetrievals }
+import controllers.internal.*
 import controllers.internal.EmailOptInJourney.AccountDetails
 import controllers.internal.PaperlessChoice.OptedOut
-import controllers.internal._
 import controllers.{ LayoutProvider, internal }
 import model.{ HostContext, Language, ReOptInModifiedJourney, SurveyType }
 import play.api.Configuration
 import play.api.data.{ Form, FormBinding }
 import play.api.i18n.I18nSupport
-import play.api.mvc.{ Action, AnyContent, Call, MessagesControllerComponents, MessagesRequest, Result }
+import play.api.mvc.*
 import service.PreCheckService
 import uk.gov.hmrc.auth.core.AuthConnector
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.audit.http.connector.AuditConnector
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import uk.gov.hmrc.sca.services.WrapperService
 import views.ViewHelper
 
 import javax.inject.Inject
@@ -51,15 +50,15 @@ class ReOptInController @Inject() (
   val authConnector: AuthConnector,
   val auditConnector: AuditConnector,
   val configuration: Configuration,
-  val wrapperService: WrapperService,
   val appConfig: AppConfig,
   val saPrintingPreference: views.html.sa.prefs.sa_printing_preference,
   saPrintingPreferenceReOptinBounceEmail: views.html.sa.prefs.sa_printing_preference_reoptin_bounce_email,
   saPrintingPreferenceReOptinEmail: views.html.sa.prefs.sa_printing_preference_reoptin_email,
-  mcc: MessagesControllerComponents
+  mcc: MessagesControllerComponents,
+  val layoutProvider: LayoutProvider
 )(implicit val ec: ExecutionContext)
-    extends FrontendController(mcc) with OptInCohortCalculator with LayoutProvider with I18nSupport
-    with WithAuthRetrievals with LanguageHelper with PaperlessCommon {
+    extends FrontendController(mcc) with OptInCohortCalculator with I18nSupport with WithAuthRetrievals
+    with LanguageHelper with PaperlessCommon {
 
   def displayMultiPageReOptIn(hostContext: HostContext): Action[AnyContent] =
     Action.async { implicit request: MessagesRequest[AnyContent] =>
@@ -85,7 +84,7 @@ class ReOptInController @Inject() (
             formwithErrors =>
               Future.successful(
                 BadRequest(
-                  layoutProvider(
+                  layoutProvider.provideLayout(
                     content = saPrintingPreference(
                       formwithErrors,
                       paperless.routes.ReOptInController.submitMultiPageReOptIn(hostContext),
@@ -251,7 +250,7 @@ class ReOptInController @Inject() (
     authRequest: AuthenticatedRequest[?],
     hc: HostContext
   ) =
-    layoutProvider(
+    layoutProvider.provideLayout(
       content = saPrintingPreference(
         emailForm = ReOptInStartForm().fill(
           ReOptInStartForm.Data(
@@ -268,7 +267,7 @@ class ReOptInController @Inject() (
     authenticatedRequest: AuthenticatedRequest[?],
     hc: HostContext
   ) =
-    layoutProvider(
+    layoutProvider.provideLayout(
       content = saPrintingPreferenceReOptinBounceEmail(
         ReOptInEmailForm(),
         internal.paperless.routes.ReOptInController
@@ -284,7 +283,7 @@ class ReOptInController @Inject() (
     authenticatedRequest: AuthenticatedRequest[?],
     hc: HostContext
   ) =
-    layoutProvider(
+    layoutProvider.provideLayout(
       content = saPrintingPreferenceReOptinEmail(
         ReOptInEmailForm(),
         internal.paperless.routes.ReOptInController.submitMultiPageReOptInEmail(hasEmailBounce = false, hc)
@@ -307,7 +306,7 @@ class ReOptInController @Inject() (
       else
         saPrintingPreferenceReOptinEmail.apply
 
-    layoutProvider(
+    layoutProvider.provideLayout(
       content = templateFn(
         formwithErrors.copy(errors = updatedErrors),
         internal.paperless.routes.ReOptInController
