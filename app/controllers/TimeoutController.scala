@@ -39,7 +39,6 @@ class TimeoutController @Inject() (
 
   def timeout(implicit timeoutHostContext: model.TimeoutHostContext): Action[AnyContent] =
     Action.async { implicit request =>
-
       implicit val hostContext: HostContext =
         new HostContext(
           returnUrl = "",
@@ -48,23 +47,23 @@ class TimeoutController @Inject() (
           serviceUrl = timeoutHostContext.serviceUrl
         )
 
-    implicit val authRequest: AuthenticatedRequest[AnyContent] = AuthenticatedRequest(
-      request = request,
-      previousLoginTime = None,
-      nino = None,
-      saUtr = None,
-      affinityGroup = None
-    )
-
-    Ok(
-      layoutProvider.provideLayout(
-        content = sessionTimeOutView(appConfig.signOutUrl(None)),
-        title = "session.timeout.heading",
-        showBackLinkJS = false,
-        displaySignOutLink = false,
-        appendServiceName = true,
-        disableSessionExpired = true
+      implicit val authRequest: AuthenticatedRequest[AnyContent] = AuthenticatedRequest(
+        request = request,
+        previousLoginTime = None,
+        nino = None,
+        saUtr = None,
+        affinityGroup = None
       )
-    )
+
+      Ok(
+        layoutProvider.provideLayout(
+          content = sessionTimeOutView(appConfig.signOutUrl(None)),
+          title = "session.timeout.heading",
+          showBackLinkJS = false,
+          displaySignOutLink = false,
+          appendServiceName = true,
+          disableSessionExpired = true
+        )
+      )
     }
 }
