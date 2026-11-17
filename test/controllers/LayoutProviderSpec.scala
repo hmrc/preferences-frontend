@@ -226,8 +226,6 @@ class LayoutProviderSpec extends SpecBase {
 
   trait TestCase {
 
-    val dynamicSigninWrapperServiceFactory: DynamicSigninWrapperServiceFactory =
-      app.injector.instanceOf[DynamicSigninWrapperServiceFactory]
     val content = Html("<h1></h1>")
     val title = "test_title"
 
