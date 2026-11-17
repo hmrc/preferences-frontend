@@ -16,25 +16,19 @@
 
 package controllers.internal.paperless
 
-import config.AppConfig
 import connectors.{ EntityResolverConnector, PreferencesConnector }
 import controllers.PageIdentifier.*
-import controllers.{ PageIdentifier, REGIME_ITSA }
-import controllers.auth.AuthenticatedRequest
-import controllers.internal.{ IPage56, IosReOptOutPage51, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55 }
-import model.HostContext
+import controllers.internal.*
+import controllers.{ LayoutProvider, REGIME_ITSA }
 import play.api.Configuration
 import play.api.i18n.MessagesApi
-import play.api.mvc.Result
 import service.PreCheckService
-import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.audit.http.connector.AuditConnector
-import uk.gov.hmrc.sca.services.WrapperService
 import utils.SpecBase
 import utils.TestData.EMPTY_STRING
 import views.html.sa.prefs.sa_printing_preference
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.concurrent.ExecutionContext
 
 class PaperlessCommonSpec extends SpecBase {
 
@@ -183,8 +177,8 @@ class PaperlessCommonSpec extends SpecBase {
       override val precheckService: PreCheckService = mock[PreCheckService]
       override val preferencesConnector: PreferencesConnector = mock[PreferencesConnector]
       override def messagesApi: MessagesApi = messageApi
-      override def appConfig: AppConfig = mock[AppConfig]
-      override def wrapperService: WrapperService = mock[WrapperService]
+      override val layoutProvider: LayoutProvider =
+        mock[LayoutProvider]
 
       implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.global
     }

@@ -23,14 +23,13 @@ import model.HostContext
 import play.api.data.FormBinding
 import play.api.i18n.I18nSupport
 import play.api.libs.json.Json
-import play.api.mvc._
+import play.api.mvc.*
 import uk.gov.hmrc.auth.core.AuthConnector
 import uk.gov.hmrc.play.audit.EventKeys
 import uk.gov.hmrc.play.audit.http.connector.{ AuditConnector, AuditResult }
 import uk.gov.hmrc.play.audit.model.{ EventTypes, ExtendedDataEvent }
 import uk.gov.hmrc.play.bootstrap.config.AppName
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import uk.gov.hmrc.sca.services.WrapperService
 
 import javax.inject.Inject
 import scala.concurrent.{ ExecutionContext, Future }
@@ -38,21 +37,21 @@ import scala.concurrent.{ ExecutionContext, Future }
 class SurveyController @Inject() (
   auditConnector: AuditConnector,
   val authConnector: AuthConnector,
-  val wrapperService: WrapperService,
   val appConfig: AppConfig,
   reOptinDeclinedSurvey: views.html.sa.prefs.surveys.reoptin_declined_survey,
   optoutPaperlessSurvey: views.html.sa.prefs.surveys.optout_paperless_survey,
   optinDeclinedSurvey: views.html.sa.prefs.surveys.optin_declined_survey,
-  mcc: MessagesControllerComponents
+  mcc: MessagesControllerComponents,
+  layoutProvider: LayoutProvider
 )(implicit ec: ExecutionContext)
-    extends FrontendController(mcc) with LayoutProvider with I18nSupport with WithAuthRetrievals with LanguageHelper {
+    extends FrontendController(mcc) with I18nSupport with WithAuthRetrievals with LanguageHelper {
 
   def displayReOptInDeclinedSurveyForm(implicit hostContext: HostContext): Action[AnyContent] =
     Action.async { implicit request =>
       withAuthenticatedRequest { implicit authRequest: AuthenticatedRequest[AnyContent] => _ =>
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = reOptinDeclinedSurvey(
                 surveyForm = SurveyReOptInDeclinedDetailsForm(),
                 submitSurveyFormAction =
@@ -73,7 +72,7 @@ class SurveyController @Inject() (
           case (true, Some("submitted")) =>
             Future.successful(
               BadRequest(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content =
                     reOptinDeclinedSurvey(form, routes.SurveyController.submitReOptInDeclinedSurveyForm(hostContext)),
                   title = "paperless.survey.reoptin_declined.title"
@@ -99,7 +98,7 @@ class SurveyController @Inject() (
       withAuthenticatedRequest { implicit authRequest: AuthenticatedRequest[AnyContent] => _ =>
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = optinDeclinedSurvey(
                 surveyForm = SurveyOptinDeclinedDetailsForm(),
                 submitSurveyFormAction = routes.SurveyController.submitOptinDeclinedSurveyForm(hostContext)
@@ -119,7 +118,7 @@ class SurveyController @Inject() (
           case (true, Some("submitted")) =>
             Future.successful(
               BadRequest(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content =
                     optinDeclinedSurvey(form, routes.SurveyController.submitOptinDeclinedSurveyForm(hostContext)),
                   title = "paperless.survey.optin_declined.title"
@@ -145,7 +144,7 @@ class SurveyController @Inject() (
       withAuthenticatedRequest { implicit withAuthenticatedRequest: AuthenticatedRequest[?] => _ =>
         Future.successful(
           Ok(
-            layoutProvider(
+            layoutProvider.provideLayout(
               content = optoutPaperlessSurvey(
                 SurveyOptoutDetailsForm(),
                 routes.SurveyController.submitOptoutSurvey(hostContext)
@@ -165,7 +164,7 @@ class SurveyController @Inject() (
           case (true, Some("submitted")) =>
             Future.successful(
               BadRequest(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content = optoutPaperlessSurvey(form, routes.SurveyController.submitOptoutSurvey(hostContext)),
                   title = "paperless.survey.optout.title"
                 )

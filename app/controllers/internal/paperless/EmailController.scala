@@ -21,8 +21,8 @@ import connectors.{ EntityResolverConnector, PreferencesConnector }
 import controllers.LayoutProvider
 import controllers.auth.{ AuthenticatedRequest, WithAuthRetrievals }
 import controllers.internal.{ LanguageHelper, OptInCohortCalculator }
-import model.{ HostContext, JourneyType }
 import model.JourneyType.{ Bounce, EmailReVerify }
+import model.{ HostContext, JourneyType }
 import play.api.Configuration
 import play.api.i18n.I18nSupport
 import play.api.mvc.{ Action, AnyContent, MessagesControllerComponents }
@@ -34,7 +34,6 @@ import uk.gov.hmrc.play.audit.http.connector.{ AuditConnector, AuditResult }
 import uk.gov.hmrc.play.audit.model.{ DataCall, EventTypes, MergedDataEvent }
 import uk.gov.hmrc.play.bootstrap.config.AppName
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import uk.gov.hmrc.sca.services.WrapperService
 
 import java.time.Instant
 import javax.inject.Inject
@@ -47,17 +46,17 @@ class EmailController @Inject() (
   val authConnector: AuthConnector,
   val auditConnector: AuditConnector,
   val configuration: Configuration,
-  val wrapperService: WrapperService,
   val appConfig: AppConfig,
   val saPrintingPreference: views.html.sa.prefs.sa_printing_preference,
   saEmailResentConfirmation: views.html.sa.prefs.sa_printing_preference_email_resent_confirmation,
   saPrintingPreferenceReOptinConfirmation: views.html.sa.prefs.sa_printing_preference_reoptin_confirmation,
   saEmailReVerification: views.html.sa.prefs.sa_printing_preference_email_re_verification,
   saEmailBounceForm: views.html.sa.prefs.sa_printing_preference_email_bounce_page,
-  mcc: MessagesControllerComponents
+  mcc: MessagesControllerComponents,
+  val layoutProvider: LayoutProvider
 )(implicit val ec: ExecutionContext)
-    extends FrontendController(mcc) with OptInCohortCalculator with LayoutProvider with I18nSupport
-    with WithAuthRetrievals with LanguageHelper with PaperlessCommon {
+    extends FrontendController(mcc) with OptInCohortCalculator with I18nSupport with WithAuthRetrievals
+    with LanguageHelper with PaperlessCommon {
 
   def processEmailReVerificationJourney(hc: model.HostContext): Action[AnyContent] =
     processEmailJourney(hc, EmailReVerify)
@@ -76,7 +75,7 @@ class EmailController @Inject() (
               .changeEmailAddress(email, jouurney)
               .map(_ =>
                 Ok(
-                  layoutProvider(
+                  layoutProvider.provideLayout(
                     content = saEmailResentConfirmation(email),
                     title = "sa_printing_preference.sps_email_confirm"
                   )
@@ -94,7 +93,7 @@ class EmailController @Inject() (
         Future.successful(hostContext.email match {
           case Some(email) =>
             Ok(
-              layoutProvider(
+              layoutProvider.provideLayout(
                 content = saPrintingPreferenceReOptinConfirmation(email),
                 title = "sa_printing_preference.sps_email_confirm"
               )
@@ -123,14 +122,14 @@ class EmailController @Inject() (
         Future.successful((hostContext.email, journey) match {
           case (Some(email), EmailReVerify) =>
             Ok(
-              layoutProvider(
+              layoutProvider.provideLayout(
                 content = saEmailReVerification(email),
                 title = "sa_printing_preference.sps_email_confirm"
               )
             )
           case (Some(email), Bounce) =>
             Ok(
-              layoutProvider(
+              layoutProvider.provideLayout(
                 content = saEmailBounceForm(email),
                 title = "sa_printing_preference.sps_email_confirm"
               )

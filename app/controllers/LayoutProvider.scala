@@ -16,20 +16,49 @@
 
 package controllers
 
-import config.AppConfig
+import com.google.inject.Inject
 import controllers.auth.AuthenticatedRequest
-import play.api.i18n.Messages
+import model.HostContext
+import play.api.Configuration
+import play.api.i18n.{ Messages, MessagesApi }
 import play.twirl.api.{ Html, HtmlFormat }
+import uk.gov.hmrc.govukfrontend.views.html.components.{ GovukBackLink, GovukPhaseBanner, TwoThirdsMainContent, TwoThirdsOneThirdMainContent }
+import uk.gov.hmrc.hmrcfrontend.config.ContactFrontendConfig
+import uk.gov.hmrc.hmrcfrontend.views.config.{ StandardAlphaBanner, StandardBetaBanner }
+import uk.gov.hmrc.hmrcfrontend.views.html.helpers.{ HmrcReportTechnicalIssueHelper, HmrcServiceNavigationLanguageSelectHelper, HmrcStandardPage, HmrcTimeoutDialogHelper }
 import uk.gov.hmrc.hmrcfrontend.views.viewmodels.hmrcstandardpage.ServiceURLs
 import uk.gov.hmrc.sca.config.BackLinkConfig
 import uk.gov.hmrc.sca.services.WrapperService
+import uk.gov.hmrc.sca.utils.WebchatUtil
+import uk.gov.hmrc.sca.views.html.components.FullWidthMainContent
+import uk.gov.hmrc.sca.views.html.{ BespokeUserResearchBannerView, PtaAttorneyBanner, PtaHead, PtaMenuBar, PtaScripts, StandardScaLayout }
 import util.PageTitle
 import views.ViewHelper
 
-trait LayoutProvider {
-  def wrapperService: WrapperService
-  def appConfig: AppConfig
-  def layoutProvider(
+class LayoutProvider @Inject() (
+  govukBackLink: GovukBackLink,
+  hmrcStandardPage: HmrcStandardPage,
+  hmrcReportTechnicalIssueHelper: HmrcReportTechnicalIssueHelper,
+  alphaBanner: StandardAlphaBanner,
+  betaBanner: StandardBetaBanner,
+  hmrcLanguageSelectHelper: HmrcServiceNavigationLanguageSelectHelper,
+  hmrcTimeoutDialogHelper: HmrcTimeoutDialogHelper,
+  ptaScripts: PtaScripts,
+  ptaHead: PtaHead,
+  govukPhaseBanner: GovukPhaseBanner,
+  ptaAttorneyBanner: PtaAttorneyBanner,
+  twoThirdsOneThirdMainContent: TwoThirdsOneThirdMainContent,
+  fullWidthMainContent: FullWidthMainContent,
+  twoThirdsMainContent: TwoThirdsMainContent,
+  bespokeUserResearchBannerView: BespokeUserResearchBannerView,
+  ptaMenuBar: PtaMenuBar,
+  webchatUtil: WebchatUtil,
+  configuration: Configuration,
+  messagesApi: MessagesApi,
+  appConfig: config.AppConfig
+)(implicit contactFrontendConfig: ContactFrontendConfig) {
+
+  def provideLayout(
     content: Html,
     title: String,
     showBackLinkJS: Boolean = true,
@@ -42,20 +71,72 @@ trait LayoutProvider {
     hostContext: model.HostContext
   ): HtmlFormat.Appendable = {
     val serviceNameKey = ViewHelper.serviceName(Some("service.name"), hostContext.regime)
+
     val pageTitle =
-      if (appendServiceName) PageTitle(Messages(title), serviceNameKey.map(Messages(_))) else Messages(title)
-    wrapperService.standardScaLayout(
-      content = content,
-      pageTitle = Some(pageTitle),
-      serviceURLs = ServiceURLs(
-        serviceUrl = hostContext.serviceUrl,
-        signOutUrl = if (displaySignOutLink) Some(appConfig.signOutUrl(Option(hostContext.returnUrl))) else None
-      ),
-      hideMenuBar = true,
-      backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
-      fullWidth = false,
-      serviceNameKey = serviceNameKey,
-      disableSessionExpired = disableSessionExpired
+      if (appendServiceName)
+        PageTitle(Messages(title), serviceNameKey.map(Messages(_)))
+      else
+        Messages(title)
+
+    val wrapperService = createDynamicSignInWrapperService(hostContext)
+
+    wrapperService
+      .standardScaLayout(
+        content = content,
+        pageTitle = Some(pageTitle),
+        serviceURLs = ServiceURLs(
+          serviceUrl = hostContext.serviceUrl,
+          signOutUrl = if (displaySignOutLink) Some(appConfig.signOutUrl(Option(hostContext.returnUrl))) else None
+        ),
+        hideMenuBar = true,
+        backLinkConfig = Option.when(showBackLinkJS)(BackLinkConfig.JsBack),
+        fullWidth = false,
+        serviceNameKey = serviceNameKey,
+        disableSessionExpired = disableSessionExpired
+      )
+  }
+
+  private def createDynamicSignInWrapperService(hostContext: HostContext): WrapperService = {
+    val scaAppConfig = new uk.gov.hmrc.sca.config.AppConfig(
+      configuration,
+      messagesApi
+    ) {
+      private val maybeConfigUrl: Option[String] =
+        configuration.getOptional[String]("sca-wrapper.signin.url")
+
+      private val params = HostContext.hostContextBinder
+        .unbind("anyValName", hostContext) match {
+        case ""    => ""
+        case value => s"?$value"
+      }
+
+      override val timeOutUrl: Option[String] = maybeConfigUrl.map(_ + params)
+    }
+
+    val layout = new StandardScaLayout(
+      scaAppConfig,
+      govukBackLink,
+      hmrcStandardPage,
+      hmrcReportTechnicalIssueHelper,
+      alphaBanner,
+      betaBanner,
+      hmrcLanguageSelectHelper,
+      hmrcTimeoutDialogHelper,
+      ptaScripts,
+      ptaHead,
+      govukPhaseBanner,
+      ptaAttorneyBanner,
+      twoThirdsOneThirdMainContent,
+      fullWidthMainContent,
+      twoThirdsMainContent,
+      bespokeUserResearchBannerView
+    )
+
+    new WrapperService(
+      ptaMenuBar,
+      layout,
+      webchatUtil,
+      scaAppConfig
     )
   }
 }

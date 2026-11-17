@@ -39,7 +39,7 @@ import uk.gov.hmrc.play.bootstrap.config.AppName
 import java.time.Instant
 import scala.concurrent.{ ExecutionContext, Future }
 
-trait PaperlessCommon extends LayoutProvider with I18nSupport {
+trait PaperlessCommon extends I18nSupport {
 
   implicit val ec: ExecutionContext
   val auditConnector: AuditConnector
@@ -48,7 +48,7 @@ trait PaperlessCommon extends LayoutProvider with I18nSupport {
   val saPrintingPreference: views.html.sa.prefs.sa_printing_preference
   val precheckService: PreCheckService
   val preferencesConnector: PreferencesConnector
-
+  val layoutProvider: LayoutProvider
   def hasStoredEmail(hostContext: HostContext)(implicit
     hc: HeaderCarrier
   ): Future[Boolean] = {
@@ -190,7 +190,7 @@ trait PaperlessCommon extends LayoutProvider with I18nSupport {
     implicit val req: AuthenticatedRequest[?] = request
     Future.successful(
       BadRequest(
-        layoutProvider(
+        layoutProvider.provideLayout(
           saPrintingPreference(form, submitPrefsFormAction, cohort),
           title = cohortToTitle(cohort, hasError = true, hostContext.regime.getOrElse(EMPTY_STRING))
         )

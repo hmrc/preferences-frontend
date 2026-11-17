@@ -16,31 +16,108 @@
 
 package controllers
 
-import play.api.libs.json.JsValue
-import play.api.mvc.{ Action, AnyContent, AnyContentAsEmpty, Headers, Result }
-import play.api.test.{ FakeHeaders, FakeRequest }
-import utils.SpecBase
+import model.TimeoutHostContext
+import org.scalactic.source.Position
+import org.scalatest.OptionValues
+import play.api.mvc.{ AnyContentAsEmpty, Result }
+import play.api.test.FakeRequest
 import play.api.test.Helpers.*
-import uk.gov.hmrc.http.HeaderCarrier
+import utils.SpecBase
 
 import scala.concurrent.Future
 
-class TimeoutControllerSpec extends SpecBase {
+class TimeoutControllerSpec extends SpecBase with OptionValues {
+  private val serviceUrl = "http://testurl"
+  private val serviceName = messagesInEnglish("sa_printing_preference_svc_name_itsa")
+  private val serviceNameHtmlWithoutServiceUrl = s"""<span class="govuk-service-navigation__text">$serviceName</span>"""
+  private val serviceNameHtmlWithServiceUrl =
+    s"""<a href="$serviceUrl" class="govuk-service-navigation__link"> $serviceName </a>"""
 
   "timeout" should {
-    "return OK" in {
-      val request: FakeRequest[AnyContentAsEmpty.type] =
-        fakeRequest(GET, routes.TimeoutController.timeout().url)
 
-      val result: Future[Result] = route(app, request).get
-      status(result) mustBe OK
-      val viewContent = contentAsString(result)
+    "have no service name" when {
 
-      viewContent must include(messagesInEnglish("session.timeout.heading"))
-      viewContent must not include "Back"
-      viewContent must not include "Sign out"
-      viewContent must not include "hmrc-timeout-dialog"
+      "there is no regime" in {
+        val noRegimeUrl = routes.TimeoutController.timeout(TimeoutHostContext(serviceUrl = None, regime = None)).url
+        testNoServiceName(noRegimeUrl)
+      }
+
+      def testNoServiceName(url: String)(implicit position: Position) = {
+        val request = fakeRequest(GET, url)
+
+        val result: Future[Result] = route(app, request).value
+
+        val viewContent = contentAsString(result)
+        viewContent must include(messagesInEnglish("session.timeout.heading"))
+        viewContent must not include "Back"
+        viewContent must not include "Sign out"
+        viewContent must not include "hmrc-timeout-dialog"
+
+        status(result) mustBe OK
+      }
+
+      "regime is not itsa" in {
+        val noRegimeUrl =
+          routes.TimeoutController.timeout(TimeoutHostContext(serviceUrl = None, regime = Some("not-itsa"))).url
+        testNoServiceName(noRegimeUrl)
+      }
+
     }
+
+    "show page title when the regime is itsa but with no link as there is no service url" in {
+      val url = routes.TimeoutController.timeout(TimeoutHostContext(serviceUrl = None, regime = Some("itsa"))).url
+      println(url)
+      val request: FakeRequest[AnyContentAsEmpty.type] =
+        fakeRequest(
+          GET,
+          url
+        )
+
+      val result: Future[Result] = route(app, request).value
+
+      val content = contentAsString(result)
+      content must include(
+        s"${messagesInEnglish("session.timeout.heading")} – $serviceName – GOV.UK</title>"
+      )
+
+      content must include(
+        serviceNameHtmlWithoutServiceUrl
+      )
+
+      content must not include serviceNameHtmlWithServiceUrl
+
+      status(result) mustBe OK
+    }
+
+    "show page title when the regime is itsa but with a link as there is a service url" in {
+      val url = routes.TimeoutController
+        .timeout(TimeoutHostContext(serviceUrl = Some(serviceUrl), regime = Some("itsa")))
+        .url
+
+      val request: FakeRequest[AnyContentAsEmpty.type] =
+        fakeRequest(
+          GET,
+          url
+        )
+
+      val result: Future[Result] = route(app, request).value
+
+      val content = contentAsString(result)
+
+      content must include(
+        s"${messagesInEnglish("session.timeout.heading")} – $serviceName – GOV.UK</title>"
+      )
+
+      content must not include
+        serviceNameHtmlWithoutServiceUrl
+
+      content must include(
+        serviceNameHtmlWithServiceUrl
+      )
+
+      status(result) mustBe OK
+    }
+
   }
 
   "keepAliveSession" should {
@@ -48,21 +125,9 @@ class TimeoutControllerSpec extends SpecBase {
       val request: FakeRequest[AnyContentAsEmpty.type] =
         fakeRequest(GET, routes.TimeoutController.keepAliveSession().url)
 
-      val result: Future[Result] = route(app, request).get
+      val result: Future[Result] = route(app, request).value
       status(result) mustBe NO_CONTENT
     }
   }
 
-  "page title matching the H1 with the service name and GOV.UK" in {
-    val request: FakeRequest[AnyContentAsEmpty.type] =
-      fakeRequest(GET, routes.TimeoutController.timeout().url)
-
-    val result: Future[Result] = route(app, request).get
-
-    status(result) mustBe OK
-    contentAsString(result) must include(
-      s"${messagesInEnglish("session.timeout.heading")} – " +
-        s"${messagesInEnglish("sa_printing_preference_svc_name_itsa")} – GOV.UK</title>"
-    )
-  }
 }

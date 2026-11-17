@@ -17,7 +17,7 @@
 package controllers.external
 
 import config.AppConfig
-import connectors._
+import connectors.*
 import controllers.LayoutProvider
 import controllers.auth.AuthenticatedRequest
 import model.HostContext
@@ -26,22 +26,21 @@ import play.api.mvc.{ Action, AnyContent, MessagesControllerComponents }
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import uk.gov.hmrc.play.http.HeaderCarrierConverter
-import uk.gov.hmrc.sca.services.WrapperService
 
 import javax.inject.Inject
 import scala.concurrent.{ ExecutionContext, Future }
 
 class EmailValidationController @Inject() (
   preferencesConnector: PreferencesConnector,
-  val wrapperService: WrapperService,
   val appConfig: AppConfig,
   saPrintingPreferenceExpiredEmail: views.html.sa.prefs.sa_printing_preference_expired_email,
   saPrintingPreferenceVerifyEmailFailed: views.html.sa.prefs.sa_printing_preference_verify_email_failed,
   saPrintingPreferenceVerifyEmail: views.html.sa.prefs.sa_printing_preference_verify_email,
   saPrintingPreferenceWrongToken: views.html.sa.prefs.sa_printing_preference_wrong_token,
-  mcc: MessagesControllerComponents
+  mcc: MessagesControllerComponents,
+  layoutProvider: LayoutProvider
 )(implicit ec: ExecutionContext)
-    extends FrontendController(mcc) with LayoutProvider with I18nSupport {
+    extends FrontendController(mcc) with I18nSupport {
 
   val regex = "([0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12})".r
 
@@ -55,7 +54,7 @@ class EmailValidationController @Inject() (
           preferencesConnector.updateEmailValidationStatusUnsecured(token) map {
             case Validated =>
               Ok(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content = saPrintingPreferenceVerifyEmail(None, None),
                   title = "sa_printing_preference.email.verified.title",
                   showBackLinkJS = false
@@ -63,7 +62,7 @@ class EmailValidationController @Inject() (
               )
             case ValidatedWithReturn(returnText, returnUrl) =>
               Ok(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content = saPrintingPreferenceVerifyEmail(Some(returnUrl), Some(returnText)),
                   title = "sa_printing_preference.email.verified.title",
                   showBackLinkJS = false
@@ -71,7 +70,7 @@ class EmailValidationController @Inject() (
               )
             case ValidationExpired =>
               Ok(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content = saPrintingPreferenceExpiredEmail(),
                   title = "sa_printing_preference.token.expired.title",
                   showBackLinkJS = false
@@ -79,7 +78,7 @@ class EmailValidationController @Inject() (
               )
             case WrongToken =>
               Ok(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content = saPrintingPreferenceWrongToken(),
                   title = "sa_printing_preference.token.wrong.title",
                   showBackLinkJS = false
@@ -87,7 +86,7 @@ class EmailValidationController @Inject() (
               )
             case ValidationErrorWithReturn(returnLinkText, returnUrl) =>
               BadRequest(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content = saPrintingPreferenceVerifyEmailFailed(Some(returnUrl), Some(returnLinkText)),
                   title = "sa_printing_preference.email.failed.verified.title",
                   showBackLinkJS = false
@@ -95,7 +94,7 @@ class EmailValidationController @Inject() (
               )
             case ValidationError =>
               BadRequest(
-                layoutProvider(
+                layoutProvider.provideLayout(
                   content = saPrintingPreferenceVerifyEmailFailed(None, None),
                   title = "sa_printing_preference.email.failed.verified.title",
                   showBackLinkJS = false
@@ -105,7 +104,7 @@ class EmailValidationController @Inject() (
         case _ =>
           Future.successful(
             BadRequest(
-              layoutProvider(
+              layoutProvider.provideLayout(
                 content = saPrintingPreferenceVerifyEmailFailed(None, None),
                 title = "sa_printing_preference.email.failed.verified.title",
                 showBackLinkJS = false
