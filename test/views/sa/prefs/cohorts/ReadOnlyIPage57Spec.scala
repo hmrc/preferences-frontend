@@ -77,7 +77,7 @@ class ReadOnlyIPage57Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
         .getElementById("online-para-5")
         .text() mustBe "We’ll ask for your preferred email address. You can change it any time. We’ll email you when you have a new online letter."
 
-      document.getElementsByAttributeValue("name", "opt-in").text() mustBe "Go paperless Get tax letters by post"
+      document.getElementsByAttributeValue("name", "sps-opt-in").text() mustBe "Go paperless Get tax letters by post"
     }
 
     "render the correct content in welsh" in {
@@ -124,7 +124,7 @@ class ReadOnlyIPage57Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
         .text() mustBe "Byddwn yn gofyn i chi am eich cyfeiriad e-bost dewisol. Gallwch ei newid ar unrhyw adeg. Byddwn yn anfon e-bost atoch pan fydd gennych lythyr newydd ar-lein."
 
       document
-        .getElementsByAttributeValue("name", "opt-in")
+        .getElementsByAttributeValue("name", "sps-opt-in")
         .text() mustBe "Ewch yn ddi-bapur Cael llythyrau treth drwy’r post"
     }
   }

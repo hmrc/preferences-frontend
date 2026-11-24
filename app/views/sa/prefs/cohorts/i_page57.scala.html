@@ -49,7 +49,7 @@
     <input type="hidden" id="emailAlreadyStored" name="emailAlreadyStored" value='@optinForm("emailAlreadyStored").value' >
     <div class="govuk-button-group govuk-!-padding-top-4">
         @govukButton(Button(
-            name = Some("opt-in"),
+            name = Some("sps-opt-in"),
             value = Some("true"),
             inputType = Some("submit"),
             content = Text(Messages("i_page57.submitButton")),
@@ -60,7 +60,7 @@
         ))
     </div>
         @govukButton(Button(
-            name = Some("opt-in"),
+            name = Some("sps-opt-in"),
             value = Some("false"),
             content = Text(Messages("i_page57.fg_page.optout")),
             attributes = Map("id" -> "optOutButton", "data-prevent-double-click" -> "true")
