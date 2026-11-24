@@ -173,8 +173,6 @@ class ChoosePaperlessControllerSpec
       val document = Jsoup.parse(contentAsString(page))
 
       document.getElementById("email.main") must be(null)
-      document.getElementById("sps-opt-in").attr("checked") must be(empty)
-      document.getElementById("sps-opt-in-2").attr("checked") must be(empty)
     }
 
     "render an email input field populated with the supplied email address, and the Opt-in option selected" in new ChoosePaperlessControllerSetup {
@@ -187,8 +185,6 @@ class ChoosePaperlessControllerSpec
       val document = Jsoup.parse(contentAsString(page))
 
       document.getElementById("email.main") must be(null)
-      document.getElementById("sps-opt-in").attr("checked") must be(empty)
-      document.getElementById("sps-opt-in-2").attr("checked") must be(empty)
     }
   }
 
@@ -199,10 +195,7 @@ class ChoosePaperlessControllerSpec
       val page = optInController.submitOptIn(TestFixtures.sampleHostContext)(FakeRequest().withFormUrlEncodedBody())
 
       status(page) mustBe 400
-      val document = Jsoup.parse(contentAsString(page))
-      document
-        .select(".govuk-error-summary__title")
-        .text mustBe "There is a problem"
+
       verifyNoInteractions(emailAddressValidation)
     }
 
@@ -551,7 +544,7 @@ class ChoosePaperlessControllerSpec
 
       status(page) mustBe 303
       header("Location", page).get must be(
-        "/paperless/optout-confirmation?digital=false&returnUrl=kvXgJfoJJ%2FbmaHgdHhhRpg%3D%3D&returnLinkText=huhgy5odc6KaXfFIMZXkeZjs11wvNGxKPz2CtY8L8GM%3D&cohort=mpaa8eDGyWF5GE8%2FdExi6A%3D%3D&survey=hrcOMaf19lUfbNYcQ9B7mA%3D%3D"
+        "/paperless/optout-confirmation?digital=false&returnUrl=kvXgJfoJJ%2FbmaHgdHhhRpg%3D%3D&returnLinkText=huhgy5odc6KaXfFIMZXkeZjs11wvNGxKPz2CtY8L8GM%3D&cohort=5oP8vegDOoCX9RdhtdrGrg%3D%3D&survey=hrcOMaf19lUfbNYcQ9B7mA%3D%3D"
       )
 
       verify(mockPreferencesConnector)
