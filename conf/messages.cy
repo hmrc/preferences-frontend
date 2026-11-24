@@ -383,31 +383,21 @@ session.timeout.heading = Er eich diogelwch, gwnaethom eich allgofnodi
 session.timeout.sign-in.button.text=Mewngofnodi
 session.timeout.reason.text = Nid ydych wedi gwneud dim ers 15 munud.
 
-i_page56.fg_page.title=Dewis sut i gael eich llythyrau treth
-i_page56.fg_page.title.error=Gwall: Dewis sut i gael eich llythyrau treth
-i_page56.fg_page.itsa.title=Dewis sut i gael eich llythyrau treth - Cofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm - GOV.UK
-i_page56.fg_page.itsa.title.error=Gwall: Dewis sut i gael eich llythyrau treth - Cofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm - GOV.UK
-i_page56.fg_page.choose_1=Erbyn hyn gallwch gael eich llythyrau treth a gwybodaeth ar-lein yn lle drwy’r post.
-i_page56.fg_page.choose_2=Mae hyn yn golygu bod eich llythyrau treth hanfodol:
-i_page56.fg_page.list_1=yn cael eu dosbarthu’n gyflym
-i_page56.fg_page.list_2=yn cael eu cadw’n ddiogel
-i_page56.fg_page.list_3=yn hawdd i’w canfod
-i_page56.fg_page.list_4=yn syml i’w rhannu
-i_page56.fg_page.list_5=yn barod i’w hargraffu, os bydd angen tystiolaeth arnoch
-i_page56.fg_page.yes_send_email=Ar-lein
-i_page56.fg_page.keep_receiving=Drwy’r post yn unig
-i_page56.fg_page.paperless=Sut hoffech gael eich llythyrau treth?
-i_page56.fg_page.yes_send_email_hint=Rhowch eich cyfeiriad e-bost dewisol nesaf. Gallwch ei newid ar unrhyw adeg. Byddwn yn anfon e-bost atoch pan fydd gennych lythyr ar-lein newydd.
-i_page56.fg_page.yes_send_email_info_1=Oherwydd na allwn anfon pob llythyr ar-lein eto, byddwch yn dal i gael rhai llythyrau drwy’r post.
-i_page56.fg_page.yes_send_email_info_2=Eich cyfrifioldebau os dewiswch gael llythyrau ar-lein
-i_page56.fg_page.yes_send_email_info_3=Mewngofnodi i’w darllen
-i_page56.fg_page.yes_send_email_info_4=Oherwydd na all e-bost gynnwys gwybodaeth bersonol, bydd angen i chi fewngofnodi i CThEM ar-lein i gael y manylion.
-i_page56.fg_page.yes_send_email_info_5=Cymryd camau
-i_page56.fg_page.yes_send_email_info_6=Mae rhai llythyrau treth ar-lein yn gofyn i chi weithredu, megis llythyrau yn eich atgoffa i gyflwyno Ffurflen Dreth neu dalu cosbau. Mae eraill er gwybodaeth, megis newidiadau i’ch cod treth personol.
-i_page56.submitButton=Yn eich blaen
-i_page56.fg_page.message.types=Ewch ati i fwrw golwg dros yr holl lythyrau treth ar-lein y gall CThEM eu hanfon
-
-
+i_page57.fg_page.title=Rydym yn mynd yn ddi-bapur
+i_page57.fg_page.title.error=Gwall: Rydym yn mynd yn ddi-bapur
+i_page57.fg_page.itsa.title=Rydym yn mynd yn ddi-bapur - Cofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm - GOV.UK
+i_page57.fg_page.itsa.title.error=Gwall: Rydym yn mynd yn ddi-bapur - Cofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm - GOV.UK
+i_page57.fg_page.choose_1=Gallwch ddewis cael rhai o’ch llythyrau treth a’ch negeseuon oddi wrth CThEF ar-lein. Byddwn yn anfon e-bost atoch i roi gwybod i chi pan fydd gennych lythyr digidol.
+i_page57.fg_page.choose_2=Mae mynd yn ddi-bapur yn gyflym ac yn ddiogel, ac mae’n arbed papur.
+i_page57.fg_page.yes_send_email_info_1=Ni allwn anfon pob llythyr ar-lein eto, felly byddwch yn parhau i gael rhai drwy’r post.
+i_page57.fg_page.yes_send_email_info_2=Eich cyfrifoldebau os byddwch yn mynd yn ddi-bapur
+i_page57.fg_page.yes_send_email_info_3=1. Mewngofnodi i’w darllen
+i_page57.fg_page.yes_send_email_info_4=Ni ellir cynnwys gwybodaeth bersonol mewn e-bost, felly mae angen i chi fewngofnodi i wasanaethau ar-lein CThEF i weld y manylion.
+i_page57.fg_page.yes_send_email_info_5=2. Cymryd camau
+i_page57.fg_page.yes_send_email_info_6=Mae rhai llythyrau treth ar-lein yn gofyn i chi gymryd camau, megis llythyrau yn eich atgoffa i gyflwyno Ffurflen Dreth neu dalu cosbau. Mae eraill er gwybodaeth, megis newidiadau i’ch Treth Incwm neu’ch cod treth.
+i_page57.fg_page.yes_send_email_info_7=Byddwn yn gofyn i chi am eich cyfeiriad e-bost dewisol. Gallwch ei newid ar unrhyw adeg. Byddwn yn anfon e-bost atoch pan fydd gennych lythyr newydd ar-lein.
+i_page57.submitButton=Ewch yn ddi-bapur
+i_page57.fg_page.optout=Cael llythyrau treth drwy’r post
 
 reoptin_page10.fg_page.keep_receiving=Drwy’r post yn unig
 reoptin_page10.fg_page.list_1=Hysbysiadau cyfreithiol i gyflwyno Ffurflen Dreth

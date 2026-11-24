@@ -679,7 +679,7 @@ class ChoosePaperlessControllerSpec
         value.auditSource mustBe "preferences-frontend"
         value.auditType mustBe EventTypes.Succeeded
         value.request.tags must contain("transactionName" -> "Set Print Preference")
-        value.request.detail("cohort") mustBe "IPage56"
+        value.request.detail("cohort") mustBe "IPage57"
         value.request.detail("journey") mustBe "AccountDetails"
         value.request.detail("utr") mustBe validUtr.value
         value.request.detail("nino") mustBe "N/A"
@@ -717,7 +717,7 @@ class ChoosePaperlessControllerSpec
         value.auditSource mustBe "preferences-frontend"
         value.auditType mustBe EventTypes.Succeeded
         value.request.tags must contain("transactionName" -> "Set Print Preference")
-        value.request.detail("cohort") mustBe "IPage56"
+        value.request.detail("cohort") mustBe "IPage57"
         value.request.detail("journey") mustBe "AccountDetails"
         value.request.detail("utr") mustBe validUtr.value
         value.request.detail("nino") mustBe "N/A"
@@ -754,7 +754,7 @@ class ChoosePaperlessControllerSpec
         value.auditSource mustBe "preferences-frontend"
         value.auditType mustBe EventTypes.Succeeded
         value.request.tags must contain("transactionName" -> "Set Print Preference")
-        value.request.detail("cohort") mustBe "IPage56"
+        value.request.detail("cohort") mustBe "IPage57"
         value.request.detail("journey") mustBe "AccountDetails"
         value.request.detail("utr") mustBe validUtr.value
         value.request.detail("nino") mustBe "N/A"

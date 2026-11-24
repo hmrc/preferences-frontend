@@ -141,7 +141,7 @@ class OptInControllerSpec extends SpecBase with AuthRetrievalsSetup {
 
           val pageDocument = Jsoup.parse(contentAsString(resultValue))
 
-          pageDocument.title() mustBe messages("i_page56.fg_page.itsa.title.error")
+          pageDocument.title() mustBe messages("i_page57.fg_page.itsa.title.error")
         }
       }
 
@@ -169,7 +169,7 @@ class OptInControllerSpec extends SpecBase with AuthRetrievalsSetup {
 
           val pageDocument = Jsoup.parse(contentAsString(resultValue))
 
-          pageDocument.title() mustBe messages("i_page56.fg_page.title.error")
+          pageDocument.title() mustBe messages("i_page57.fg_page.title.error")
         }
       }
     }

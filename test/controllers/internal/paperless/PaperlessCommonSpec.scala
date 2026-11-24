@@ -36,28 +36,28 @@ class PaperlessCommonSpec extends SpecBase {
 
     "return correct title" when {
 
-      "cohort is IPage56, regime is itsa and page has no error" in new Setup {
-        paperlessCommon.cohortToTitle(IPage56, false, REGIME_ITSA) must be("i_page56.fg_page.itsa.title")
+      "cohort is IPage57, regime is itsa and page has no error" in new Setup {
+        paperlessCommon.cohortToTitle(IPage57, false, REGIME_ITSA) must be("i_page57.fg_page.itsa.title")
       }
 
-      "cohort is IPage56, regime is itsa and page has error" in new Setup {
-        paperlessCommon.cohortToTitle(IPage56, true, REGIME_ITSA) must be("i_page56.fg_page.itsa.title.error")
+      "cohort is IPage57, regime is itsa and page has error" in new Setup {
+        paperlessCommon.cohortToTitle(IPage57, true, REGIME_ITSA) must be("i_page57.fg_page.itsa.title.error")
       }
 
-      "cohort is IPage56, regime is empty and page has no error" in new Setup {
-        paperlessCommon.cohortToTitle(IPage56, false, EMPTY_STRING) must be("i_page56.fg_page.title")
+      "cohort is IPage57, regime is empty and page has no error" in new Setup {
+        paperlessCommon.cohortToTitle(IPage57, false, EMPTY_STRING) must be("i_page57.fg_page.title")
       }
 
-      "cohort is IPage56, regime is empty and page has error" in new Setup {
-        paperlessCommon.cohortToTitle(IPage56, true, EMPTY_STRING) must be("i_page56.fg_page.title.error")
+      "cohort is IPage57, regime is empty and page has error" in new Setup {
+        paperlessCommon.cohortToTitle(IPage57, true, EMPTY_STRING) must be("i_page57.fg_page.title.error")
       }
 
-      "cohort is IPage56, regime is non itsa and page has no error" in new Setup {
-        paperlessCommon.cohortToTitle(IPage56, false, "nino") must be("i_page56.fg_page.title")
+      "cohort is IPage57, regime is non itsa and page has no error" in new Setup {
+        paperlessCommon.cohortToTitle(IPage57, false, "nino") must be("i_page57.fg_page.title")
       }
 
-      "cohort is IPage56, regime is non itsa and page has error" in new Setup {
-        paperlessCommon.cohortToTitle(IPage56, true, "nino") must be("i_page56.fg_page.title.error")
+      "cohort is IPage57, regime is non itsa and page has error" in new Setup {
+        paperlessCommon.cohortToTitle(IPage57, true, "nino") must be("i_page57.fg_page.title.error")
       }
 
       "cohort is ReOptInPage10" in new Setup {

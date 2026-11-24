@@ -17,7 +17,7 @@
 package views.sa.prefs
 
 import connectors.{ GenericTerms, TermsType }
-import controllers.internal.{ CYSConfirmPage47, EmailForm, IPage56, OptInCohort, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55, routes }
+import controllers.internal.{ CYSConfirmPage47, EmailForm, IPage57, OptInCohort, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55, routes }
 import model.JourneyType.MultiPage2
 import model.{ HostContext, JourneyType, PageType }
 import org.jsoup.Jsoup
@@ -36,30 +36,30 @@ class SaPrintingPreferenceSpec extends SpecBase {
   "view" should {
     "render correct contents" when {
 
-      "cohort is IPage56" in new Setup {
-        val viewDocIPage56: Document = viewDocument(IPage56)
+      "cohort is IPage57" in new Setup {
+        val viewDocIPage57: Document = viewDocument(IPage57)
 
-        viewDocIPage56.getElementById("online-para-3").html() must include(
+        viewDocIPage57.getElementById("online-para-3").html() must include(
           messages(
-            "i_page56.fg_page.yes_send_email_info_3"
+            "i_page57.fg_page.yes_send_email_info_3"
           )
         )
 
-        viewDocIPage56.getElementById("online-para-3").html() must include(
+        viewDocIPage57.getElementById("online-para-3").html() must include(
           messages(
-            "i_page56.fg_page.yes_send_email_info_4"
+            "i_page57.fg_page.yes_send_email_info_4"
           )
         )
 
-        viewDocIPage56.getElementById("online-para-4").html() must include(
+        viewDocIPage57.getElementById("online-para-4").html() must include(
           messages(
-            "i_page56.fg_page.yes_send_email_info_5"
+            "i_page57.fg_page.yes_send_email_info_5"
           )
         )
 
-        viewDocIPage56.getElementById("online-para-4").html() must include(
+        viewDocIPage57.getElementById("online-para-4").html() must include(
           messages(
-            "i_page56.fg_page.yes_send_email_info_6"
+            "i_page57.fg_page.yes_send_email_info_6"
           )
         )
       }

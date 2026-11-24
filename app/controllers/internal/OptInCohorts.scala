@@ -541,15 +541,15 @@ object IosReOptOutPage51 extends OptInCohort {
 }
 // end of Ios 1.3 ///////////////////////////////////////////////////////
 
-object IPage56 extends OptInCohort {
-  override val id: Int = 56
-  override val name: String = "IPage56"
+object IPage57 extends OptInCohort {
+  override val id: Int = 57
+  override val name: String = "IPage57"
   override val terms: TermsType = GenericTerms
   override val pageType: PageType = PageType.IPage
   override val majorVersion: Int = 1
   override val minorVersion: Int = 2
-  override val description: String = "SOL changes to wording to improve litigation cases"
-  override val date: LocalDate = LocalDate.parse("2021-10-12")
+  override val description: String = "New content changes from business"
+  override val date: LocalDate = LocalDate.parse("2026-11-23")
   override val journeyType: Option[JourneyType] = Some(MultiPage1)
 }
 
@@ -566,7 +566,7 @@ object ReOptInPage55 extends OptInCohort {
 }
 
 object CohortCurrent {
-  val ipage: OptInCohort = IPage56
+  val ipage: OptInCohort = IPage57
   val reoptinpage: OptInCohort = ReOptInPage55
   val cysConfirmPage: OptInCohort = CYSConfirmPage47
 }
