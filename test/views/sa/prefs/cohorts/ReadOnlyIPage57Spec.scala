@@ -55,7 +55,7 @@ class ReadOnlyIPage57Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
       document
         .getElementsByTag("p")
         .first()
-        .text() mustBe "You can choose to get some of your HMRC tax letters and messages online. We’ll email you to let you know when you've got a digital letter."
+        .text() mustBe "You can choose to get some of your HMRC tax letters and messages online. We'll email you to let you know when you've got a digital letter."
       document
         .getElementsByTag("p")
         .get(1)
@@ -63,7 +63,7 @@ class ReadOnlyIPage57Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
 
       document
         .getElementById("online-para-1")
-        .text() mustBe "We cannot send all letters online yet, so you’ll still get some by post."
+        .text() mustBe "We cannot send all letters online yet, so you'll still get some by post."
       document
         .getElementById("online-para-2")
         .text() mustBe "Your responsibilities if you go paperless"
@@ -75,7 +75,7 @@ class ReadOnlyIPage57Spec extends PlaySpec with GuiceOneAppPerSuite with Languag
         .text() mustBe "2. Take action Some online tax letters need you to act, such as reminders to file a return or to pay penalties. Others are for information, such as changes to your Income Tax or tax code."
       document
         .getElementById("online-para-5")
-        .text() mustBe "We’ll ask for your preferred email address. You can change it any time. We’ll email you when you have a new online letter."
+        .text() mustBe "We'll ask for your preferred email address. You can change it any time. We'll email you when you have a new online letter."
 
       document.getElementsByAttributeValue("name", "sps-opt-in").text() mustBe "Go paperless Get tax letters by post"
     }

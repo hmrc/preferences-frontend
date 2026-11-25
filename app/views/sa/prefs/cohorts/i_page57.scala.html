@@ -58,11 +58,13 @@
             "data-prevent-double-click" -> "true"
             )
         ))
-    </div>
+
         @govukButton(Button(
             name = Some("sps-opt-in"),
             value = Some("false"),
+            classes = "govuk-button--secondary",
             content = Text(Messages("i_page57.fg_page.optout")),
             attributes = Map("id" -> "optOutButton", "data-prevent-double-click" -> "true")
         ))
+    </div>
 }
