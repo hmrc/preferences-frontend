@@ -15,7 +15,7 @@
  */
 
 import connectors.{ PreferenceResponse, PreferencesConnector }
-import controllers.internal.IPage56
+import controllers.internal.IPage57
 import model.HostContext
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.{ IntegrationPatience, ScalaFutures }
@@ -58,7 +58,7 @@ class ChoosePaperlessControllerISpec
       buildAuthStub(withUtr = Some(utr))
 
       val queryString = model.HostContext.hostContextBinder
-        .unbind("anyValName", HostContext(returnUrl = "foo&value", returnLinkText = "bar", cohort = Some(IPage56)))
+        .unbind("anyValName", HostContext(returnUrl = "foo&value", returnLinkText = "bar", cohort = Some(IPage57)))
 
       val email = "test@foo.com"
 
@@ -87,7 +87,7 @@ class ChoosePaperlessControllerISpec
       val preferencesResponse: Option[PreferenceResponse] =
         preferencesConnector.getPreferences().futureValue
 
-      preferencesResponse.get.termsAndConditions("generic").majorVersion.get mustBe IPage56.majorVersion
+      preferencesResponse.get.termsAndConditions("generic").majorVersion.get mustBe IPage57.majorVersion
       preferencesResponse.get.email.get.pendingEmail.get mustBe "test@foo.com"
     }
   }

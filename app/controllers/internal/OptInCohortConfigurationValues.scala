@@ -20,5 +20,5 @@ import uk.gov.hmrc.abtest.ConfiguredCohortValues
 
 object OptInCohortConfigurationValues extends ConfiguredCohortValues[OptInCohort] {
   val availableValues =
-    List(IPage56, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55)
+    List(IPage57, ReOptInPage10, ReOptInPage52, ReOptInPage54, ReOptInPage55)
 }

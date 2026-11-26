@@ -43,7 +43,10 @@ class SaPrintingPreferenceViewSpec extends PlaySpec with GuiceOneAppPerSuite wit
         )(engRequest, messagesInEnglish(), hostContext).toString()
       )
 
-      document.getElementById("sps-opt-in").hasAttr("checked") mustBe false
+      document
+        .getElementsByTag("h1")
+        .first()
+        .text() mustBe "We're going paperless"
     }
   }
 }

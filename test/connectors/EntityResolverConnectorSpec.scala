@@ -16,7 +16,7 @@
 
 package connectors
 
-import controllers.internal.{ IPage56, OptInCohort }
+import controllers.internal.{ IPage57, OptInCohort }
 import model.HostContext
 import model.Language.Welsh
 import model.PageType.IPage
@@ -637,7 +637,7 @@ class EntityResolverConnectorSpec
 
   trait Setup {
     val version: Version = Version(1, 2)
-    val optInPage: OptInPage = OptInPage.from(IPage56)
+    val optInPage: OptInPage = OptInPage.from(IPage57)
     val email: Email = Email(TEST_EMAIL_VALUE)
     val termsAccepted: TermsAccepted =
       TermsAccepted(accepted = true, optInPage = Some(optInPage), surveyType = Some(StandardInterruptOptOut))
@@ -645,8 +645,8 @@ class EntityResolverConnectorSpec
     val versionJsonString: String = """{"major":1,"minor":2}""".stripMargin
     val versionInvalidJsonString: String = """{"major":2}""".stripMargin
 
-    val optInPageJsonString: String = """{"version":{"major":1,"minor":2},"cohort":56,"pageType":"IPage"}""".stripMargin
-    val optInPageInvalidJsonString1: String = """{"cohort":56,"pageType":"IPage"}""".stripMargin
+    val optInPageJsonString: String = """{"version":{"major":1,"minor":2},"cohort":57,"pageType":"IPage"}""".stripMargin
+    val optInPageInvalidJsonString1: String = """{"cohort":57,"pageType":"IPage"}""".stripMargin
     val optInPageInvalidCohortNumberJsonString: String =
       """{"version":{"major":1,"minor":2},"cohort":90,"pageType":"IPage"}""".stripMargin
 
@@ -654,18 +654,18 @@ class EntityResolverConnectorSpec
       """{"version":{"major":1,"minor":2},"pageType":"IPage"}""".stripMargin
 
     val optInPageInvalidMajorVersionJsonString: String =
-      """{"version":{"major":2,"minor":2},"cohort":56,"pageType":"IPage"}""".stripMargin
+      """{"version":{"major":2,"minor":2},"cohort":57,"pageType":"IPage"}""".stripMargin
 
     val termsAcceptedJsonString: String =
       """{
         |"accepted":true,
-        |"optInPage":{"version":{"major":1,"minor":2},"cohort":56,"pageType":"IPage"},
+        |"optInPage":{"version":{"major":1,"minor":2},"cohort":57,"pageType":"IPage"},
         |"surveyType":"StandardInterruptOptOut"
         |}""".stripMargin
 
     val termsAcceptedInvalidJsonString: String =
       """{
-        |"optInPage":{"version":{"major":1,"minor":2},"cohort":56,"pageType":"IPage"},
+        |"optInPage":{"version":{"major":1,"minor":2},"cohort":57,"pageType":"IPage"},
         |"surveyType":"StandardInterruptOptOut"
         |}""".stripMargin
   }

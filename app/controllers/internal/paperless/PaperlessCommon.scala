@@ -63,10 +63,10 @@ trait PaperlessCommon extends I18nSupport {
   // scalastyle:off cyclomatic.complexity
   def cohortToTitle(cohort: OptInCohort, hasError: Boolean = false, regime: String = EMPTY_STRING): String =
     cohort match {
-      case IPage56 if hasError && regime == REGIME_ITSA => "i_page56.fg_page.itsa.title.error"
-      case IPage56 if hasError                          => "i_page56.fg_page.title.error"
-      case IPage56 if regime == REGIME_ITSA             => "i_page56.fg_page.itsa.title"
-      case IPage56                                      => "i_page56.fg_page.title"
+      case IPage57 if hasError && regime == REGIME_ITSA => "i_page57.fg_page.itsa.title.error"
+      case IPage57 if hasError                          => "i_page57.fg_page.title.error"
+      case IPage57 if regime == REGIME_ITSA             => "i_page57.fg_page.itsa.title"
+      case IPage57                                      => "i_page57.fg_page.title"
       case ReOptInPage10                                => "reoptin_page10.fg_page.title"
       case ReOptInPage52                                => "reoptin_page52.fg_page.title"
       case ReOptInPage54 if hasError                    => "reoptin_page54.fg_page.title"
